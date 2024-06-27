@@ -1,0 +1,11 @@
+.nav {
+  position: relative;
+  padding: var(--padding--standard) var(--padding--medium);
+  background-color: var(--color-dark--1);
+  box-shadow: var(--box-shadow--standrd);
+
+  /* flexbox */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}

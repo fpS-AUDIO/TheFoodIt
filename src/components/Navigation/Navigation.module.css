@@ -1,0 +1,139 @@
+/* Mobile-first styles */
+
+.navigation {
+  position: relative;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.navigation .menuBtn {
+  display: none;
+}
+
+/* FAKE BUTTON ON DEFAULT STATE (NOT CHECKED) */
+
+.navigation .menuIcon {
+  height: 4.8rem;
+  width: 4.8rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.navigation .navIcon {
+  position: absolute;
+  background-color: var(--color-light--0);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4.8rem;
+  height: 0.4rem;
+  border-radius: 5rem;
+}
+
+.navigation .navIcon::before,
+.navigation .navIcon::after {
+  content: "";
+  position: absolute;
+  background-color: var(--color-light--0);
+  width: 4.8rem;
+  height: 0.4rem;
+  border-radius: 5rem;
+  transition: all 0.2s ease-out;
+}
+
+.navigation .navIcon::before {
+  top: -1.2rem;
+}
+
+.navigation .navIcon::after {
+  top: 1.2rem;
+}
+
+/* FAKE BUTTON ON CHECKED STATE */
+
+.navigation .menuBtn:checked ~ .menuIcon .navIcon {
+  background-color: transparent;
+}
+
+.navigation .menuBtn:checked ~ .menuIcon .navIcon::before {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+.navigation .menuBtn:checked ~ .menuIcon .navIcon::after {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+/* NAVIGATION LINKS */
+
+.navigation .navLinks {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: none; /* Hide by default */
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 100%;
+  right: -100%;
+  background-color: var(--color-dark--1);
+  width: 110vw;
+  box-shadow: var(--box-shadow--standard);
+}
+
+/* Show menu on checkbox checked */
+.navigation .menuBtn:checked ~ .navLinks {
+  display: flex;
+}
+
+.navigation .navItem {
+  width: 100%;
+}
+
+.navigation .navLink {
+  display: block;
+  padding: 1rem;
+  font-size: 1.5rem;
+  color: var(--color-light--2);
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Desktop styles */
+
+@media (min-width: 900px) {
+  .navigation {
+    flex-direction: row;
+  }
+
+  .navigation .menuBtn,
+  .navigation .menuIcon {
+    display: none;
+  }
+
+  .navigation .navLinks {
+    display: flex;
+    flex-direction: row;
+    /* gap: 0.5rem; */
+    position: static;
+    background: none;
+    box-shadow: none;
+    width: auto;
+  }
+
+  .navigation .navLink {
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    /* background-color: violet; */
+    text-wrap: nowrap;
+    opacity: 0.7;
+  }
+
+  .navigation :global(.active) {
+    opacity: 1;
+  }
+}

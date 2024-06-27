@@ -1,0 +1,20 @@
+.footer {
+  /* background-color: blueviolet; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--padding--standard);
+}
+
+.copyright {
+  font-size: 1.3rem;
+  color: var(--color-light--0);
+}
+
+.link:link,
+.link:visited {
+  color: var(--color-brand-lightest);
+  padding: 0.1rem;
+  border-bottom: 0.1rem solid currentColor;
+  text-decoration: none;
+}

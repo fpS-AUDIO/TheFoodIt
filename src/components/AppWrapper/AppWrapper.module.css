@@ -1,0 +1,26 @@
+.wrapper {
+  /* sizes */
+  width: 100vw;
+  height: 100vh;
+  margin: auto;
+
+  /* additional styles */
+  overflow: hidden;
+  background-color: var(--color-dark--2);
+
+  /* layout */
+  display: grid;
+  grid-template-rows: 8rem 1fr 6.4rem;
+}
+
+@media (min-width: 600px) {
+  .wrapper {
+    /* sizes */
+    width: 95vw;
+    height: 95vh;
+
+    /* additional styles */
+    border-radius: var(--border-radius--standard);
+    box-shadow: var(--box-shadow--standrd);
+  }
+}
