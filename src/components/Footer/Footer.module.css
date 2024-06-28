@@ -13,7 +13,7 @@
 
 .link:link,
 .link:visited {
-  color: var(--color-brand-lightest);
+  color: var(--color-light--0);
   padding: 0.1rem;
   border-bottom: 0.1rem solid currentColor;
   text-decoration: none;

@@ -1,5 +1,6 @@
 .nav {
   position: relative;
+  z-index: 10;
   padding: var(--padding--standard) var(--padding--medium);
   background-color: var(--color-dark--1);
   box-shadow: var(--box-shadow--standrd);

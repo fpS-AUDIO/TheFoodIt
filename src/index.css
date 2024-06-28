@@ -26,10 +26,12 @@
   --border-radius--standard: 0.8rem;
   --border-radius--big: 1.2rem;
 
-  --box-shadow--standrd: rgba(0, 0, 0, 0.15) 0px 10px 20px,
-    rgba(0, 0, 0, 0.2) 0px 6px 6px;
-  --box-shadow--right: rgba(0, 0, 0, 0.15) 10px 0px 20px,
-    rgba(0, 0, 0, 0.2) 6px 0px 6px;
+  --box-shadow--standrd: rgba(0, 0, 0, 0.15) 0rem 1rem 2rem,
+    rgba(0, 0, 0, 0.2) 0rem 0.6rem 0.6rem;
+  --box-shadow--right: rgba(0, 0, 0, 0.15) 1rem 0rem 2rem,
+    rgba(0, 0, 0, 0.2) 0.6rem 0rem 0.6rem;
+  --box-shadow--btn: rgba(0, 0, 0, 0.1) 0rem 1rem 1.5rem -0.3rem,
+    rgba(0, 0, 0, 0.05) 0rem 0.4rem 0.6rem -0.2rem;
 }
 
 * {
@@ -104,4 +106,10 @@ input:focus {
 
 .noSelect:focus {
   outline: none !important;
+}
+
+/* Styling for text selection */
+::selection {
+  background: var(--color-brand-darkest);
+  color: var(--color-light--3);
 }

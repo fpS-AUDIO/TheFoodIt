@@ -1,0 +1,32 @@
+.button {
+  text-transform: uppercase;
+  padding: 0.9rem 1.8rem;
+  font-family: inherit;
+  font-size: 1.5rem;
+  color: var(--color-light--3);
+  background-color: transparent;
+  outline: none;
+  border: 0.2rem solid currentColor;
+  border-radius: var(--border-radius--standard); /* Slightly rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  text-decoration: none; /* No underline for the button text */
+  box-shadow: var(--box-shadow--btn);
+  transition: all 0.3s ease;
+}
+.button:hover {
+  outline: none;
+  transform: translateY(-0.3rem);
+}
+.button:active {
+  outline: none;
+  transform: translateY(0.3rem) scale(0.98);
+}
+
+.button.cta {
+  background-color: var(--color-brand-darker);
+  border: 0.2rem solid var(--color-brand-darkest);
+}
+
+.button.cta:hover {
+  background-color: var(--color-brand-darkest);
+}
