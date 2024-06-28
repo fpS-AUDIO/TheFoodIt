@@ -1,26 +1,27 @@
-/* Mobile-first styles */
+/*///////////////////////////
+//// Mobile-first styles ////
+///////////////////////////*/
 
-.navigation {
-  position: relative;
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-}
+/* ----- NAVIGATION BUTTON (DEFAULT STATE) ----- */
 
-.navigation .menuBtn {
+.menuBtn {
   display: none;
 }
 
-/* FAKE BUTTON ON DEFAULT STATE (NOT CHECKED) */
+.menuIcon {
+  /* position */
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
 
-.navigation .menuIcon {
+  /* size */
   height: 4.8rem;
   width: 4.8rem;
+
   cursor: pointer;
-  position: relative;
 }
 
-.navigation .navIcon {
+.menuIcon .navIcon {
   position: absolute;
   background-color: var(--color-light--0);
   top: 50%;
@@ -29,10 +30,11 @@
   width: 4.8rem;
   height: 0.4rem;
   border-radius: 5rem;
+  z-index: 10;
 }
 
-.navigation .navIcon::before,
-.navigation .navIcon::after {
+.menuIcon .navIcon::before,
+.menuIcon .navIcon::after {
   content: "";
   position: absolute;
   background-color: var(--color-light--0);
@@ -42,55 +44,75 @@
   transition: all 0.2s ease-out;
 }
 
-.navigation .navIcon::before {
+.menuIcon .navIcon::before {
   top: -1.2rem;
 }
 
-.navigation .navIcon::after {
+.menuIcon .navIcon::after {
   top: 1.2rem;
 }
 
-/* FAKE BUTTON ON CHECKED STATE */
+/* ----- NAVIGATION BUTTON (CHECKED STATE) ----- */
 
-.navigation .menuBtn:checked ~ .menuIcon .navIcon {
+.menuBtn:checked ~ .menuIcon .navIcon {
   background-color: transparent;
 }
 
-.navigation .menuBtn:checked ~ .menuIcon .navIcon::before {
+.menuBtn:checked ~ .menuIcon .navIcon::before {
   transform: rotate(-45deg);
   top: 0;
 }
 
-.navigation .menuBtn:checked ~ .menuIcon .navIcon::after {
+.menuBtn:checked ~ .menuIcon .navIcon::after {
   transform: rotate(45deg);
   top: 0;
 }
 
-/* NAVIGATION LINKS */
+/* ----- NAVIGATION ----- */
+
+.navigation {
+  /* position */
+  position: fixed;
+  top: 0;
+  left: -22rem; /* left should be the same as width property */
+  z-index: 100;
+
+  /* sizes */
+  height: 100%;
+  width: 22rem;
+
+  /* flexbox */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  /* border */
+  border: 0.2rem solid var(--color-dark--0);
+  border-top-right-radius: var(--border-radius--big);
+  border-bottom-right-radius: var(--border-radius--big);
+
+  /* add styling */
+  background-color: var(--color-dark--1);
+
+  /* movement */
+  transition: transform 0.2s linear;
+}
+
+.navigation:global(.opened) {
+  transform: translateX(100%);
+  box-shadow: var(--box-shadow--right);
+}
 
 .navigation .navLinks {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: none; /* Hide by default */
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  top: 100%;
-  right: -100%;
-  background-color: var(--color-dark--1);
-  width: 110vw;
-  box-shadow: var(--box-shadow--standard);
-}
-
-/* Show menu on checkbox checked */
-.navigation .menuBtn:checked ~ .navLinks {
   display: flex;
+  flex: 1;
+  flex-direction: column;
+  list-style-type: none;
 }
-
+/* 
 .navigation .navItem {
   width: 100%;
-}
+} */
 
 .navigation .navLink {
   display: block;
@@ -102,33 +124,55 @@
   text-transform: uppercase;
 }
 
-/* Desktop styles */
+/* ----- DESKTOP STYLES ----- */
 
+/* @media should be the same as the global layout media query changes  */
 @media (min-width: 900px) {
   .navigation {
+    /* postion - resetting to normal flow */
+    position: relative;
+    margin-left: auto;
+    top: auto;
+    left: auto;
+    z-index: auto;
+
+    /* flexbox */
+    display: flex;
     flex-direction: row;
+    align-items: center;
+
+    /* sizes */
+    height: 100%;
+    width: auto;
+
+    /* border */
+    border: none;
+    border-radius: 0;
+
+    /* Reset transform property */
+    transform: none;
   }
 
-  .navigation .menuBtn,
-  .navigation .menuIcon {
+  .menuBtn,
+  .menuIcon {
     display: none;
   }
 
   .navigation .navLinks {
     display: flex;
     flex-direction: row;
-    /* gap: 0.5rem; */
     position: static;
     background: none;
     box-shadow: none;
-    width: auto;
+
+    /* border */
+    border: none;
   }
 
   .navigation .navLink {
     padding: 1rem 2rem;
     font-size: 1.5rem;
     font-weight: 600;
-    /* background-color: violet; */
     text-wrap: nowrap;
     opacity: 0.7;
   }

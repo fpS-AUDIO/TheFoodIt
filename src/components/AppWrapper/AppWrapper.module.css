@@ -13,7 +13,7 @@
   grid-template-rows: 8rem 1fr 6.4rem;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 900px) {
   .wrapper {
     /* sizes */
     width: 95vw;

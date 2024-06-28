@@ -24,9 +24,12 @@
   --padding--medium: 2.4rem;
 
   --border-radius--standard: 0.8rem;
+  --border-radius--big: 1.2rem;
 
   --box-shadow--standrd: rgba(0, 0, 0, 0.15) 0px 10px 20px,
     rgba(0, 0, 0, 0.2) 0px 6px 6px;
+  --box-shadow--right: rgba(0, 0, 0, 0.15) 10px 0px 20px,
+    rgba(0, 0, 0, 0.2) 6px 0px 6px;
 }
 
 * {
