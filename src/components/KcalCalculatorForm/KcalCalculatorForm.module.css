@@ -1,0 +1,174 @@
+.formContainer {
+  width: 100%;
+  max-width: 30rem;
+  margin: 2.4rem auto;
+  padding: var(--padding--medium);
+}
+
+.title {
+  color: var(--color-light--3);
+  font-size: 1.7rem;
+  font-weight: 800;
+}
+
+.titleSecondary {
+  color: var(--color-light--1);
+  font-size: 1.5rem;
+  font-weight: 800;
+  padding-bottom: var(--padding--medium);
+}
+
+.formLabel {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+/* ----- RADIO ----- */
+
+.formRadioRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+}
+.radioRowChoices {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 0.8rem;
+}
+
+.radioRowChoice {
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.customRadioInput {
+  appearance: none;
+  -webkit-appearance: none;
+
+  height: 1.6rem;
+  width: 1.6rem;
+  margin-right: 0.8rem;
+  border: 0.3rem solid var(--color-dark--2);
+
+  background-color: var(--color-dark--2);
+  border-radius: 50%;
+  outline: 0.2rem solid var(--color-brand);
+}
+
+.customRadioInput:checked {
+  background-color: var(--color-brand);
+  animation: outline-checked 100ms linear 3 alternate;
+}
+
+/* ----- INPUT ----- */
+
+.formRow {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 1.2rem;
+}
+
+.formInput {
+  width: 100%;
+  padding: 0.6rem 1.2rem;
+
+  background-color: var(--color-dark--2);
+
+  font-family: inherit;
+  font-size: 1.6rem;
+  color: var(--color-light--3);
+
+  border: 0.2rem solid var(--color-dark--0);
+  border-radius: var(--border-radius--standard);
+
+  transition: all 0.3s ease;
+}
+
+.formInput:focus {
+  outline: none;
+  border: 0.2rem solid var(--color-brand-darkest);
+  background-color: var(--color-dark--2);
+}
+
+.formInput::-webkit-input-placeholder {
+  color: var(--color-light--0);
+}
+
+/* ----- SELECT ----- */
+
+.formSelectRow {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2.2rem;
+}
+
+.formSelectRow .formLabel {
+  margin-bottom: 0.8rem;
+}
+
+.formSelectRow select {
+  width: 100%;
+  height: 3.5rem;
+
+  font-size: 1.6rem;
+
+  padding: 0.5rem;
+  border: 0.2rem solid var(--color-dark--0);
+  color: var(--color-light--2);
+  background-color: var(--color-dark--2);
+  border-radius: var(--border-radius--standard);
+}
+
+.formSelectRow select:focus {
+  outline: none;
+  border: 0.2rem solid var(--color-brand-darkest);
+  background-color: var(--color-dark--2);
+}
+
+/* ----- DESKTOP MEDIA QUERIES ----- */
+
+@media (min-width: 600px) {
+  .formContainer {
+    max-width: 40rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .formContainer {
+    max-width: 50rem;
+  }
+}
+
+/* ----- ANIMATIONS ----- */
+
+@keyframes outline-checked {
+  0% {
+    outline-offset: 0;
+  }
+
+  100% {
+    outline-offset: -0.2rem;
+  }
+}
+
+/* result */
+
+/* .calculatorContainerResult {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: 0.5rem solid;
+    border-color: green;
+  }
+  
+  .summarySentence {
+    text-align: center;
+  }
+  
+  .calculatorError h3 {
+    text-align: center;
+  }
+   */

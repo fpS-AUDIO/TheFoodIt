@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   padding: var(--padding--standard);
+  margin-top: 4.8rem;
 }
 
 .copyright {

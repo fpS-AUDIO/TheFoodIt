@@ -34,6 +34,8 @@
     rgba(0, 0, 0, 0.05) 0rem 0.4rem 0.6rem -0.2rem;
 }
 
+/* ----- GLOBAL STYLING RESET ----- */
+
 * {
   margin: 0;
   padding: 0;
@@ -47,8 +49,8 @@ html {
   background-color: var(--color-brand);
   background: linear-gradient(
     135deg,
-    var(--color-brand) 0%,
-    var(--color-brand-darker) 50%
+    var(--color-brand-darker) 0%,
+    var(--color-brand-darkest) 50%
   );
 }
 
@@ -65,34 +67,73 @@ body {
   align-items: center;
 }
 
-label {
-  font-size: 1.6rem;
-  font-weight: 600;
-}
-
-input,
-textarea {
-  width: 100%;
-  padding: 0.8rem 1.2rem;
-  font-family: inherit;
-  font-size: 1.6rem;
-  border: none;
-  border-radius: 5px;
-  background-color: var(--color-light--3);
-  transition: all 0.2s;
-}
-
-input:focus {
-  outline: none;
-  background-color: #fff;
-}
+/* ----- MOBILE FIRST APPROACH ----- */
 
 @media (min-width: 600px) {
   html {
-    /* to make default 1rem = 10px */
+    /* to make default 1rem = 12px */
     font-size: 75%;
   }
 }
+
+@media (min-width: 1200px) {
+  html {
+    /* to make default 1rem = 14px */
+    font-size: 87.5%;
+  }
+}
+
+@media (min-width: 1600px) {
+  html {
+    /* to make default 1rem = 16px */
+    font-size: 100%;
+  }
+}
+
+/* ----- GLOBAL STYLING FOR SELECTION ----- */
+
+::selection {
+  background: var(--color-brand-darkest);
+  color: var(--color-light--3);
+}
+
+/* ----- GLOBAL STYLING SCROLLBAR STYLING ----- */
+
+::-webkit-scrollbar {
+  /* Affects vertical scrollbar */
+  width: 1rem;
+  /* Affects horizontal scrollbar */
+  height: 1rem;
+}
+
+/* track is the entire scrollbar itself */
+::-webkit-scrollbar-track {
+  background: transparent;
+  /* border-radius: 20px; */
+  /* Top and bottom margin */
+  margin-block: 0.125em;
+}
+
+/* thumb is the moving part of scrollbar */
+::-webkit-scrollbar-thumb {
+  background: var(--color-light--0);
+  border-radius: var(--border-radius--big);
+  border: 0.25rem solid var(--color-dark--2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-light--1);
+}
+
+/* Firefox Scrollbar Styling */
+@supports (scrollbar-color: red blue) {
+  * {
+    scrollbar-color: var(--color-light--0) transparent;
+    scrollbar-width: thin;
+  }
+}
+
+/* ----- GLOBAL HELPER CLASSES ----- */
 
 .noSelect {
   -webkit-tap-highlight-color: transparent;
@@ -106,10 +147,4 @@ input:focus {
 
 .noSelect:focus {
   outline: none !important;
-}
-
-/* Styling for text selection */
-::selection {
-  background: var(--color-brand-darkest);
-  color: var(--color-light--3);
 }

@@ -10,8 +10,13 @@
 
   /* layout */
   display: grid;
-  grid-template-rows: 8rem 1fr 6.4rem;
+  grid-template-rows: 6rem 1fr;
 }
+
+/* THIS MEDIA QUERY AFFECTS ALSO:
+  - Navigation.module.css
+  - Navigation.jsx
+*/
 
 @media (min-width: 900px) {
   .wrapper {

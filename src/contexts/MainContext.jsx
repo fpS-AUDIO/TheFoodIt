@@ -4,21 +4,71 @@ import { createContext, useContext, useReducer } from "react";
 const MainContext = createContext();
 
 const initialState = {
+  isUserAcceptedPrivacy: false,
   isDesktop: window.innerWidth >= 900,
   isMenuOpened: false,
+  errorMessage: "",
+  isUserKcalFormDataLoaded: false,
+  userKcalFormData: {
+    gender: "",
+    height: "",
+    weight: "",
+    age: "",
+    pal: "",
+    goal: "",
+  },
 };
 
 // the reduce function is called automatically by dispatch of useReducer
 function reducer(state, action) {
   switch (action.type) {
+    case "RESET_STATE":
+      return {
+        ...initialState,
+      };
+
+    case "USER_ACCEPTED_PRIVACY":
+      return {
+        ...state,
+        isUserAcceptedPrivacy: true,
+      };
+
     case "SET_IS_DESKTOP":
-      return { ...state, isDesktop: action.payload, isMenuOpened: false };
+      return {
+        ...state,
+        isDesktop: action.payload,
+        isMenuOpened: false,
+      };
 
     case "TOGGLE_MENU":
-      return { ...state, isMenuOpened: !state.isMenuOpened };
+      return {
+        ...state,
+        isMenuOpened: !state.isMenuOpened,
+      };
 
     case "MENU_CLOSED":
-      return { ...state, isMenuOpened: false };
+      return {
+        ...state,
+        isMenuOpened: false,
+      };
+
+    case "CLEAR_ERROR_MESSAGE":
+      return {
+        ...state,
+        errorMessage: "",
+      };
+
+    case "SET_ERROR_MESSAGE":
+      return {
+        ...state,
+        errorMessage: action.payload,
+      };
+
+    case "SET_USER_KCAL_FORM_DATA":
+      return {
+        ...state,
+        userKcalFormData: action.payload,
+      };
 
     default:
       throw new Error(
@@ -33,10 +83,27 @@ function MainContextProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   // destructuring state
-  const { isDesktop, isMenuOpened } = state;
+  const {
+    isUserAcceptedPrivacy,
+    isDesktop,
+    isMenuOpened,
+    errorMessage,
+    isUserKcalFormDataLoaded,
+    userKcalFormData,
+  } = state;
 
   return (
-    <MainContext.Provider value={{ dispatch, isDesktop, isMenuOpened }}>
+    <MainContext.Provider
+      value={{
+        dispatch,
+        isUserAcceptedPrivacy,
+        isDesktop,
+        isMenuOpened,
+        errorMessage,
+        isUserKcalFormDataLoaded,
+        userKcalFormData,
+      }}
+    >
       {children}
     </MainContext.Provider>
   );

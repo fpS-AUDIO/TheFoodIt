@@ -1,9 +1,11 @@
-.soon {
-  margin: auto;
-  width: 100%;
-  height: 10rem;
-  font-size: 2rem;
-  padding: 3rem;
-  text-wrap: balance;
-  text-align: center;
+.wrapper {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
+
+/* .content {
+} */

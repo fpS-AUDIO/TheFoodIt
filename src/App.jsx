@@ -13,16 +13,17 @@ import FoodCostCalculator from "./pages/FoodCostCalculator/FoodCostCalculator";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 
 // CUSTOM COMPONENTS
+import PrivacyNotice from "./components/PrivacyNotice/PrivacyNotice";
 import AppWrapper from "./components/AppWrapper/AppWrapper";
 import Navbar from "./components/Navbar/Navbar";
 import MainContent from "./components/MainContent/MainContent";
-import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
     <MainContextProvider>
       <AppWrapper>
         <BrowserRouter>
+          <PrivacyNotice />
           <Navbar />
           <MainContent>
             <Routes>
@@ -34,7 +35,6 @@ function App() {
             </Routes>
           </MainContent>
         </BrowserRouter>
-        <Footer />
       </AppWrapper>
     </MainContextProvider>
   );

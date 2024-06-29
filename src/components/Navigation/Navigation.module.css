@@ -11,8 +11,8 @@
 .menuIcon {
   /* position */
   position: fixed;
-  top: 2rem;
-  right: 2rem;
+  top: 0.8rem;
+  right: 1.5rem;
 
   /* size */
   height: 4.8rem;
@@ -74,12 +74,12 @@
   /* position */
   position: fixed;
   top: 0;
-  left: -22rem; /* left should be the same as width property */
+  left: -25rem; /* left should be the same as width property */
   z-index: 100;
 
   /* sizes */
   height: 100%;
-  width: 22rem;
+  width: 25rem; /* left should be the same as left property */
 
   /* flexbox */
   display: flex;
@@ -109,10 +109,11 @@
   flex-direction: column;
   list-style-type: none;
 }
-/* 
-.navigation .navItem {
-  width: 100%;
-} */
+
+.navigation .navItem:not(:last-child) {
+  /* styles here */
+  border-bottom: 0.1rem solid var(--color-dark--0);
+}
 
 .navigation .navLink {
   display: block;
@@ -167,6 +168,11 @@
 
     /* border */
     border: none;
+  }
+
+  .navigation .navItem:not(:last-child) {
+    /* styles here */
+    border-bottom: none;
   }
 
   .navigation .navLink {
