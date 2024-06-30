@@ -14,10 +14,11 @@
   font-size: 1.4rem;
   text-transform: uppercase;
   text-wrap: balance;
+  text-align: center;
 }
 .warning {
   font-size: 3rem;
-  padding: 2rem;
+  padding: 2rem 1rem;
   animation: shake 0.5s ease-in-out;
 }
 

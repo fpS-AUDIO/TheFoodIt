@@ -1,16 +1,24 @@
-import styles from "./PrivacyNotice.module.css";
-
+import { useNavigate, useLocation } from "react-router-dom";
 import { useMainContext } from "../../contexts/MainContext";
+import styles from "./PrivacyNotice.module.css";
 import Button from "../Button/Button";
 
 function PrivacyNotice() {
   const { dispatch, isUserAcceptedPrivacy } = useMainContext();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   function handleAccept() {
-    dispatch({ type: "USER_ACCEPTED_PRIVACY" });
+    dispatch({
+      type: "USER_ACCEPTED_PRIVACY",
+      errorHandler: dispatch,
+    });
+    // redirect to the original intended location after accepting
+    const redirectPath = location.state?.from?.pathname || "/";
+    navigate(redirectPath);
   }
 
-  if (isUserAcceptedPrivacy) return;
+  if (isUserAcceptedPrivacy) return null;
 
   return (
     <div className={styles.privacyNoticeWrapper}>

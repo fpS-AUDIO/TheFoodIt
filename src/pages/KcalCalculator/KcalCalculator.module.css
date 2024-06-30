@@ -4,8 +4,25 @@
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+}
+.wrapper > :last-child {
+  margin-top: auto;
 }
 
-/* .content {
-} */
+.disclairmer {
+  padding-top: 0.6rem;
+  /* background-color: slategrey; */
+  text-align: center;
+  text-wrap: balance;
+  color: var(--color-light--0);
+}
+
+.disclaimerTitle {
+  font-size: 1.3rem;
+}
+
+.disclaimerDescription {
+  font-size: 1.1rem;
+  /* color: var(--color-dark--0) */
+}

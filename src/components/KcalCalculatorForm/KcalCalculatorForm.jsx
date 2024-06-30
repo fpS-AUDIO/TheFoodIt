@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { useNavigate } from "react-router-dom";
+
 import styles from "./KcalCalculatorForm.module.css";
 import { useMainContext } from "../../contexts/MainContext";
 import Button from "../Button/Button";
@@ -7,6 +9,7 @@ import Button from "../Button/Button";
 function KcalCalculatorForm() {
   // useMainContext is custom hook to get access to the state (managed by useReducer)
   const { dispatch } = useMainContext();
+  const navigate = useNavigate();
 
   // component's local state
   const [formData, setFormData] = useState({
@@ -17,15 +20,6 @@ function KcalCalculatorForm() {
     pal: "",
     goal: "",
   });
-
-  //   userKcalFormData import from useMainContext
-
-  //   useEffect(
-  //     function () {
-  //       console.log(userKcalFormData);
-  //     },
-  //     [userKcalFormData]
-  //   );
 
   // to manage controlled elements
   function handleChange(e) {
@@ -46,11 +40,6 @@ function KcalCalculatorForm() {
       pal: "",
       goal: "",
     });
-  }
-
-  // function to save data in local storage
-  function saveUserDataInStorage(newObject) {
-    localStorage.setItem("TheFoodItUserKcalData", JSON.stringify(newObject));
   }
 
   // form submit function
@@ -93,29 +82,25 @@ function KcalCalculatorForm() {
     };
 
     // update the global state with form data
+    // state will also set the data in storage
     dispatch({
       type: "SET_USER_KCAL_FORM_DATA",
       payload: userDataForm,
-    });
-
-    // set the data in local storage
-    saveUserDataInStorage(userDataForm);
-
-    dispatch({
-      type: "SET_ERROR_MESSAGE",
-      payload:
-        "Thank you for submitting your information. Currently, our app is under development and cannot yet calculate BMI, BMR, TEF, and TDEE. We are working hard to finalize these features and will have them available soon. Please check back later.",
+      errorHandler: dispatch,
     });
 
     // reset the form
     resetFormData();
+
+    // change route automatically
+    navigate("/kcalCalculator/stats");
   }
 
   return (
     <div className={styles.formContainer}>
       <form className={styles.calculatorForm} onSubmit={handleSubmit}>
         <h2 className={styles.title}>TheFoodIt&apos;s Adult Body Metrics</h2>
-        <h3 className={styles.titleSecondary}>Please enter you data: </h3>
+        <h3 className={styles.titleSecondary}>Please enter your data: </h3>
 
         <div className={styles.formRadioRow}>
           <p className={styles.formLabel}>Gender</p>
@@ -227,7 +212,7 @@ function KcalCalculatorForm() {
             <option value="">--Please choose an option--</option>
             <option value="weight">Weight Loss</option>
             <option value="muscle">Muscle Gain</option>
-            <option value="maintenance">Maintenance</option>
+            <option value="maintenance">Weight Maintenance</option>
           </select>
         </div>
 

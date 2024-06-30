@@ -1,13 +1,24 @@
+// 3rd party libraries
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
+// styles
 import styles from "./Homepage.module.css";
 
+// contexts/state
+import { useMainContext } from "../../contexts/MainContext";
+
+// add files
+import videoSrc from "../../assets/video-soia-cooked.mp4";
+
+// components
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Button from "../../components/Button/Button";
-import videoSrc from "../../assets/video-soia-cooked.mp4"; // Import the video correctly
 import Footer from "../../components/Footer/Footer";
 
 function Homepage() {
+  const { errorMessage } = useMainContext();
+
   // useNavigate just returns function to chnage route
   const navigate = useNavigate();
 
@@ -52,6 +63,7 @@ function Homepage() {
             Calculate Your Nutritional Needs
           </Button>
         </div>
+        {errorMessage ? <ErrorMessage message={errorMessage} /> : null}
       </div>
       <Footer />
     </>

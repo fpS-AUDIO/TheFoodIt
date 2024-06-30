@@ -5,7 +5,7 @@ const topics = [
   {
     question: "What is BMI?",
     answer:
-      "Body Mass Index (BMI) is a measurement that uses height and weight to estimate a person's body fat, providing an easy and quick method to assess whether someone has an appropriate body weight for their height. BMI is widely used in the medical community to screen for obesity, underweight, and healthy weight ranges, though it does not directly measure body fat percentage.",
+      "Body Mass Index (BMI) is a measurement that uses height and weight to estimate a person's body fat, providing an easy and quick method to assess whether someone has an appropriate body weight for their height. BMI is widely used in the medical community to screen for obesity, underweight, and healthy weight ranges, though it does not directly measure body fat percentage. BMI<16 = Severe Underweight; 16<BMI<18.5 = Underweight; 18.5<BMI<25 = Normal weight; 25<BMI<30 = Overweight; 30<BMI<35 = Moderately obese; 35<BMI<40 = Severely obese; BMI>40 = Very severely obese; ",
     question2: "How to Calculate BMI?",
     answer2:
       "BMI is calculated by dividing a person's weight in kilograms (kg) by their height in meters (m) squared.",

@@ -1,15 +1,24 @@
 import { createContext, useContext, useReducer } from "react";
+import { setStorageItem, getStorageItem } from "./storageHelpers";
+
+// helper function which returns boolean
+function getBooleanValue(value) {
+  return value !== null && value !== undefined;
+}
 
 // creating context
 const MainContext = createContext();
 
 const initialState = {
-  isUserAcceptedPrivacy: false,
+  isUserAcceptedPrivacy:
+    getStorageItem("TheFoodItUserAcceptedPrivacy") === "true",
   isDesktop: window.innerWidth >= 900,
   isMenuOpened: false,
   errorMessage: "",
-  isUserKcalFormDataLoaded: false,
-  userKcalFormData: {
+  isUserKcalFormDataLoaded: getBooleanValue(
+    getStorageItem("TheFoodItUserKcalData")
+  ),
+  userKcalFormData: getStorageItem("TheFoodItUserKcalData") || {
     gender: "",
     height: "",
     weight: "",
@@ -28,6 +37,12 @@ function reducer(state, action) {
       };
 
     case "USER_ACCEPTED_PRIVACY":
+      // also update the local storage
+      setStorageItem(
+        "TheFoodItUserAcceptedPrivacy",
+        "true",
+        action.errorHandler
+      );
       return {
         ...state,
         isUserAcceptedPrivacy: true,
@@ -65,9 +80,16 @@ function reducer(state, action) {
       };
 
     case "SET_USER_KCAL_FORM_DATA":
+      setStorageItem(
+        "TheFoodItUserKcalData",
+        action.payload,
+        action.errorHandler
+      );
+
       return {
         ...state,
         userKcalFormData: action.payload,
+        isUserKcalFormDataLoaded: true,
       };
 
     default:
@@ -92,6 +114,8 @@ function MainContextProvider({ children }) {
     userKcalFormData,
   } = state;
 
+
+  
   return (
     <MainContext.Provider
       value={{

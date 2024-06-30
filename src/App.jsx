@@ -10,6 +10,8 @@ import Homepage from "./pages/Homepage/Homepage";
 import KcalCalculator from "./pages/KcalCalculator/KcalCalculator";
 import IngredientsConverter from "./pages/IngredientsConverter/IngredientsConverter";
 import FoodCostCalculator from "./pages/FoodCostCalculator/FoodCostCalculator";
+import ProtectedRoute from "./pages/ProtectedRoute/ProtectedRoute";
+import About from "./pages/About/About";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 
 // CUSTOM COMPONENTS
@@ -17,6 +19,8 @@ import PrivacyNotice from "./components/PrivacyNotice/PrivacyNotice";
 import AppWrapper from "./components/AppWrapper/AppWrapper";
 import Navbar from "./components/Navbar/Navbar";
 import MainContent from "./components/MainContent/MainContent";
+import KcalStats from "./components/KcalStats/KcalStats";
+import KcalCalculatorForm from "./components/KcalCalculatorForm/KcalCalculatorForm";
 
 function App() {
   return (
@@ -28,10 +32,46 @@ function App() {
           <MainContent>
             <Routes>
               <Route path="/" element={<Homepage />} />
-              <Route path="/kcalCalculator" element={<KcalCalculator />} />
-              <Route path="/converter" element={<IngredientsConverter />} />
-              <Route path="/foodcost" element={<FoodCostCalculator />} />
-              <Route path="*" element={<PageNotFound />} />
+              <Route
+                path="/*"
+                element={
+                  <ProtectedRoute>
+                    {/*/////--- PROTECTED ROUTES ---/////*/}
+                    <Routes>
+                      <Route
+                        path="/kcalCalculator"
+                        element={<KcalCalculator />}
+                      >
+                        {/*/////--- NESTED OF 'kcalCalculator' ---/////*/}
+
+                        {/* <Route index element={<KcalStats />} /> */}
+
+                        <Route path="stats" element={<KcalStats />} />
+
+                        <Route
+                          path="calculator"
+                          element={<KcalCalculatorForm />}
+                        />
+
+                        {/*/////--- FINISHED HERE NESTED OF 'kcalCalculator' ---/////*/}
+                      </Route>
+                      <Route
+                        path="/converter"
+                        element={<IngredientsConverter />}
+                      />
+                      <Route
+                        path="/foodcost"
+                        element={<FoodCostCalculator />}
+                      />
+                      <Route path="/about" element={<About />} />
+
+                      <Route path="*" element={<PageNotFound />} />
+                    </Routes>
+
+                    {/*/////--- FINISHED HERE PROTECTED ROUTES ---/////*/}
+                  </ProtectedRoute>
+                }
+              />
             </Routes>
           </MainContent>
         </BrowserRouter>
