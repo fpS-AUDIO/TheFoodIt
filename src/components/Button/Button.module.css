@@ -22,11 +22,33 @@
   transform: translateY(0.3rem) scale(0.98);
 }
 
+/* ----- ALL VARIATIONS (PROP 'type') ----- */
+
 .button.cta {
-  background-color: var(--color-brand-darker);
+  /* background-color: var(--color-brand-darkest); */
+  background-color: rgba(24, 114, 44, 0.6);
+  border: 0.2rem solid transparent;
+}
+.button.cta:hover {
+  background-color: rgba(50, 142, 70, 0.6);
+}
+
+.button.add {
+  width: 100%;
+  padding: 0.6rem 1.2rem;
+  color: var(--color-light--1);
+  border: 0.2rem solid var(--color-light--0);
+}
+
+.button.submit {
+  padding: 0.7rem 1.4rem;
+  color: var(--color-brand-darker);
   border: 0.2rem solid var(--color-brand-darkest);
 }
 
-.button.cta:hover {
-  background-color: var(--color-brand-darkest);
+.button.submitLarge {
+  width: 100%;
+  padding: 0.7rem 1.4rem;
+  color: var(--color-brand-darker);
+  border: 0.2rem solid var(--color-brand-darkest);
 }

@@ -67,6 +67,8 @@ body {
   align-items: center;
 }
 
+/* ----- FORMS ----- */
+
 /* ----- MOBILE FIRST APPROACH ----- */
 
 @media (min-width: 600px) {
@@ -76,14 +78,14 @@ body {
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1920px) {
   html {
     /* to make default 1rem = 14px */
     font-size: 87.5%;
   }
 }
 
-@media (min-width: 1600px) {
+@media (min-width: 2560px) {
   html {
     /* to make default 1rem = 16px */
     font-size: 100%;

@@ -1,6 +1,7 @@
 .main {
   background-color: var(--color-dark--2);
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
 }

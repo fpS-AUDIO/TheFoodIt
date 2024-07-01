@@ -99,8 +99,12 @@ function KcalCalculatorForm() {
   return (
     <div className={styles.formContainer}>
       <form className={styles.calculatorForm} onSubmit={handleSubmit}>
-        <h2 className={styles.title}>TheFoodIt&apos;s Adult Body Metrics</h2>
-        <h3 className={styles.titleSecondary}>Please enter your data: </h3>
+        <h2 className={styles.title}>
+          Discover Your Personalized Body Metrics
+        </h2>
+        <h3 className={styles.titleSecondary}>
+          Enter your details below to get started:
+        </h3>
 
         <div className={styles.formRadioRow}>
           <p className={styles.formLabel}>Gender</p>
@@ -143,7 +147,7 @@ function KcalCalculatorForm() {
             name="height"
             required
             type="number"
-            className={`${styles.formInput} ${styles.formInputCm}`}
+            className={styles.formInput}
             placeholder="cm"
             value={formData.height}
             onChange={handleChange}
@@ -156,7 +160,7 @@ function KcalCalculatorForm() {
             name="weight"
             required
             type="number"
-            className={`${styles.formInput} ${styles.formInputKg}`}
+            className={styles.formInput}
             placeholder="kg"
             value={formData.weight}
             onChange={handleChange}
@@ -169,7 +173,7 @@ function KcalCalculatorForm() {
             name="age"
             required
             type="number"
-            className={`${styles.formInput} ${styles.formInputYears}`}
+            className={styles.formInput}
             placeholder="years"
             value={formData.age}
             onChange={handleChange}
@@ -217,7 +221,7 @@ function KcalCalculatorForm() {
         </div>
 
         <div className={styles.btnContainer}>
-          <Button type={"cta"}>Calculate</Button>
+          <Button type={"submit"}>Calculate</Button>
         </div>
       </form>
     </div>

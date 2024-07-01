@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useMainContext } from "../../contexts/MainContext";
 import styles from "./ErrorMessage.module.css";
 
-const SECS_AUTOREMOVE_ERROR = 3;
+const SECS_AUTOREMOVE_ERROR = 5;
 
 function ErrorMessage({ message }) {
   const { dispatch } = useMainContext();

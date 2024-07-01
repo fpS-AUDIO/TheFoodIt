@@ -21,8 +21,8 @@
 @media (min-width: 900px) {
   .wrapper {
     /* sizes */
-    width: 95vw;
-    height: 95vh;
+    width: 98vw;
+    height: 96vh;
 
     /* additional styles */
     border-radius: var(--border-radius--standard);

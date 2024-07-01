@@ -32,6 +32,7 @@
   grid-auto-flow: row;
   grid-template-columns: 2fr 1fr;
 }
+
 .statsRow p {
   font-size: 1.35rem;
 }

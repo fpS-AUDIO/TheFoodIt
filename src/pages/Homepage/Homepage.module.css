@@ -90,7 +90,4 @@
   .homepage {
     justify-content: center;
   }
-  .content {
-    transform: translateY(-100%);
-  }
 }

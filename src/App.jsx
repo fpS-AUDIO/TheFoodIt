@@ -8,7 +8,7 @@ import { MainContextProvider } from "./contexts/MainContext";
 // CUSTOM PAGE COMPONENTS
 import Homepage from "./pages/Homepage/Homepage";
 import KcalCalculator from "./pages/KcalCalculator/KcalCalculator";
-import IngredientsConverter from "./pages/IngredientsConverter/IngredientsConverter";
+import RecipeScaler from "./pages/RecipeScaler/RecipeScaler";
 import FoodCostCalculator from "./pages/FoodCostCalculator/FoodCostCalculator";
 import ProtectedRoute from "./pages/ProtectedRoute/ProtectedRoute";
 import About from "./pages/About/About";
@@ -55,10 +55,7 @@ function App() {
 
                         {/*/////--- FINISHED HERE NESTED OF 'kcalCalculator' ---/////*/}
                       </Route>
-                      <Route
-                        path="/converter"
-                        element={<IngredientsConverter />}
-                      />
+                      <Route path="/recipescaler" element={<RecipeScaler />} />
                       <Route
                         path="/foodcost"
                         element={<FoodCostCalculator />}

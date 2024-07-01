@@ -62,9 +62,9 @@ function Navigation() {
             <NavLink
               onClick={handleNavLinkClick}
               className={styles.navLink}
-              to="/converter"
+              to="/recipescaler"
             >
-              converter
+              Recipe Scaler
             </NavLink>
           </li>
 

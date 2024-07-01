@@ -26,6 +26,9 @@ const initialState = {
     pal: "",
     goal: "",
   },
+  isUserSubmittedRecipeScaler: false,
+  updatedRecipeScalerIngredients: [],
+  recipeScalerTotPortions: 0,
 };
 
 // the reduce function is called automatically by dispatch of useReducer
@@ -92,6 +95,23 @@ function reducer(state, action) {
         isUserKcalFormDataLoaded: true,
       };
 
+    case "SET_IS_USER_SUBMITTED_RECIPESCALER":
+      return {
+        ...state,
+        isUserSubmittedRecipeScaler: action.payload,
+      };
+
+    case "UPDATE_NEW_RECIPESCALER_INGREDIENTS":
+      return {
+        ...state,
+        updatedRecipeScalerIngredients: action.payload,
+      };
+
+    case "UPDATE_RECIPESCALER_TOT_PORTIONS":
+      return {
+        ...state,
+        recipeScalerTotPortions: action.payload,
+      };
     default:
       throw new Error(
         `The reduce function (useReducer) didn't detect the action.type`
@@ -112,10 +132,11 @@ function MainContextProvider({ children }) {
     errorMessage,
     isUserKcalFormDataLoaded,
     userKcalFormData,
+    isUserSubmittedRecipeScaler,
+    updatedRecipeScalerIngredients,
+    recipeScalerTotPortions,
   } = state;
 
-
-  
   return (
     <MainContext.Provider
       value={{
@@ -126,6 +147,9 @@ function MainContextProvider({ children }) {
         errorMessage,
         isUserKcalFormDataLoaded,
         userKcalFormData,
+        isUserSubmittedRecipeScaler,
+        updatedRecipeScalerIngredients,
+        recipeScalerTotPortions,
       }}
     >
       {children}

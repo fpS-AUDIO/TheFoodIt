@@ -1,14 +1,44 @@
 .wrapper {
   height: 100%;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  /* overflow-x: hidden;
+  overflow-y: scroll; */
+
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
 }
 .wrapper > :last-child {
   margin-top: auto;
 }
+
+/* ----- INTRO ----- */
+
+.intro {
+  width: 100%;
+  max-width: 50rem;
+  font-size: 1.5rem;
+  margin: 3.6rem auto 0 auto;
+  padding: 0rem 2rem;
+  text-wrap: balance;
+  text-align: center;
+  /* background-color: violet; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-items: center;
+}
+
+.intro h4 {
+  color: var(--color-light--0);
+}
+.hrLine {
+  margin-top: 1.2rem;
+  width: 80%;
+  height: 0.1rem;
+  background-color: var(--color-dark--0);
+  border: 0;
+}
+
+/* ----- OTHER ----- */
 
 .disclairmer {
   padding-top: 0.6rem;
