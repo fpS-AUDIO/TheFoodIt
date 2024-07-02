@@ -1,40 +1,18 @@
-/* ----- INTRO ----- */
-
-.intro {
-  width: 100%;
-  max-width: 50rem;
-  font-size: 1.5rem;
-  margin: 3.6rem auto 0 auto;
-  padding: 0rem 2rem;
-  text-wrap: balance;
-  text-align: center;
-  /* background-color: violet; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-items: center;
-}
-
-.intro h4 {
-  color: var(--color-light--0);
-}
-
-.hrLine {
-  margin-top: 1.2rem;
-  width: 80%;
-  height: 0.1rem;
-  background-color: var(--color-dark--0);
-  border: 0;
-}
-
 /* ----- MAIN STYLES ----- */
 
 .formContainer {
+  display: flex;
+  flex-direction: column;
   width: 100%;
+  min-height: 80vh;
   max-width: 30rem;
   margin: 1.2rem auto;
   padding: var(--padding--medium);
   /* background-color: violet; */
+}
+
+.formContainer > :last-child {
+  margin-top: auto;
 }
 
 .title {
@@ -99,6 +77,9 @@
 }
 
 /* ----- RECIPE BODY ----- */
+.recipeForm {
+  margin-bottom: 8rem;
+}
 
 .ingredientsRowWrapper {
   border-radius: var(--border-radius--standard);
@@ -114,6 +95,10 @@
 }
 .footerBtnBox {
   margin-bottom: 3.6rem;
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 1fr auto;
+  column-gap: 1.2rem;
 }
 
 .footerSubmitBtnBox {
@@ -148,12 +133,3 @@
     max-width: 50rem;
   }
 }
-
-/* 
-display: grid;
-grid-auto-flow: row;
-grid-template-columns: auto 1fr 1fr auto;
-column-gap: var(--padding--standard);
-align-items: center;
-justify-items: end;
-margin-bottom: 1.6rem; */

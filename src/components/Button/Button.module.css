@@ -40,6 +40,13 @@
   border: 0.2rem solid var(--color-light--0);
 }
 
+.delete {
+  width: 4rem;
+  padding: 0.6rem 1.2rem;
+  color: var(--color-delete--1);
+  border: 0.2rem solid var(--color-delete--2);
+}
+
 .button.submit {
   padding: 0.7rem 1.4rem;
   color: var(--color-brand-darker);

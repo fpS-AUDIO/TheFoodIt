@@ -72,9 +72,9 @@ function Navigation() {
             <NavLink
               onClick={handleNavLinkClick}
               className={styles.navLink}
-              to="/foodcost"
+              to="/unitconverter"
             >
-              foodcost
+              UNIT CONVERTER
             </NavLink>
           </li>
 

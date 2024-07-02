@@ -9,7 +9,7 @@ import { MainContextProvider } from "./contexts/MainContext";
 import Homepage from "./pages/Homepage/Homepage";
 import KcalCalculator from "./pages/KcalCalculator/KcalCalculator";
 import RecipeScaler from "./pages/RecipeScaler/RecipeScaler";
-import FoodCostCalculator from "./pages/FoodCostCalculator/FoodCostCalculator";
+import UnitConverter from "./pages/UnitConverter/UnitConverter";
 import ProtectedRoute from "./pages/ProtectedRoute/ProtectedRoute";
 import About from "./pages/About/About";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
@@ -57,8 +57,8 @@ function App() {
                       </Route>
                       <Route path="/recipescaler" element={<RecipeScaler />} />
                       <Route
-                        path="/foodcost"
-                        element={<FoodCostCalculator />}
+                        path="/unitconverter"
+                        element={<UnitConverter />}
                       />
                       <Route path="/about" element={<About />} />
 

@@ -31,6 +31,7 @@
   font-size: 1.5rem;
   font-weight: 500;
   color: var(--color-light--3);
+  cursor: pointer;
   transition: all 0.2s ease;
 }
 
@@ -38,6 +39,7 @@
   width: 2.4rem;
   height: 2.4rem;
   stroke: var(--color-light--0);
+  cursor: pointer;
   transform: rotate(-180deg);
   transition: all 0.2s ease;
 }

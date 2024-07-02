@@ -1,17 +1,3 @@
-.wrapper {
-  height: 100%;
-  /* overflow-x: hidden;
-  overflow-y: scroll; */
-
-  display: flex;
-  flex-direction: column;
-}
-.wrapper > :last-child {
-  margin-top: auto;
-}
-
-/* ----- OTHER ----- */
-
 .disclairmer {
   padding-top: 0.6rem;
   /* background-color: slategrey; */

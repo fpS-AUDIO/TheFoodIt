@@ -7,11 +7,14 @@ import {
   validateIngredientsScalerSubmit,
   recalcNewIngredientsQuantities,
 } from "./recipeScalerHelpers";
+import FeatureIntro from "../../components/FeatureIntro/FeatureIntro";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import RecipeIngredientsRow from "../../components/RecipeIngredientsRow/RecipeIngredientsRow";
-import Button from "../../components/Button/Button";
-import Footer from "../../components/Footer/Footer";
 import RecipeScalerResults from "../../components/RecipeScalerResults/RecipeScalerResults";
+import Button from "../../components/Button/Button";
+import Disclairmer from "../../components/Disclairmer/Disclairmer";
+
+import Footer from "../../components/Footer/Footer";
 
 const units = ["ml", "l", "g", "kg", "piece", "tsp", "tbsp"];
 
@@ -65,13 +68,28 @@ function RecipeScaler() {
   // function adds more <RecipeIngredientsRow/> components and updates local state
   function addIngredient(e) {
     e.preventDefault();
-    setRecipeData({
-      ...recipeData,
+    // use a functional update to ensure we work with the most recent state
+    setRecipeData((prevState) => ({
+      // spread the previous state to keep all other state ingredients
+      ...prevState,
       ingredients: [
-        ...recipeData.ingredients,
+        // spread the current ingredients array
+        ...prevState.ingredients,
+        // and add a new ingredient object at the end of the array
         { name: "", quantity: "", unit: units[0] },
       ],
-    });
+    }));
+  }
+
+  function removeLastIngredient(e) {
+    e.preventDefault();
+    // guard clause to leave at least one ingredient
+    if (recipeData.ingredients.length <= 1) return;
+    // update state by removing only the last ingredient
+    setRecipeData((prevState) => ({
+      ...prevState,
+      ingredients: prevState.ingredients.slice(0, -1),
+    }));
   }
 
   // function controls submit process
@@ -142,14 +160,11 @@ function RecipeScaler() {
 
   return (
     <>
-      <div className={styles.intro}>
-        <h4>
-          Effortlessly adjust your recipe quantities to fit any number of
-          servings. Simply enter the initial and desired portions, and our tool
-          will scale the ingredients for you.
-        </h4>
-        <hr className={styles.hrLine} />
-      </div>
+      <FeatureIntro>
+        Effortlessly adjust your recipe quantities to fit any number of
+        servings. Simply enter the initial and desired portions, and our tool
+        will scale the ingredients for you.
+      </FeatureIntro>
 
       {errorMessage ? <ErrorMessage message={errorMessage} /> : null}
 
@@ -169,7 +184,7 @@ function RecipeScaler() {
                 type="number"
                 id="initialQuantityRecipe"
                 name="initialQuantityPortions"
-                placeholder="4"
+                placeholder="e.g. 4"
                 required
                 value={recipeData.initialQuantityPortions}
                 onChange={handleChange}
@@ -194,6 +209,9 @@ function RecipeScaler() {
                 <Button type={"add"} onClick={addIngredient}>
                   Add ingredient
                 </Button>
+                <Button type={"delete"} onClick={removeLastIngredient}>
+                  —
+                </Button>
               </div>
               <div className={styles.footerSubmitBtnBox}>
                 <label htmlFor="finalQuantityRecipe">
@@ -203,7 +221,7 @@ function RecipeScaler() {
                   type="number"
                   id="finalQuantityRecipe"
                   name="desiredQuantityPortions"
-                  placeholder="7"
+                  placeholder="e.g. 7"
                   required
                   value={recipeData.desiredQuantityPortions}
                   onChange={handleChange}
@@ -215,7 +233,14 @@ function RecipeScaler() {
               </Button>
             </div>
           </form>
-          <Footer />
+
+          <Footer>
+            <Disclairmer
+              message={
+                "TheFoodIt's Recipe Scaler can make mistakes. Consider verifying important recipes adjustments."
+              }
+            />
+          </Footer>
         </div>
       )}
     </>
