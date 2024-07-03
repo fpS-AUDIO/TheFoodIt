@@ -16,7 +16,7 @@ function Navigation() {
   // useEffect which event listener to change state if using desktop or mobile basing on media query
   useEffect(() => {
     // media query value should be the same as the global layout media query changes
-    const mediaQuery = window.matchMedia("(min-width: 900px)");
+    const mediaQuery = window.matchMedia("(min-width: 1366px)");
 
     // change desktop/mobile version (managed by useReducer)
     function handleMediaQueryChange(e) {

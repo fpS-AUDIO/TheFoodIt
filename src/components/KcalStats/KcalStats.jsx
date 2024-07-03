@@ -112,14 +112,18 @@ function KcalStats() {
 
         <div className={styles.statsRow}>
           <p className={styles.label}>BMR: </p>
-          <p>{statsResults.bmr}</p>
+          <p>
+            {statsResults.bmr !== null
+              ? `${statsResults.bmr} kcal`
+              : "Calculating..."}
+          </p>
         </div>
 
         <div className={styles.statsRow}>
           <p className={styles.label}>TDEE: </p>
           <p>
             {statsResults.tdee !== null
-              ? statsResults.tdee.toFixed(2)
+              ? `${statsResults.tdee.toFixed(2)} kcal`
               : "Calculating..."}
           </p>
         </div>
@@ -128,7 +132,7 @@ function KcalStats() {
           <p className={styles.label}>TDEE with TEF:</p>
           <p>
             {statsResults.tdeeWithTEF !== null
-              ? statsResults.tdeeWithTEF.toFixed(2)
+              ? `${statsResults.tdeeWithTEF.toFixed(2)} kcal`
               : "Calculating..."}
           </p>
         </div>

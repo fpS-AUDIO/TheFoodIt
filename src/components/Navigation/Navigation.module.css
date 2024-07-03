@@ -131,7 +131,7 @@
 /* ----- DESKTOP STYLES ----- */
 
 /* @media should be the same as the global layout media query changes  */
-@media (min-width: 900px) {
+@media (min-width: 1366px) {
   .navigation {
     /* postion - resetting to normal flow */
     position: relative;
