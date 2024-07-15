@@ -33,15 +33,16 @@ export function calculateBMR(dataStats) {
   return Math.round(correctBMR);
 }
 
-// function to calculate TDEE
-export function calculateTDEE(bmr, pal) {
-  // FORMULA to Calculate Total Daily Energy Expenditure (TDEE):
-  // TDEE = BMR×PAL
+export function calculateTDEE(bmr, pal, goal) {
+  // Calculate TDEE
+  let tdee = bmr * pal;
 
-  // this TDEE value will be without TEF
-  const tdee = bmr * pal;
+  // Adjust TDEE for weight loss
+  if (goal === "weight") {
+    tdee -= 500; // Suggest a moderate deficit
+  }
 
-  // calculate the TDEE with estimated +10% of TEF of an average diet
+  // Calculate TDEE with estimated +10% TEF
   const tdeeWithTEF = tdee * 1.1;
 
   return { tdee, tdeeWithTEF };
@@ -56,17 +57,17 @@ export function calculateMacronutrientDistribution(data, tdeeWithTEF) {
 
   // Set percentages based on user's goal
   if (data.goal === "weight") {
-    carbsPercentage = 0.4;
-    proteinPercentage = 0.35;
-    fatPercentage = 0.25;
+    carbsPercentage = 0.4; // 40% carbs
+    proteinPercentage = 0.35; // 35% protein
+    fatPercentage = 0.25; // 25% fat
   } else if (data.goal === "muscle") {
-    carbsPercentage = 0.5;
-    proteinPercentage = 0.3;
-    fatPercentage = 0.2;
+    carbsPercentage = 0.5; // 50% carbs
+    proteinPercentage = 0.3; // 30% protein
+    fatPercentage = 0.2; // 20% fat
   } else if (data.goal === "maintenance") {
-    carbsPercentage = 0.5;
-    proteinPercentage = 0.2;
-    fatPercentage = 0.3;
+    carbsPercentage = 0.5; // 50% carbs
+    proteinPercentage = 0.2; // 20% protein
+    fatPercentage = 0.3; // 30% fat
   }
 
   // Calculate actual grams of macronutrients

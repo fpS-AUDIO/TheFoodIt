@@ -2,6 +2,8 @@ import styles from "./RecipeScalerResults.module.css";
 
 import { useMainContext } from "../../contexts/MainContext";
 import Button from "../Button/Button";
+import Footer from "../Footer/Footer";
+import Disclairmer from "../Disclairmer/Disclairmer";
 
 function RecipeScalerResults() {
   const { dispatch, updatedRecipeScalerIngredients, recipeScalerTotPortions } =
@@ -30,6 +32,14 @@ function RecipeScalerResults() {
           Recalculate Ingredients
         </Button>
       </div>
+
+      <Footer>
+        <Disclairmer
+          message={
+            "TheFoodIt's Recipe Scaler can make mistakes. Consider verifying important recipes adjustments."
+          }
+        />
+      </Footer>
     </div>
   );
 }

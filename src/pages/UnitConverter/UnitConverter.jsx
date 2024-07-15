@@ -63,11 +63,13 @@ function UnitConverter() {
     if (!value || !fromUnit) return;
     try {
       if (localErrorMessage) return;
+      if (Number(value) <= 0) throw new Error("Please insert a positive value");
       const convertedValue = convert(Number(value)).from(fromUnit).to(toUnit);
       setResult(convertedValue);
     } catch (err) {
       setLocalErrorMessage(
-        "Sorry, the conversion between the selected units is not possible. Please select valid units and try again."
+        err.message ||
+          "Sorry, the conversion between the selected units is not possible. Please select valid units and try again."
       );
     }
   }

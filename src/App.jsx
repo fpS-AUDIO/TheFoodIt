@@ -12,6 +12,7 @@ import RecipeScaler from "./pages/RecipeScaler/RecipeScaler";
 import UnitConverter from "./pages/UnitConverter/UnitConverter";
 import ProtectedRoute from "./pages/ProtectedRoute/ProtectedRoute";
 import About from "./pages/About/About";
+import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 
 // CUSTOM COMPONENTS
@@ -32,6 +33,7 @@ function App() {
           <MainContent>
             <Routes>
               <Route path="/" element={<Homepage />} />
+              <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
               <Route
                 path="/*"
                 element={

@@ -184,7 +184,7 @@ function RecipeScaler() {
                 type="number"
                 id="initialQuantityRecipe"
                 name="initialQuantityPortions"
-                placeholder="e.g. 4"
+                placeholder="4"
                 required
                 value={recipeData.initialQuantityPortions}
                 onChange={handleChange}
@@ -221,7 +221,7 @@ function RecipeScaler() {
                   type="number"
                   id="finalQuantityRecipe"
                   name="desiredQuantityPortions"
-                  placeholder="e.g. 7"
+                  placeholder="7"
                   required
                   value={recipeData.desiredQuantityPortions}
                   onChange={handleChange}

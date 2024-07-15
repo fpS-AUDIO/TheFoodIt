@@ -33,10 +33,11 @@ function KcalCalculator() {
       <Footer>
         <Disclairmer
           title={"Health Disclaimer for TheFoodIt"}
-          message={`TheFoodIt&apos;s health metrics (BMI, BMR, TDEE) and suggested
-            ratios of carbohydrates, proteins, and fats are general guides, not
-            medical advice. Individual health varies. Always consult a
-            healthcare provider for personal advice. Use at your own risk.`}
+          message={`TheFoodIt's health metrics (BMI, BMR, TDEE) and suggested
+      ratios of carbohydrates, proteins, and fats are general guides, not
+      medical advice. Individual health varies, and the results provided
+      are estimates and not guaranteed. Always consult a healthcare provider
+      for personal advice, especially for weight loss goals. Use at your own risk.`}
         />
       </Footer>
     </div>

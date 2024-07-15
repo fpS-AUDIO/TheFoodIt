@@ -25,32 +25,33 @@ function KcalStats() {
   });
 
   // effect to calculate the statsResults
-  useEffect(
-    function () {
-      function updateStats(dataStats) {
-        const bmi = calculateBMI(dataStats);
-        const bmr = calculateBMR(dataStats);
-        const { tdee, tdeeWithTEF } = calculateTDEE(bmr, dataStats.pal);
-        const macronutrientDistribution = calculateMacronutrientDistribution(
-          dataStats,
-          tdeeWithTEF
-        );
+  useEffect(() => {
+    function updateStats(dataStats) {
+      const bmi = calculateBMI(dataStats);
+      const bmr = calculateBMR(dataStats);
+      const { tdee, tdeeWithTEF } = calculateTDEE(
+        bmr,
+        dataStats.pal,
+        dataStats.goal
+      );
+      const macronutrientDistribution = calculateMacronutrientDistribution(
+        dataStats,
+        tdeeWithTEF
+      );
 
-        // updating local state
-        setStatsResults((stats) => ({
-          ...stats,
-          bmi,
-          bmr,
-          tdee,
-          tdeeWithTEF,
-          macronutrientsDistribution: macronutrientDistribution,
-        }));
-      }
+      setStatsResults({
+        bmi,
+        bmr,
+        tdee,
+        tdeeWithTEF,
+        macronutrientsDistribution: macronutrientDistribution,
+      });
+    }
 
+    if (isUserKcalFormDataLoaded) {
       updateStats(userKcalFormData);
-    },
-    [userKcalFormData]
-  );
+    }
+  }, [isUserKcalFormDataLoaded, userKcalFormData]);
 
   if (!isUserKcalFormDataLoaded)
     return (
@@ -98,6 +99,16 @@ function KcalStats() {
         </div>
       </div>
 
+      {userKcalFormData.goal === "weight" && (
+        <div className={styles.notice}>
+          <p>
+            For weight loss, a caloric deficit of 500 kcal/day has been applied
+            to your TDEE. Please consult with a healthcare provider for a
+            personalized plan.
+          </p>
+        </div>
+      )}
+
       <h2 className={styles.subTitle}>Kcal Stats</h2>
 
       <div className={styles.subContainer}>
@@ -137,6 +148,7 @@ function KcalStats() {
           </p>
         </div>
       </div>
+
       <h2 className={styles.subTitle}>Macronutrient Distribution</h2>
       <div className={styles.subContainer}>
         <div className={styles.statsRow}>

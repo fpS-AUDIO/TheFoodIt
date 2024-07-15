@@ -71,6 +71,22 @@ function KcalCalculatorForm() {
       return;
     }
 
+    // guard clause for reasonable values
+    if (
+      Number(formData.weight) < 30 ||
+      Number(formData.weight) > 300 ||
+      Number(formData.height) < 100 ||
+      Number(formData.height) > 250 ||
+      Number(formData.age) < 18 ||
+      Number(formData.age) > 100
+    ) {
+      dispatch({
+        type: "SET_ERROR_MESSAGE",
+        payload: "Please enter realistic values for weight, height, and age.",
+      });
+      return;
+    }
+
     // creating new object with correctly formatted data
     const userDataForm = {
       gender: formData.gender,
@@ -82,7 +98,6 @@ function KcalCalculatorForm() {
     };
 
     // update the global state with form data
-    // state will also set the data in storage
     dispatch({
       type: "SET_USER_KCAL_FORM_DATA",
       payload: userDataForm,

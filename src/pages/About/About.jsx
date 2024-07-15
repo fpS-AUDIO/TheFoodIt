@@ -1,5 +1,5 @@
 import styles from "./About.module.css";
-
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import Footer from "../../components/Footer/Footer";
 
 function About() {
@@ -59,6 +59,12 @@ function About() {
           </a>
           . Your input is crucial in helping me improve TheFoodIt and make it
           the best it can be.
+        </p>
+
+        <br />
+        <p className={styles.content}>
+          For more details on how your data is handled, please review our{" "}
+          <Link to="/PrivacyPolicy">Privacy Policy</Link>.
         </p>
       </div>
 

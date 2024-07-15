@@ -33,7 +33,7 @@ function Homepage() {
   }, []);
 
   function handleClickButton() {
-    navigate("/kcalCalculator");
+    navigate("/recipescaler");
   }
 
   return (
@@ -56,11 +56,11 @@ function Homepage() {
           <h1 className={styles.heading1}>You Create the Meals.</h1>
           <h3 className={styles.heading3}>TheFoodIt Does the Math.</h3>
           <p className={styles.paragraph}>
-            Accurately calculates your daily caloric and nutritional needs, and
-            helps you manage food costs effortlessly.
+            Easily adjust your recipes for any number of servings with our
+            Recipe Scaler.
           </p>
           <Button onClick={handleClickButton} type={"cta"}>
-            Calculate Your Nutritional Needs
+            Try Recipe Scaler Now
           </Button>
         </div>
         {errorMessage ? <ErrorMessage message={errorMessage} /> : null}

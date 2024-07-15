@@ -1,12 +1,16 @@
 .resultsContainer {
+  min-height: 85vh;
   width: 100%;
   max-width: 30rem;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  margin: 1.2rem auto;
   padding: var(--padding--medium);
 }
 
-.resultsContainer p {
-  color: var(--color-light--2);
+.resultsContainer > :last-child {
+  margin-top: auto;
 }
 
 .title {

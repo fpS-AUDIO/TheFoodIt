@@ -2,8 +2,6 @@
 const unitConversions = {
   kg: 1000, // 1 kg = 1000 g
   l: 1000, // 1 l = 1000 ml
-  tsp: 4.92892, // 1 tsp = 4.92892 ml
-  tbsp: 14.7868, // 1 tbsp = 14.7868 ml
 };
 
 // converts the quantity to a smaller unit if the value is less than 1
@@ -11,14 +9,14 @@ function convertToSmallerUnitIfNeeded(quantity, unit) {
   // Check if the unit is liters and the quantity is less than 1
   if (unit === "l" && quantity < 1) {
     return {
-      quantity: quantity * unitConversions[unit], // Convert liters to milliliters
+      quantity: quantity * unitConversions["l"], // Convert liters to milliliters
       unit: "ml",
     };
   }
   // Check if the unit is kilograms and the quantity is less than 1
   else if (unit === "kg" && quantity < 1) {
     return {
-      quantity: quantity * unitConversions[unit], // Convert kilograms to grams
+      quantity: quantity * unitConversions["kg"], // Convert kilograms to grams
       unit: "g",
     };
   }

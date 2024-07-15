@@ -24,6 +24,11 @@
 
 /* ----- ALL VARIATIONS (PROP 'type') ----- */
 
+
+.button.back{
+  width: 10rem;
+}
+
 .button.cta {
   /* background-color: var(--color-brand-darkest); */
   background-color: rgba(24, 114, 44, 0.6);
