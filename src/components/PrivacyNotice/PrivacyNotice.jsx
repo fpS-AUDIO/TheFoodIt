@@ -27,11 +27,10 @@ function PrivacyNotice() {
       <div className={styles.privacyNotice}>
         <div className={styles.privacyContent}>
           <p>
-            To enhance your experience, we use local storage to save your
-            preferences, settings, and personal information such as gender,
-            height, weight, age, physical activity level, and fitness goals. By
-            using our app, you agree to this data being stored. For more
-            details, please review our{" "}
+            We use local storage to save your preferences and personal
+            information, and cookies for Google AdSense to serve personalized
+            ads. By using our app, you agree to this data being stored and used.
+            For details, please review our{" "}
             <Link className={styles.privacyLink} to="/PrivacyPolicy">
               Privacy Policy
             </Link>
@@ -45,4 +44,5 @@ function PrivacyNotice() {
     </div>
   );
 }
+
 export default PrivacyNotice;

@@ -1,0 +1,26 @@
+/* ----- advertisement box styles ----- */
+.advertisementBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: auto;
+  max-width: 30rem;
+  margin: 1.2rem auto;
+  padding: var(--padding--medium);
+}
+
+/* ----- Desktop Media Queries ----- */
+@media (min-width: 600px) {
+  .advertisementBox {
+    max-width: 40rem; /* Increase max width on larger screens */
+  }
+}
+
+@media (min-width: 1200px) {
+  .advertisementBox {
+    max-width: 50rem; /* Further increase max width on extra large screens */
+  }
+}

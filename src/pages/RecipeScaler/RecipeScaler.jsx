@@ -7,13 +7,13 @@ import {
   validateIngredientsScalerSubmit,
   recalcNewIngredientsQuantities,
 } from "./recipeScalerHelpers";
+import Advertisement01 from "../../components/Advertisement01/Advertisement01";
 import FeatureIntro from "../../components/FeatureIntro/FeatureIntro";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import RecipeIngredientsRow from "../../components/RecipeIngredientsRow/RecipeIngredientsRow";
 import RecipeScalerResults from "../../components/RecipeScalerResults/RecipeScalerResults";
 import Button from "../../components/Button/Button";
 import Disclairmer from "../../components/Disclairmer/Disclairmer";
-
 import Footer from "../../components/Footer/Footer";
 
 const units = ["ml", "l", "g", "kg", "piece", "tsp", "tbsp"];
@@ -160,6 +160,7 @@ function RecipeScaler() {
 
   return (
     <>
+      <Advertisement01 />
       <FeatureIntro>
         Effortlessly adjust your recipe quantities to fit any number of
         servings. Simply enter the initial and desired portions, and our tool

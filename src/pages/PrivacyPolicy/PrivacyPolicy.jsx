@@ -14,7 +14,8 @@ function PrivacyPolicy() {
         <p className={styles.content}>
           Welcome to TheFoodIt. Your privacy is important to us. This Privacy
           Policy explains how we collect, use, store, and protect your personal
-          information when you use our web application.
+          information when you use our web application. By using our
+          application, you agree to the terms outlined in this policy.
         </p>
       </div>
 
@@ -85,8 +86,27 @@ function PrivacyPolicy() {
         <h3 className={styles.secondaryTitle}>Cookies and Tracking</h3>
         <ul>
           <li>
-            Currently, we do not use cookies or other tracking technologies to
-            collect data about your browsing behavior.
+            Our website uses cookies and other tracking technologies to provide
+            and improve our services, including Google AdSense.
+          </li>
+          <li>
+            Google AdSense uses cookies to serve ads based on a user&apos;s
+            previous visits to our website or other websites. Google&apos;s use
+            of advertising cookies enables it and its partners to serve ads to
+            users based on their visit to our site and/or other sites on the
+            Internet.
+          </li>
+          <li>
+            Users may opt-out of personalized advertising by visiting{" "}
+            <a href="https://www.google.com/settings/ads" target="_blank">
+              Google Ad Settings
+            </a>
+            . Alternatively, users can opt-out of a third-party vendor&apos;s
+            use of cookies for personalized advertising by visiting{" "}
+            <a href="http://www.aboutads.info/choices/" target="_blank">
+              www.aboutads.info
+            </a>
+            .
           </li>
         </ul>
       </div>
@@ -106,10 +126,22 @@ function PrivacyPolicy() {
             collect or store your personal data.
           </li>
           <li>
-            Our website is hosted on Netlify, and we use a custom domain
-            purchased from Namecheap. These services may collect non-personal
-            data for their operational purposes. Please refer to their
-            respective privacy policies for more information.
+            Our website is hosted on{" "}
+            <a target="_blank" href="https://www.netlify.com/">
+              Netlify
+            </a>
+            , and we use a custom domain purchased from{" "}
+            <a target="_blank" href="https://www.namecheap.com/">
+              Namecheap
+            </a>
+            . These services may collect non-personal data for their operational
+            purposes. Please refer to their respective privacy policies for more
+            information.
+          </li>
+          <li>
+            We use Google AdSense to display advertisements on our site. Please
+            refer to Google&apos;s privacy policy for more information on how
+            they collect and use data.
           </li>
         </ul>
       </div>
@@ -129,10 +161,11 @@ function PrivacyPolicy() {
         <h3 className={styles.secondaryTitle}>Legal Requirements</h3>
         <ul>
           <li>
-            We aim to comply with relevant privacy laws and regulations, but as
-            we do not actively collect or store user data on our servers, our
-            primary focus is on ensuring that any data you provide remains
-            within your control and is not exposed to third parties.
+            We aim to comply with relevant privacy laws and regulations,
+            including the General Data Protection Regulation (GDPR) and the
+            California Consumer Privacy Act (CCPA). Our primary focus is on
+            ensuring that any data you provide remains within your control and
+            is not exposed to third parties.
           </li>
         </ul>
       </div>
@@ -142,15 +175,15 @@ function PrivacyPolicy() {
         <ul>
           <li>
             If you have any questions or concerns about this Privacy Policy,
-            please contact me via{" "}
+            please contact us via{" "}
             <a target="_blank" href="https://t.me/MrAlex_OFF">
               Telegram
-            </a>{" "}
+            </a>
             ,{" "}
             <a target="_blank" href="https://discordapp.com/users/SAUDIO#5715">
               Discord
             </a>{" "}
-            or check any other social links on my{" "}
+            or check any other social links on our{" "}
             <a target="_blank" href="https://github.com/fpS-AUDIO">
               Github
             </a>
@@ -168,6 +201,9 @@ function PrivacyPolicy() {
           <li>
             We may update this Privacy Policy from time to time. We will notify
             you of any changes by posting the new Privacy Policy on this page.
+            You are advised to review this Privacy Policy periodically for any
+            changes. Changes to this Privacy Policy are effective when they are
+            posted on this page.
           </li>
         </ul>
       </div>
@@ -181,7 +217,7 @@ function PrivacyPolicy() {
       </div>
 
       <div className={`${styles.block}`}>
-        <p className={styles.content}>Effective Date: July 15 2024</p>
+        <p className={styles.content}>Effective Date: July 16, 2024</p>
       </div>
 
       <ButtonBack />
