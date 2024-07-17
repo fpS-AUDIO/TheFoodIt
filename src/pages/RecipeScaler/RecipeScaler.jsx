@@ -7,7 +7,7 @@ import {
   validateIngredientsScalerSubmit,
   recalcNewIngredientsQuantities,
 } from "./recipeScalerHelpers";
-import Advertisement01 from "../../components/Advertisement01/Advertisement01";
+// import Advertisement01 from "../../components/Advertisement01/Advertisement01";
 import FeatureIntro from "../../components/FeatureIntro/FeatureIntro";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import RecipeIngredientsRow from "../../components/RecipeIngredientsRow/RecipeIngredientsRow";
@@ -160,7 +160,7 @@ function RecipeScaler() {
 
   return (
     <>
-      <Advertisement01 />
+      {/* <Advertisement01 /> */}
       <FeatureIntro>
         Effortlessly adjust your recipe quantities to fit any number of
         servings. Simply enter the initial and desired portions, and our tool

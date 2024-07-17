@@ -3,7 +3,7 @@ import convert from "convert-units";
 
 import styles from "./UnitConverter.module.css";
 
-import Advertisement01 from "../../components/Advertisement01/Advertisement01";
+// import Advertisement01 from "../../components/Advertisement01/Advertisement01";
 
 import FeatureIntro from "../../components/FeatureIntro/FeatureIntro";
 import Button from "../../components/Button/Button";
@@ -97,7 +97,7 @@ function UnitConverter() {
 
   return (
     <>
-      <Advertisement01 />
+      {/* <Advertisement01 /> */}
       <FeatureIntro>
         Seamlessly convert between various units of measurement used in cooking.
         Whether you need to switch from ounces to cups, grams to ounces, or any

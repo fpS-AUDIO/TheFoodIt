@@ -2,7 +2,7 @@ import styles from "./KcalCalculator.module.css";
 import { Outlet } from "react-router-dom";
 
 import { useMainContext } from "../../contexts/MainContext";
-import Advertisement01 from "../../components/Advertisement01/Advertisement01";
+// import Advertisement01 from "../../components/Advertisement01/Advertisement01";
 
 import KcalNavigation from "../../components/KcalNavigation/KcalNavigation";
 import FeatureIntro from "../../components/FeatureIntro/FeatureIntro";
@@ -17,7 +17,7 @@ function KcalCalculator() {
 
   return (
     <>
-      <Advertisement01 />
+      {/* <Advertisement01 /> */}
 
       <div className={styles.wrapper}>
         <FeatureIntro>
