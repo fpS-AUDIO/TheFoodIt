@@ -78,6 +78,16 @@ function Navigation() {
             </NavLink>
           </li>
 
+          {/* <li className={styles.navItem}>
+            <NavLink
+              onClick={handleNavLinkClick}
+              className={styles.navLink}
+              to="/foodcost"
+            >
+              Food Cost
+            </NavLink>
+          </li> */}
+
           <li className={styles.navItem}>
             <NavLink
               onClick={handleNavLinkClick}

@@ -12,6 +12,12 @@
 .wrapper > :last-child {
   margin-top: auto;
 }
+
+.contentBox {
+  display: flex;
+  flex-direction: column;
+}
+
 /* ----- INPUTS ----- */
 
 .label {
@@ -23,7 +29,7 @@
 .inputNumber,
 .inputText {
   width: 100%;
-  max-width: 10rem;
+
   padding: 0.6rem 1.2rem;
 
   background-color: var(--color-dark--2);
@@ -36,6 +42,10 @@
   border-radius: var(--border-radius--standard);
 
   transition: all 0.3s ease;
+}
+
+.inputNumber {
+  max-width: 10rem;
 }
 
 .inputNumber:focus,
@@ -72,53 +82,49 @@
 
 /* ----- HEADER ----- */
 
-.converterHeader {
-  display: grid;
-  grid-auto-flow: row;
-  grid-template-columns: 1fr auto 8rem;
-  column-gap: var(--padding--standard);
-  align-items: center;
-  /* justify-items: start; */
-  margin-bottom: 1.2rem;
+.contentHeader {
+  display: flex;
+  flex-direction: column;
 }
 
-.converterHeader .inputNumber,
-.converterHeader .inputText {
-  max-width: 8rem;
+.headerRow {
+  display: grid;
+  grid-auto-flow: row;
+  align-items: center;
+  justify-items: start;
+  column-gap: 1.2rem;
+  grid-template-columns: auto 1fr;
+
+  margin-bottom: 1rem;
+}
+
+.headerRow.long {
+  grid-template-columns: auto 1fr 6rem;
+}
+
+.headerRow.long > :nth-child(2) {
+  justify-self: end;
 }
 
 /* ----- BODY ----- */
 
-.converterBody {
-  display: grid;
-  grid-auto-flow: row;
-  grid-template-columns: auto 8rem;
-  align-items: center;
-  column-gap: 1.2rem;
-  margin-bottom: 1.2rem;
-}
-.converterBody .inputSelect {
-  justify-self: end;
+.contentBody {
+  /* height: 15rem; */
+  /* background-color: darkblue; */
+  margin: 2.4rem 0;
 }
 
 /* ----- FOOTER ----- */
 
-.result {
-  margin-top: 2.4rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 1.6rem;
-  color: var(--color-light--2);
+.contentFooter {
 }
 
-.error {
-  margin-top: 3.6rem;
-  font-size: 1.4rem;
-  color: var(--color-light--2);
-  text-align: center;
-  text-wrap: balance;
+.footerBtnBox {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 1fr auto;
+  column-gap: 1.2rem;
+  margin-bottom: 1.2rem;
 }
 
 /* ----- DESKTOP MEDIA QUERIES ----- */

@@ -5,7 +5,7 @@
   flex-direction: column;
   width: 100%;
   min-height: 80vh;
-  max-width: 30rem;
+  max-width: 40rem;
   margin: 1.2rem auto;
   padding: var(--padding--medium);
   /* background-color: violet; */
@@ -133,4 +133,3 @@
     max-width: 50rem;
   }
 }
-

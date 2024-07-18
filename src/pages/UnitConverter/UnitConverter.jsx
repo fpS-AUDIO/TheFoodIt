@@ -99,10 +99,10 @@ function UnitConverter() {
     <>
       {/* <Advertisement01 /> */}
       <FeatureIntro>
-        Seamlessly convert between various units of measurement used in cooking.
-        Whether you need to switch from ounces to cups, grams to ounces, or any
-        other measurement, our tool provides accurate and quick conversions to
-        ensure your recipes are precise every time.
+        Convert between various units of measurement used in cooking. Whether
+        you need to switch from ounces to cups, grams to ounces, or any other
+        measurement, our tool provides accurate and quick conversions to ensure
+        your recipes are precise every time.
       </FeatureIntro>
 
       <div className={styles.wrapper}>

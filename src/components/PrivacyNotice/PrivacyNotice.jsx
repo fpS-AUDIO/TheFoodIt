@@ -25,12 +25,23 @@ function PrivacyNotice() {
   return (
     <div className={styles.privacyNoticeWrapper}>
       <div className={styles.privacyNotice}>
-        <div className={styles.privacyContent}>
+        {/* <div className={styles.privacyContent}>
           <p>
             We use local storage to save your preferences and personal
             information, and cookies for Google AdSense to serve personalized
             ads. By using our app, you agree to this data being stored and used.
             For details, please review our{" "}
+            <Link className={styles.privacyLink} to="/PrivacyPolicy">
+              Privacy Policy
+            </Link>
+            .
+          </p>
+        </div> */}
+        <div className={styles.privacyContent}>
+          <p>
+            We use local storage to save your preferences and personal
+            information. By using our app, you agree to this data being stored
+            and used. For details, please review our{" "}
             <Link className={styles.privacyLink} to="/PrivacyPolicy">
               Privacy Policy
             </Link>

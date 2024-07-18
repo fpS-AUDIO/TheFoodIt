@@ -44,6 +44,31 @@ function About() {
         </p>
       </div>
 
+      <div className={`${styles.block} ${styles.blockUnderlined}`}>
+        <h3 className={styles.secondaryTitle}>Thank You</h3>
+        <p className={styles.content}>
+          I would like to extend a heartfelt thank you to{" "}
+          <a target="_blank" href="https://www.pexels.com">
+            Pexels
+          </a>{" "}
+          for providing a vast library of free-to-use media. A special thank you
+          to{" "}
+          <a target="_blank" href="https://www.pexels.com/@cottonbro">
+            cottonbro studio
+          </a>{" "}
+          for the video used on our landing page. You can view and download the
+          video{" "}
+          <a
+            target="_blank"
+            href="https://www.pexels.com/video/a-serving-of-cooked-soybean-pod-in-a-bowl-3298718/"
+          >
+            here
+          </a>
+          . Your contributions make our site more visually appealing and
+          engaging.
+        </p>
+      </div>
+
       <div className={styles.block}>
         <h3 className={styles.secondaryTitle}>Get in Touch</h3>
         <p className={styles.content}>

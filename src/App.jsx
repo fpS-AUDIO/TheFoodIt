@@ -10,6 +10,7 @@ import Homepage from "./pages/Homepage/Homepage";
 import KcalCalculator from "./pages/KcalCalculator/KcalCalculator";
 import RecipeScaler from "./pages/RecipeScaler/RecipeScaler";
 import UnitConverter from "./pages/UnitConverter/UnitConverter";
+import FoodCost from "./pages/FoodCost/FoodCost";
 import ProtectedRoute from "./pages/ProtectedRoute/ProtectedRoute";
 import About from "./pages/About/About";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
@@ -65,6 +66,9 @@ function App() {
                       <Route path="/about" element={<About />} />
 
                       <Route path="*" element={<PageNotFound />} />
+
+                      <Route path="/foodcost" element={<FoodCost />} />
+                      
                     </Routes>
 
                     {/*/////--- FINISHED HERE PROTECTED ROUTES ---/////*/}

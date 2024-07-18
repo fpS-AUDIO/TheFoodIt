@@ -82,7 +82,7 @@ function PrivacyPolicy() {
         </ul>
       </div>
 
-      <div className={`${styles.block} ${styles.blockUnderlined}`}>
+      {/* <div className={`${styles.block} ${styles.blockUnderlined}`}>
         <h3 className={styles.secondaryTitle}>Cookies and Tracking</h3>
         <ul>
           <li>
@@ -109,7 +109,7 @@ function PrivacyPolicy() {
             .
           </li>
         </ul>
-      </div>
+      </div> */}
 
       <div className={`${styles.block} ${styles.blockUnderlined}`}>
         <h3 className={styles.secondaryTitle}>Third-Party Services</h3>
@@ -138,11 +138,11 @@ function PrivacyPolicy() {
             purposes. Please refer to their respective privacy policies for more
             information.
           </li>
-          <li>
+          {/* <li>
             We use Google AdSense to display advertisements on our site. Please
             refer to Google&apos;s privacy policy for more information on how
             they collect and use data.
-          </li>
+          </li> */}
         </ul>
       </div>
 
@@ -157,7 +157,7 @@ function PrivacyPolicy() {
         </ul>
       </div>
 
-      <div className={`${styles.block} ${styles.blockUnderlined}`}>
+      {/*       <div className={`${styles.block} ${styles.blockUnderlined}`}>
         <h3 className={styles.secondaryTitle}>Legal Requirements</h3>
         <ul>
           <li>
@@ -168,7 +168,7 @@ function PrivacyPolicy() {
             is not exposed to third parties.
           </li>
         </ul>
-      </div>
+      </div> */}
 
       <div className={`${styles.block} ${styles.blockUnderlined}`}>
         <h3 className={styles.secondaryTitle}>Contact Information</h3>

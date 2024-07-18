@@ -36,7 +36,7 @@ function KcalCalculator() {
         </div>
         <Footer>
           <Disclairmer
-            title={"Health Disclaimer for TheFoodIt"}
+            // title={"Health Disclaimer for TheFoodIt"}
             message={`TheFoodIt's health metrics (BMI, BMR, TDEE) and suggested
       ratios of carbohydrates, proteins, and fats are general guides, not
       medical advice. Individual health varies, and the results provided
