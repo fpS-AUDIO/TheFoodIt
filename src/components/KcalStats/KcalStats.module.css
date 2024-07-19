@@ -1,6 +1,6 @@
 .statsContainer {
   width: 100%;
-  max-width: 30rem;
+  max-width: 50rem;
   margin: 2.4rem auto;
   padding: var(--padding--medium);
 }
@@ -51,12 +51,12 @@
 
 @media (min-width: 600px) {
   .statsContainer {
-    max-width: 40rem;
+    max-width: 60rem;
   }
 }
 
 @media (min-width: 1200px) {
   .statsContainer {
-    max-width: 50rem;
+    max-width: 70rem;
   }
 }

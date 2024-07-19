@@ -78,7 +78,7 @@ function Navigation() {
             </NavLink>
           </li>
 
-          {/* <li className={styles.navItem}>
+          <li className={styles.navItem}>
             <NavLink
               onClick={handleNavLinkClick}
               className={styles.navLink}
@@ -86,7 +86,7 @@ function Navigation() {
             >
               Food Cost
             </NavLink>
-          </li> */}
+          </li>
 
           <li className={styles.navItem}>
             <NavLink

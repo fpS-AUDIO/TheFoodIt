@@ -1,15 +1,79 @@
 import { useCallback, useState, useMemo } from "react";
+
 import styles from "./FoodCost.module.css";
+
+import {
+  allowedUnits,
+  unitPriceConversion,
+  convertUnitToBase,
+  calculateIngredientCost,
+} from "./FoodCostHelper";
+import { useMainContext } from "../../contexts/MainContext";
+
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import FeatureIntro from "../../components/FeatureIntro/FeatureIntro";
 import FoodCostIngredientRow from "../../components/FoodCostIngredientRow/FoodCostIngredientRow";
 import Footer from "../../components/Footer/Footer";
 import Disclairmer from "../../components/Disclairmer/Disclairmer";
 import Button from "../../components/Button/Button";
 
-// Helper array with allowed units
-const units = ["ml", "l", "g", "kg", "piece"];
+/*  ----- COMPONENT WORKFLOW DESCRIPTION -----
+
+1. Input Validation:
+    - Ensure all fields are completed.
+    - DISH: Selling price and ingredient servings must be positive numbers greater than zero.
+    - INGREDIENTS: Quantity and price must be positive numbers greater than zero.
+
+2. Create the actualFoodCostData object and populate it with correct information
+   used to make calculations and output on UI.
+   Example object structure:
+   {
+     dishName: "",
+     sellingPrice: "",
+     totalIngredientsCost: 0,
+     foodCostPercentage: 0,
+     numberInitialServings: 0,
+     ingredients: [
+       {
+         name: "",
+         originalValue: 0,
+         convertedValue: 0,
+         price: 0,
+         originalUnit: "",
+         priceUnit: "",
+         finalCost: 0,
+       },
+     ],
+   };
+
+2.1 Unit Conversion:
+    - Convert units to base units for calculation:
+      - If unit is kg or l, convert to g or ml: convertedValue = originalValue * 1000.
+      - Otherwise: convertedValue = originalValue.
+
+2.2 Calculate the actual cost for each ingredient:
+    - Loop through actualFoodCostData.ingredients to compute the actual cost.
+      - For non-piece units: finalCost = (price * convertedValue) / 1000.
+      - For piece units: finalCost = price * quantity.
+
+2.3 Calculate totalIngredientsCost:
+    - Loop through actualFoodCostData.ingredients and sum the finalCost of each ingredient.
+
+2.4 Calculate actual foodCostPercentage:
+    - foodCostPercentage = (totalIngredientsCost / sellingPrice) * 100.
+
+2.5 Save to global state:
+    - Update the global state with the calculated actualFoodCostData.
+
+*/
+
+/* IMPORTED helper array with allowed units
+const allowedUnits = ["ml", "l", "g", "kg", "piece"]; */
 
 function FoodCost() {
+  // Global State
+  const { dispatch, errorMessage } = useMainContext();
+
   // Local state
   const initialState = useMemo(
     () => ({
@@ -17,8 +81,20 @@ function FoodCost() {
       sellingPrice: "",
       numPortionsIngredients: "",
       ingredients: [
-        { name: "", quantity: "", unit: units[0], price: "", priceUnit: "" },
-        { name: "", quantity: "", unit: units[0], price: "", priceUnit: "" },
+        {
+          name: "",
+          quantity: "",
+          unit: allowedUnits[0],
+          price: "",
+          priceUnit: "",
+        },
+        {
+          name: "",
+          quantity: "",
+          unit: allowedUnits[0],
+          price: "",
+          priceUnit: "",
+        },
       ],
     }),
     []
@@ -55,7 +131,13 @@ function FoodCost() {
       ...currentState,
       ingredients: [
         ...currentState.ingredients,
-        { name: "", quantity: "", unit: units[0], price: "", priceUnit: "" },
+        {
+          name: "",
+          quantity: "",
+          unit: allowedUnits[0],
+          price: "",
+          priceUnit: "",
+        },
       ],
     }));
   }
@@ -83,17 +165,110 @@ function FoodCost() {
   // Function to handle form submission
   function handleSubmitFoodCost(e) {
     e.preventDefault();
-    console.log(localState);
+
+    // first remove error message just to be sure
+    dispatch({ type: "CLEAR_ERROR_MESSAGE" });
+
+    // ----- 1. Input Validation -----
+
+    // Check if dishName, sellingPrice, and numPortionsIngredients are filled
+    if (
+      !localState.dishName ||
+      !localState.sellingPrice ||
+      !localState.numPortionsIngredients
+    ) {
+      dispatch({
+        type: "SET_ERROR_MESSAGE",
+        payload: "Please fill out all the required fields for the dish.",
+      });
+      return;
+    }
+
+    // Check if sellingPrice and numPortionsIngredients are positive numbers greater than zero
+    if (
+      parseFloat(localState.sellingPrice) <= 0 ||
+      parseFloat(localState.numPortionsIngredients) <= 0
+    ) {
+      dispatch({
+        type: "SET_ERROR_MESSAGE",
+        payload:
+          "Selling price and servings must be positive numbers greater than zero.",
+      });
+      return;
+    }
+
+    // Check if each ingredient has name, quantity, unit, and price filled, and that quantity and price are positive numbers
+    for (const ingredient of localState.ingredients) {
+      if (
+        !ingredient.name ||
+        !ingredient.quantity ||
+        !ingredient.price ||
+        !ingredient.unit
+      ) {
+        dispatch({
+          type: "SET_ERROR_MESSAGE",
+          payload:
+            "Please fill out all the required fields for each ingredient.",
+        });
+        return;
+      }
+      if (
+        parseFloat(ingredient.quantity) <= 0 ||
+        parseFloat(ingredient.price) <= 0
+      ) {
+        dispatch({
+          type: "SET_ERROR_MESSAGE",
+          payload:
+            "Quantity and price for each ingredient must be positive numbers greater than zero.",
+        });
+        return;
+      }
+    }
+
+    // ----- 2. Create the actualFoodCostData object and populate it with correct information -----
+
+    const actualFoodCostData = {
+      dishName: localState.dishName,
+      sellingPrice: Number(localState.sellingPrice),
+      totalIngredientsCost: 0,
+      foodCostPercentage: 0,
+      numberInitialServings: Number(localState.numPortionsIngredients),
+      ingredients: [],
+    };
+
+    // ----- 2.1 Unit Conversion -----
+
+    // - Convert units to base units for calculation:
+
+    actualFoodCostData.ingredients = localState.ingredients.map(
+      (ingredient) => {
+        return {
+          name: ingredient.name,
+          originalValue: Number(ingredient.quantity),
+          convertedValue: convertUnitToBase(
+            Number(ingredient.quantity),
+            ingredient.unit
+          ),
+          price: Number(ingredient.price),
+          originalUnit: ingredient.unit,
+          priceUnit: unitPriceConversion[ingredient.unit],
+          finalCost: calculateIngredientCost(),
+        };
+      }
+    );
+
+    console.log(actualFoodCostData);
   }
 
   return (
     <>
       <FeatureIntro>
-        FEATURE IS UNDER DEVELOPMENT. IT&apos;S COMING SOON :) Easily calculate
-        the food cost for any dish. Enter the ingredients and their quantities,
-        and our tool will provide an accurate cost analysis, helping you manage
-        your budget and pricing with confidence.
+        Easily calculate the food cost for any dish. Enter the ingredients and
+        their quantities, and our tool will provide an accurate cost analysis,
+        helping you manage your budget and pricing with confidence.
       </FeatureIntro>
+
+      {errorMessage ? <ErrorMessage message={errorMessage} /> : null}
 
       <div className={styles.wrapper}>
         <form className={styles.contentBox} onSubmit={handleSubmitFoodCost}>
@@ -153,7 +328,7 @@ function FoodCost() {
                 index={index}
                 key={index}
                 ingredient={ingredient}
-                units={units}
+                units={allowedUnits}
                 handleIngredientChange={handleIngredientChange}
               />
             ))}

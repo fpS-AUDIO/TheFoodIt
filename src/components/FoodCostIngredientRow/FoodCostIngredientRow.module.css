@@ -1,20 +1,14 @@
 .ingredientRow {
   display: grid;
-  grid-auto-flow: row;
-  grid-template-columns: auto auto auto auto auto;
+  /* grid-auto-flow: row; */
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   column-gap: 0.6rem;
+  row-gap: 0.6rem;
   align-items: center;
   justify-items: start;
   /* margin-bottom: var(--padding--standard); */
-  padding: 0.6rem 0;
-  /* border-radius: 0.5rem; */
+  margin-bottom: 2.4rem;
 }
-/* .ingredientRow:nth-child(odd) {
-    background-color: rgba(44, 48, 53, 0.6);
-  }
-  .ingredientRow:nth-child(even) {
-    background-color: rgba(37, 48, 64, 0.6);
-  } */
 
 .formInput {
   width: 100%;
@@ -61,7 +55,45 @@
   background-color: var(--color-dark--2);
 }
 
-.priceUnit{
-    font-size: 1.5rem;
-    font-weight: 600;
+.priceUnit {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* ----- GRID LAYOUT ----- */
+.firstChild {
+  grid-row: 1 / span 1;
+  grid-column: 1 / span 3;
+}
+
+.secondChild {
+  grid-row: 1 / span 1;
+  grid-column: 4 / span 3;
+}
+
+.thirdChild {
+  grid-row: 2 / span 1;
+  grid-column: 1 / span 3;
+}
+
+.forthChild {
+  grid-row: 2 / span 1;
+  grid-column: 4 / span 2;
+}
+
+.fifthChild {
+  grid-row: 2 / span 1;
+  grid-column: 6 / span 1;
+}
+
+/* ----- DESKTOP MEDIA QUERIES ----- */
+
+@media (min-width: 500px) {
+  .ingredientRow {
+    grid-template-columns: auto auto auto auto 6rem;
+  }
+  .ingredientRow > * {
+    grid-column: auto;
+    grid-row: auto;
+  }
 }

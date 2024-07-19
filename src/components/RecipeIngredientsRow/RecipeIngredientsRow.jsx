@@ -9,15 +9,6 @@ function RecipeIngredientsRow({
   return (
     <div key={index} className={styles.ingredientRow}>
       <input
-        type="text"
-        placeholder="Ingredient"
-        name="name"
-        value={ingredient.name}
-        onChange={(e) => handleIngredientChange(index, e)}
-        required
-        className={styles.formInput}
-      />
-      <input
         type="number"
         placeholder="Quantity"
         name="quantity"
@@ -39,6 +30,15 @@ function RecipeIngredientsRow({
           </option>
         ))}
       </select>
+      <input
+        type="text"
+        placeholder="Ingredient"
+        name="name"
+        value={ingredient.name}
+        onChange={(e) => handleIngredientChange(index, e)}
+        required
+        className={styles.formInput}
+      />
     </div>
   );
 }

@@ -1,10 +1,12 @@
 .accordion {
   width: 100%;
-  max-width: 27rem;
+  max-width: 50rem;
   margin: 5rem auto;
+  padding: var(--padding--standard);
   display: flex;
   flex-direction: column;
-  gap: var(--padding--standard);
+  gap: var(--padding--medium);
+  /* background-color: aqua; */
 }
 
 .item {
@@ -98,12 +100,12 @@
 
 @media (min-width: 600px) {
   .accordion {
-    max-width: 40rem;
+    max-width: 60rem;
   }
 }
 
 @media (min-width: 1200px) {
   .accordion {
-    max-width: 50rem;
+    max-width: 70rem;
   }
 }

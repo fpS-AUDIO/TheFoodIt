@@ -1,6 +1,6 @@
 .formContainer {
   width: 100%;
-  max-width: 30rem;
+  max-width: 50rem;
   margin: 2.4rem auto;
   padding: var(--padding--medium);
 }
@@ -68,13 +68,17 @@
 .formRow {
   display: grid;
   grid-auto-flow: row;
+
   grid-template-columns: 1fr 1fr;
   margin-bottom: 1.2rem;
 }
 
 .formInput {
   width: 100%;
+  max-width: 15rem;
   padding: 0.6rem 1.2rem;
+
+  justify-self: end;
 
   background-color: var(--color-dark--2);
 
@@ -133,13 +137,13 @@
 
 @media (min-width: 600px) {
   .formContainer {
-    max-width: 40rem;
+    max-width: 60rem;
   }
 }
 
 @media (min-width: 1200px) {
   .formContainer {
-    max-width: 50rem;
+    max-width: 70rem;
   }
 }
 
