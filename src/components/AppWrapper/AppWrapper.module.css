@@ -16,6 +16,7 @@
 /* THIS MEDIA QUERY AFFECTS ALSO:
   - Navigation.module.css
   - Navigation.jsx
+  - MainContext.jsx -> initialState (isDesktop)
 */
 
 @media (min-width: 1366px) {

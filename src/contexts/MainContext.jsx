@@ -12,7 +12,8 @@ const MainContext = createContext();
 const initialState = {
   isUserAcceptedPrivacy:
     getStorageItem("TheFoodItUserAcceptedPrivacy") === "true",
-  isDesktop: window.innerWidth >= 900,
+  // isDesktop: window.innerWidth >= 900,
+  isDesktop: window.innerWidth >= 1366,
   isMenuOpened: false,
   errorMessage: "",
   isUserKcalFormDataLoaded: getBooleanValue(
@@ -29,6 +30,7 @@ const initialState = {
   isUserSubmittedRecipeScaler: false,
   updatedRecipeScalerIngredients: [],
   recipeScalerTotPortions: 0,
+  userFoodCostData: getStorageItem("TheFoodItLastFoodCostCalc") || null,
 };
 
 // the reduce function is called automatically by dispatch of useReducer
@@ -112,6 +114,18 @@ function reducer(state, action) {
         ...state,
         recipeScalerTotPortions: action.payload,
       };
+
+    case "UPDATE_USER_FOODCOST_DATA":
+      setStorageItem(
+        "TheFoodItLastFoodCostCalc",
+        action.payload,
+        action.errorHandler
+      );
+      return {
+        ...state,
+        userFoodCostData: action.payload,
+      };
+
     default:
       throw new Error(
         `The reduce function (useReducer) didn't detect the action.type`
@@ -135,6 +149,7 @@ function MainContextProvider({ children }) {
     isUserSubmittedRecipeScaler,
     updatedRecipeScalerIngredients,
     recipeScalerTotPortions,
+    userFoodCostData,
   } = state;
 
   return (
@@ -150,6 +165,7 @@ function MainContextProvider({ children }) {
         isUserSubmittedRecipeScaler,
         updatedRecipeScalerIngredients,
         recipeScalerTotPortions,
+        userFoodCostData,
       }}
     >
       {children}

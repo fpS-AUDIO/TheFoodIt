@@ -33,7 +33,7 @@ function Homepage() {
   }, []);
 
   function handleClickButton() {
-    navigate("/recipescaler");
+    navigate("/foodcost");
   }
 
   return (
@@ -56,11 +56,11 @@ function Homepage() {
           <h1 className={styles.heading1}>You Create the Meals.</h1>
           <h3 className={styles.heading3}>TheFoodIt Does the Math.</h3>
           <p className={styles.paragraph}>
-            Easily adjust your recipes for any number of servings with our
-            Recipe Scaler.
+            Discover the true cost of your culinary creations with our Food Cost
+            Calculator.
           </p>
           <Button onClick={handleClickButton} type={"cta"}>
-            Try Recipe Scaler Now
+            Try the Food Cost Calculator Now
           </Button>
         </div>
         {errorMessage ? <ErrorMessage message={errorMessage} /> : null}

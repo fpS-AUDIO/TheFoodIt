@@ -1,0 +1,111 @@
+.accordion {
+  width: 100%;
+  max-width: 50rem;
+  margin: 5rem auto;
+  padding: var(--padding--standard);
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding--medium);
+  /* background-color: aqua; */
+}
+
+.item {
+  padding: 1.6rem;
+
+  /* grid */
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  column-gap: var(--padding--standard);
+  row-gap: 2.4rem;
+
+  /* border */
+  border-bottom-left-radius: var(--border-radius--standard);
+  border-bottom-right-radius: var(--border-radius--standard);
+  border-top: 0.2rem solid transparent;
+
+  /* addit. styles */
+  box-shadow: var(--box-shadow--standrd);
+  transition: all 0.2s ease;
+}
+
+.questionText {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color-light--3);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  stroke: var(--color-light--0);
+  cursor: pointer;
+  transform: rotate(-180deg);
+  transition: all 0.2s ease;
+}
+
+.icon.active {
+  stroke: var(--color-brand);
+  transform: rotate(0deg);
+}
+
+/* ----- DEFAULT CLOSED STATE ----- */
+
+.hiddenBox {
+  grid-column: 1 / -1;
+  display: none;
+}
+
+.hiddenBox .answer {
+  line-height: 1.6;
+  font-size: 1.2rem;
+  color: var(--color-light--2);
+  margin-bottom: var(--padding--standard);
+}
+
+.hiddenBox .questionSecondary {
+  line-height: 1.6;
+  font-size: 1.4rem;
+  color: var(--color-light--1);
+  margin-bottom: var(--padding--standard);
+}
+
+.hiddenBox .answerSecondary {
+  line-height: 1.6;
+  font-size: 1.2rem;
+  color: var(--color-light--1);
+  margin-bottom: var(--padding--standard);
+}
+
+/* ----- OPENED STATE ----- */
+
+.item.open {
+  /* border-radius: 0; */
+  /* border-bottom-left-radius: var(--border-radius--standard);
+  border-bottom-right-radius: var(--border-radius--standard); */
+  border-top: 0.2rem solid var(--color-brand);
+}
+
+.open .hiddenBox {
+  display: block;
+}
+
+.open .questionText {
+  color: var(--color-brand);
+}
+
+/* ----- DESKTOP MEDIA QUERIES ----- */
+
+@media (min-width: 600px) {
+  .accordion {
+    max-width: 60rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .accordion {
+    max-width: 70rem;
+  }
+}

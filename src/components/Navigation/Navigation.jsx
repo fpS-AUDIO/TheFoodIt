@@ -52,6 +52,16 @@ function Navigation() {
             <NavLink
               onClick={handleNavLinkClick}
               className={styles.navLink}
+              to="/foodcost"
+            >
+              Food Cost
+            </NavLink>
+          </li>
+
+          <li className={styles.navItem}>
+            <NavLink
+              onClick={handleNavLinkClick}
+              className={styles.navLink}
               to="/kcalCalculator"
             >
               kCalculator
@@ -75,16 +85,6 @@ function Navigation() {
               to="/unitconverter"
             >
               UNIT CONVERTER
-            </NavLink>
-          </li>
-
-          <li className={styles.navItem}>
-            <NavLink
-              onClick={handleNavLinkClick}
-              className={styles.navLink}
-              to="/foodcost"
-            >
-              Food Cost
             </NavLink>
           </li>
 

@@ -49,6 +49,10 @@ function PrivacyPolicy() {
           <li>
             KCALCULATOR: Analysis of body metrics and nutrition recommendations.
           </li>
+          <li>
+            Food Cost Calculator: Calculate and store the cost of ingredients
+            for your recipes.
+          </li>
         </ul>
       </div>
 
@@ -56,7 +60,7 @@ function PrivacyPolicy() {
         <h3 className={styles.secondaryTitle}>Data Storage and Security</h3>
         <ul>
           <li>
-            The data you provide is stored locally in your browser&apos;s local
+            The data you provide is stored locally in your browser's local
             storage. If local storage is not available, we use a JavaScript
             object to store the data within the web application session.
           </li>
@@ -64,6 +68,10 @@ function PrivacyPolicy() {
           <li>
             Your data is only accessible within your browser and is not shared
             with third parties.
+          </li>
+          <li>
+            Your last food cost calculations are saved in local storage so you
+            can return to your last dish.
           </li>
         </ul>
       </div>
@@ -76,40 +84,11 @@ function PrivacyPolicy() {
             browser settings.
           </li>
           <li>
-            If you clear your browser&apos;s local storage, all data collected
-            by our application will be deleted.
+            If you clear your browser's local storage, all data collected by our
+            application will be deleted.
           </li>
         </ul>
       </div>
-
-      {/* <div className={`${styles.block} ${styles.blockUnderlined}`}>
-        <h3 className={styles.secondaryTitle}>Cookies and Tracking</h3>
-        <ul>
-          <li>
-            Our website uses cookies and other tracking technologies to provide
-            and improve our services, including Google AdSense.
-          </li>
-          <li>
-            Google AdSense uses cookies to serve ads based on a user&apos;s
-            previous visits to our website or other websites. Google&apos;s use
-            of advertising cookies enables it and its partners to serve ads to
-            users based on their visit to our site and/or other sites on the
-            Internet.
-          </li>
-          <li>
-            Users may opt-out of personalized advertising by visiting{" "}
-            <a href="https://www.google.com/settings/ads" target="_blank">
-              Google Ad Settings
-            </a>
-            . Alternatively, users can opt-out of a third-party vendor&apos;s
-            use of cookies for personalized advertising by visiting{" "}
-            <a href="http://www.aboutads.info/choices/" target="_blank">
-              www.aboutads.info
-            </a>
-            .
-          </li>
-        </ul>
-      </div> */}
 
       <div className={`${styles.block} ${styles.blockUnderlined}`}>
         <h3 className={styles.secondaryTitle}>Third-Party Services</h3>
@@ -138,11 +117,6 @@ function PrivacyPolicy() {
             purposes. Please refer to their respective privacy policies for more
             information.
           </li>
-          {/* <li>
-            We use Google AdSense to display advertisements on our site. Please
-            refer to Google&apos;s privacy policy for more information on how
-            they collect and use data.
-          </li> */}
         </ul>
       </div>
 
@@ -156,19 +130,6 @@ function PrivacyPolicy() {
           </li>
         </ul>
       </div>
-
-      {/*       <div className={`${styles.block} ${styles.blockUnderlined}`}>
-        <h3 className={styles.secondaryTitle}>Legal Requirements</h3>
-        <ul>
-          <li>
-            We aim to comply with relevant privacy laws and regulations,
-            including the General Data Protection Regulation (GDPR) and the
-            California Consumer Privacy Act (CCPA). Our primary focus is on
-            ensuring that any data you provide remains within your control and
-            is not exposed to third parties.
-          </li>
-        </ul>
-      </div> */}
 
       <div className={`${styles.block} ${styles.blockUnderlined}`}>
         <h3 className={styles.secondaryTitle}>Contact Information</h3>
