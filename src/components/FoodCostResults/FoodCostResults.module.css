@@ -59,3 +59,9 @@
   margin-top: 1.2rem;
   font-size: 1.1rem;
 }
+
+.btnsBox{
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 1.8rem;
+}

@@ -63,8 +63,8 @@ body {
   color: var(--color-light--2);
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  /* font-size: 3.6rem; */
   line-height: 1.6;
+  /* font-size: 3.6rem; */
   display: flex;
   justify-content: center;
   align-items: center;

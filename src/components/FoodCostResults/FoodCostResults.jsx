@@ -1,7 +1,9 @@
 import styles from "./FoodCostResults.module.css";
 import { useMainContext } from "../../contexts/MainContext";
+import { generatePDF } from "./FoodCostResultsPdfHelper";
 import FoodCostResultsRow from "../FoodCostResultsRow/FoodCostResultsRow";
 import Button from "../Button/Button";
+
 
 function FoodCostResults() {
   const { dispatch, userFoodCostData } = useMainContext();
@@ -12,6 +14,13 @@ function FoodCostResults() {
       payload: null,
     });
   }
+
+  // path to logo file
+  const logoPath = `${import.meta.env.VITE_PUBLIC_URL}TheFoodIt-logo.png`;
+  // Convert the imported image to a base64 string
+  const handleGeneratePDF = async () => {
+    generatePDF(userFoodCostData, logoPath);
+  };
 
   if (!userFoodCostData)
     return (
@@ -59,9 +68,15 @@ function FoodCostResults() {
         </div>
       </div>
 
-      <Button onClick={handleRecalculate} type="submitLarge">
-        Recalculate Food Cost
-      </Button>
+      <div className={styles.btnsBox}>
+        <Button onClick={handleGeneratePDF} type="cta">
+          Download PDF
+        </Button>
+
+        <Button onClick={handleRecalculate} type="submitLarge">
+          Recalculate Food Cost
+        </Button>
+      </div>
     </>
   );
 }

@@ -98,6 +98,7 @@ function PrivacyPolicy() {
             <a
               target="_blank"
               href="https://www.npmjs.com/package/convert-units"
+              rel="noopener noreferrer"
             >
               convert-units
             </a>
@@ -105,12 +106,32 @@ function PrivacyPolicy() {
             collect or store your personal data.
           </li>
           <li>
+            We use the{" "}
+            <a
+              target="_blank"
+              href="https://github.com/parallax/jsPDF"
+              rel="noopener noreferrer"
+            >
+              jsPDF
+            </a>{" "}
+            library to generate PDF documents for the Food Cost Calculator
+            feature. This library does not collect or store your personal data.
+          </li>
+          <li>
             Our website is hosted on{" "}
-            <a target="_blank" href="https://www.netlify.com/">
+            <a
+              target="_blank"
+              href="https://www.netlify.com/"
+              rel="noopener noreferrer"
+            >
               Netlify
             </a>
             , and we use a custom domain purchased from{" "}
-            <a target="_blank" href="https://www.namecheap.com/">
+            <a
+              target="_blank"
+              href="https://www.namecheap.com/"
+              rel="noopener noreferrer"
+            >
               Namecheap
             </a>
             . These services may collect non-personal data for their operational
@@ -137,15 +158,27 @@ function PrivacyPolicy() {
           <li>
             If you have any questions or concerns about this Privacy Policy,
             please contact us via{" "}
-            <a target="_blank" href="https://t.me/MrAlex_OFF">
+            <a
+              target="_blank"
+              href="https://t.me/MrAlex_OFF"
+              rel="noopener noreferrer"
+            >
               Telegram
             </a>
             ,{" "}
-            <a target="_blank" href="https://discordapp.com/users/SAUDIO#5715">
+            <a
+              target="_blank"
+              href="https://discordapp.com/users/SAUDIO#5715"
+              rel="noopener noreferrer"
+            >
               Discord
             </a>{" "}
             or check any other social links on our{" "}
-            <a target="_blank" href="https://github.com/fpS-AUDIO">
+            <a
+              target="_blank"
+              href="https://github.com/fpS-AUDIO"
+              rel="noopener noreferrer"
+            >
               Github
             </a>
             . We do not publicly display our email to minimize spam and protect
