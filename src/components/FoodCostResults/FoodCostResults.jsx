@@ -4,7 +4,6 @@ import { generatePDF } from "./FoodCostResultsPdfHelper";
 import FoodCostResultsRow from "../FoodCostResultsRow/FoodCostResultsRow";
 import Button from "../Button/Button";
 
-
 function FoodCostResults() {
   const { dispatch, userFoodCostData } = useMainContext();
 
@@ -17,10 +16,9 @@ function FoodCostResults() {
 
   // path to logo file
   const logoPath = `${import.meta.env.VITE_PUBLIC_URL}TheFoodIt-logo.png`;
-  // Convert the imported image to a base64 string
-  const handleGeneratePDF = async () => {
+  function handleGeneratePDF() {
     generatePDF(userFoodCostData, logoPath);
-  };
+  }
 
   if (!userFoodCostData)
     return (

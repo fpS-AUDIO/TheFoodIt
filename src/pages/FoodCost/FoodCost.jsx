@@ -169,7 +169,7 @@ function FoodCost() {
       !localState.sellingPrice ||
       !localState.numPortionsIngredients
     ) {
-      return "Please fill out all the required fields for the dish.";
+      return "Please fill out all the required fields for the dish in a correct way.";
     }
 
     // Check if sellingPrice and numPortionsIngredients are positive numbers greater than zero

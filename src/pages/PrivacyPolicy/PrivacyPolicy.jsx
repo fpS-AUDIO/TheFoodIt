@@ -53,6 +53,10 @@ function PrivacyPolicy() {
             Food Cost Calculator: Calculate and store the cost of ingredients
             for your recipes.
           </li>
+          <li>
+            Recipe Scaler: Adjust the quantities of ingredients based on the
+            desired number of portions.
+          </li>
         </ul>
       </div>
 
@@ -60,7 +64,7 @@ function PrivacyPolicy() {
         <h3 className={styles.secondaryTitle}>Data Storage and Security</h3>
         <ul>
           <li>
-            The data you provide is stored locally in your browser's local
+            The data you provide is stored locally in your browser&apos;s local
             storage. If local storage is not available, we use a JavaScript
             object to store the data within the web application session.
           </li>
@@ -84,8 +88,8 @@ function PrivacyPolicy() {
             browser settings.
           </li>
           <li>
-            If you clear your browser's local storage, all data collected by our
-            application will be deleted.
+            If you clear your browser&apos;s local storage, all data collected
+            by our application will be deleted.
           </li>
         </ul>
       </div>
@@ -114,8 +118,9 @@ function PrivacyPolicy() {
             >
               jsPDF
             </a>{" "}
-            library to generate PDF documents for the Food Cost Calculator
-            feature. This library does not collect or store your personal data.
+            library to generate PDF documents for the Food Cost Calculator,
+            KCALCULATOR, and Recipe Scaler features. This library does not
+            collect or store your personal data.
           </li>
           <li>
             Our website is hosted on{" "}
@@ -211,7 +216,7 @@ function PrivacyPolicy() {
       </div>
 
       <div className={`${styles.block}`}>
-        <p className={styles.content}>Effective Date: July 16, 2024</p>
+        <p className={styles.content}>Effective Date: July 21, 2024</p>
       </div>
 
       <ButtonBack />

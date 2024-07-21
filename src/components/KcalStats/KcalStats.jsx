@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./KcalStats.module.css";
+import Button from "../Button/Button";
+import { generatePDF } from "./KcalStatsPdfHelper";
 import {
   calculateBMI,
   calculateBMR,
@@ -53,6 +55,13 @@ function KcalStats() {
     }
   }, [isUserKcalFormDataLoaded, userKcalFormData]);
 
+  // path to logo file
+  const logoPath = `${import.meta.env.VITE_PUBLIC_URL}TheFoodIt-logo.png`;
+  // function to generate the pdf
+  function handleGeneratePDF() {
+    generatePDF(userKcalFormData, statsResults, logoPath);
+  }
+
   if (!isUserKcalFormDataLoaded)
     return (
       <div className={styles.statsContainer}>
@@ -64,109 +73,117 @@ function KcalStats() {
     );
 
   return (
-    <div className={styles.statsContainer}>
-      <h2 className={styles.subTitle}>Personal Stats</h2>
+    <>
+      <div className={styles.statsContainer}>
+        <h2 className={styles.subTitle}>Personal Stats</h2>
 
-      <div className={styles.subContainer}>
-        <div className={styles.statsRow}>
-          <p className={styles.label}>Gender: </p>
-          <p>{userKcalFormData.gender}</p>
+        <div className={styles.subContainer}>
+          <div className={styles.statsRow}>
+            <p className={styles.label}>Gender: </p>
+            <p>{userKcalFormData.gender}</p>
+          </div>
+
+          <div className={styles.statsRow}>
+            <p className={styles.label}>Age: </p>
+            <p>{userKcalFormData.age} y.o.</p>
+          </div>
+
+          <div className={styles.statsRow}>
+            <p className={styles.label}>Height: </p>
+            <p>{userKcalFormData.height} cm</p>
+          </div>
+
+          <div className={styles.statsRow}>
+            <p className={styles.label}>Weight: </p>
+            <p>{userKcalFormData.weight} kg</p>
+          </div>
+
+          <div className={styles.statsRow}>
+            <p className={styles.label}>Activity Multiplier: </p>
+            <p>{userKcalFormData.pal}</p>
+          </div>
+
+          <div className={styles.statsRow}>
+            <p className={styles.label}>Goal: </p>
+            <p>{userKcalFormData.goal}</p>
+          </div>
         </div>
 
-        <div className={styles.statsRow}>
-          <p className={styles.label}>Age: </p>
-          <p>{userKcalFormData.age} y.o.</p>
+        {userKcalFormData.goal === "weight" && (
+          <div className={styles.notice}>
+            <p>
+              For weight loss, a caloric deficit of 500 kcal/day has been
+              applied to your TDEE. Please consult with a healthcare provider
+              for a personalized plan.
+            </p>
+          </div>
+        )}
+
+        <h2 className={styles.subTitle}>Kcal Stats</h2>
+
+        <div className={styles.subContainer}>
+          <div className={styles.statsRow}>
+            <p className={styles.label}>BMI: </p>
+            <p>
+              {statsResults.bmi !== null
+                ? statsResults.bmi.toFixed(2)
+                : "Calculating..."}
+            </p>
+          </div>
+
+          <div className={styles.statsRow}>
+            <p className={styles.label}>BMR: </p>
+            <p>
+              {statsResults.bmr !== null
+                ? `${statsResults.bmr} kcal`
+                : "Calculating..."}
+            </p>
+          </div>
+
+          <div className={styles.statsRow}>
+            <p className={styles.label}>TDEE: </p>
+            <p>
+              {statsResults.tdee !== null
+                ? `${statsResults.tdee.toFixed(2)} kcal`
+                : "Calculating..."}
+            </p>
+          </div>
+
+          <div className={styles.statsRow}>
+            <p className={styles.label}>TDEE with TEF:</p>
+            <p>
+              {statsResults.tdeeWithTEF !== null
+                ? `${statsResults.tdeeWithTEF.toFixed(2)} kcal`
+                : "Calculating..."}
+            </p>
+          </div>
         </div>
 
-        <div className={styles.statsRow}>
-          <p className={styles.label}>Height: </p>
-          <p>{userKcalFormData.height} cm</p>
+        <h2 className={styles.subTitle}>Macronutrient Distribution</h2>
+        <div className={styles.subContainer}>
+          <div className={styles.statsRow}>
+            <p className={styles.label}>Carbs: </p>
+            <p>{statsResults.macronutrientsDistribution.carbs}g</p>
+          </div>
+
+          <div className={styles.statsRow}>
+            <p className={styles.label}>Proteins: </p>
+            <p>{statsResults.macronutrientsDistribution.proteins}g</p>
+          </div>
+
+          <div className={styles.statsRow}>
+            <p className={styles.label}>Fats: </p>
+            <p>{statsResults.macronutrientsDistribution.fats}g</p>
+          </div>
         </div>
 
-        <div className={styles.statsRow}>
-          <p className={styles.label}>Weight: </p>
-          <p>{userKcalFormData.weight} kg</p>
-        </div>
-
-        <div className={styles.statsRow}>
-          <p className={styles.label}>Activity Multiplier: </p>
-          <p>{userKcalFormData.pal}</p>
-        </div>
-
-        <div className={styles.statsRow}>
-          <p className={styles.label}>Goal: </p>
-          <p>{userKcalFormData.goal}</p>
+        <div className={styles.btnBox}>
+          <Button onClick={handleGeneratePDF} type="cta">
+            Download PDF
+          </Button>
         </div>
       </div>
-
-      {userKcalFormData.goal === "weight" && (
-        <div className={styles.notice}>
-          <p>
-            For weight loss, a caloric deficit of 500 kcal/day has been applied
-            to your TDEE. Please consult with a healthcare provider for a
-            personalized plan.
-          </p>
-        </div>
-      )}
-
-      <h2 className={styles.subTitle}>Kcal Stats</h2>
-
-      <div className={styles.subContainer}>
-        <div className={styles.statsRow}>
-          <p className={styles.label}>BMI: </p>
-          <p>
-            {statsResults.bmi !== null
-              ? statsResults.bmi.toFixed(2)
-              : "Calculating..."}
-          </p>
-        </div>
-
-        <div className={styles.statsRow}>
-          <p className={styles.label}>BMR: </p>
-          <p>
-            {statsResults.bmr !== null
-              ? `${statsResults.bmr} kcal`
-              : "Calculating..."}
-          </p>
-        </div>
-
-        <div className={styles.statsRow}>
-          <p className={styles.label}>TDEE: </p>
-          <p>
-            {statsResults.tdee !== null
-              ? `${statsResults.tdee.toFixed(2)} kcal`
-              : "Calculating..."}
-          </p>
-        </div>
-
-        <div className={styles.statsRow}>
-          <p className={styles.label}>TDEE with TEF:</p>
-          <p>
-            {statsResults.tdeeWithTEF !== null
-              ? `${statsResults.tdeeWithTEF.toFixed(2)} kcal`
-              : "Calculating..."}
-          </p>
-        </div>
-      </div>
-
-      <h2 className={styles.subTitle}>Macronutrient Distribution</h2>
-      <div className={styles.subContainer}>
-        <div className={styles.statsRow}>
-          <p className={styles.label}>Carbs: </p>
-          <p>{statsResults.macronutrientsDistribution.carbs}g</p>
-        </div>
-
-        <div className={styles.statsRow}>
-          <p className={styles.label}>Proteins: </p>
-          <p>{statsResults.macronutrientsDistribution.proteins}g</p>
-        </div>
-
-        <div className={styles.statsRow}>
-          <p className={styles.label}>Fats: </p>
-          <p>{statsResults.macronutrientsDistribution.fats}g</p>
-        </div>
-      </div>
-    </div>
+    </>
   );
 }
 

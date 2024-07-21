@@ -1,5 +1,5 @@
 import styles from "./RecipeScalerResults.module.css";
-
+import { generatePDF } from "./RecipeScalerResultsPdfHelper";
 import { useMainContext } from "../../contexts/MainContext";
 import Button from "../Button/Button";
 import Footer from "../Footer/Footer";
@@ -15,6 +15,16 @@ function RecipeScalerResults() {
     dispatch({ type: "SET_IS_USER_SUBMITTED_RECIPESCALER", payload: false });
   }
 
+  // path to logo file
+  const logoPath = `${import.meta.env.VITE_PUBLIC_URL}TheFoodIt-logo.png`;
+  function handleGeneratePDF() {
+    generatePDF(
+      updatedRecipeScalerIngredients,
+      recipeScalerTotPortions,
+      logoPath
+    );
+  }
+
   return (
     <div className={styles.resultsContainer}>
       <h2 className={styles.title}>
@@ -28,6 +38,9 @@ function RecipeScalerResults() {
         </div>
       ))}
       <div className={styles.btnBox}>
+        <Button onClick={handleGeneratePDF} type="cta">
+          Download PDF
+        </Button>
         <Button onClick={handleRecalculate} type="submitLarge">
           Recalculate Ingredients
         </Button>

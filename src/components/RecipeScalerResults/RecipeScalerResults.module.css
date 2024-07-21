@@ -44,6 +44,9 @@
 
 .btnBox {
   margin-top: 1.8rem;
+  display: grid;
+  grid-column: 1fr;
+  row-gap: 1.8rem;
 }
 
 /* ----- DESKTOP MEDIA QUERIES ----- */

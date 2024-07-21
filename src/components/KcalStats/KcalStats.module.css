@@ -4,6 +4,14 @@
   margin: 2.4rem auto;
   padding: var(--padding--medium);
 }
+.btnBox {
+  margin-top: 2.4rem;
+}
+
+.statsContainer :last-child {
+  width: 100%;
+}
+
 .subTitle {
   font-size: 1.8rem;
   margin-top: 1.2rem;
