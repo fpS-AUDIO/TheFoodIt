@@ -6,12 +6,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MainContextProvider } from "./contexts/MainContext";
 
 // CUSTOM PAGE COMPONENTS
+import ProtectedRoute from "./pages/ProtectedRoute/ProtectedRoute";
 import Homepage from "./pages/Homepage/Homepage";
+import FoodCost from "./pages/FoodCost/FoodCost";
 import KcalCalculator from "./pages/KcalCalculator/KcalCalculator";
 import RecipeScaler from "./pages/RecipeScaler/RecipeScaler";
 import UnitConverter from "./pages/UnitConverter/UnitConverter";
-import FoodCost from "./pages/FoodCost/FoodCost";
-import ProtectedRoute from "./pages/ProtectedRoute/ProtectedRoute";
+import NutritionFinder from "./pages/NutritionFinder/NutritionFinder";
 import About from "./pages/About/About";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
@@ -41,6 +42,7 @@ function App() {
                   <ProtectedRoute>
                     {/*/////--- PROTECTED ROUTES ---/////*/}
                     <Routes>
+                      <Route path="/foodcost" element={<FoodCost />} />
                       <Route
                         path="/kcalCalculator"
                         element={<KcalCalculator />}
@@ -63,12 +65,14 @@ function App() {
                         path="/unitconverter"
                         element={<UnitConverter />}
                       />
+
+                      <Route
+                        path="/nutritionfinder"
+                        element={<NutritionFinder />}
+                      />
                       <Route path="/about" element={<About />} />
 
                       <Route path="*" element={<PageNotFound />} />
-
-                      <Route path="/foodcost" element={<FoodCost />} />
-                      
                     </Routes>
 
                     {/*/////--- FINISHED HERE PROTECTED ROUTES ---/////*/}

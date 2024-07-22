@@ -92,6 +92,16 @@ function Navigation() {
             <NavLink
               onClick={handleNavLinkClick}
               className={styles.navLink}
+              to="/nutritionfinder"
+            >
+              Nutrition Finder
+            </NavLink>
+          </li>
+
+          <li className={styles.navItem}>
+            <NavLink
+              onClick={handleNavLinkClick}
+              className={styles.navLink}
               to="/about"
             >
               about

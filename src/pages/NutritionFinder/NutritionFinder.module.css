@@ -1,0 +1,32 @@
+.wrapperBox {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 80vh;
+  max-width: 50rem;
+  margin: 1.2rem auto;
+  padding: var(--padding--medium);
+}
+.formContainer > :last-child {
+  margin-top: auto;
+}
+
+/* ----- SOURCE OF DATA ----- */
+
+.sourceDataBox{}
+
+.source{}
+
+/* ----- DESKTOP MEDIA QUERIES ----- */
+
+@media (min-width: 600px) {
+  .wrapperBox {
+    max-width: 60rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .wrapperBox {
+    max-width: 70rem;
+  }
+}
