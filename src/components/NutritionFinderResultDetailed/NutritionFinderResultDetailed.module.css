@@ -1,0 +1,24 @@
+.currentDishBox {
+  /* background-color: aqua; */
+  width: 100%;
+  height: 10rem;
+}
+
+.dishIntro {
+}
+
+.statsRow {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 2fr 1fr;
+}
+
+.statsRow p {
+  font-size: 1.35rem;
+}
+
+.label {
+  font-size: 1.35rem;
+  font-weight: 600;
+  /* text-transform: uppercase; */
+}

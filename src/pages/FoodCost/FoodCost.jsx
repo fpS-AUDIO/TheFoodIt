@@ -295,8 +295,9 @@ function FoodCost() {
     <>
       <FeatureIntro>
         Easily calculate the food cost for any dish. Enter the ingredients and
-        their quantities, and our tool will provide an accurate cost analysis,
-        helping you manage your budget and pricing with confidence.
+        their quantities, and our tool will provide a cost analysis, helping you
+        manage your budget and pricing with confidence. Consider verifying
+        important calculations.
       </FeatureIntro>
 
       {errorMessage ? <ErrorMessage message={errorMessage} /> : null}

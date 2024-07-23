@@ -7,15 +7,77 @@
   margin: 1.2rem auto;
   padding: var(--padding--medium);
 }
-.formContainer > :last-child {
+.wrapperBox > :last-child {
   margin-top: auto;
 }
 
 /* ----- SOURCE OF DATA ----- */
 
-.sourceDataBox{}
+.sourceDataBox {
+  margin-bottom: 3.6rem;
+}
+.sourceDataBox a:link,
+.sourceDataBox a:visited {
+  color: var(--color-brand-lightest);
+}
 
-.source{}
+.source {
+  color: var(--color-light--1);
+  font-weight: 500;
+  font-size: 1.2rem;
+  text-wrap: balance;
+  text-align: center;
+}
+
+/* ----- SEARCH PART ----- */
+
+.searchBox {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 1fr;
+  row-gap: 1.2rem;
+  margin-bottom: 3.6rem;
+}
+
+.formInput {
+  width: 100%;
+  padding: 0.75rem 0.8rem;
+
+  background-color: var(--color-dark--2);
+
+  font-family: inherit;
+  font-size: 1.4rem;
+  color: var(--color-light--3);
+  text-align: center;
+
+  border: 0.2rem solid var(--color-dark--0);
+  border-radius: var(--border-radius--standard);
+
+  transition: all 0.3s ease;
+}
+
+.formInput:focus {
+  outline: none;
+  border: 0.2rem solid var(--color-brand-darkest);
+  background-color: var(--color-dark--2);
+}
+
+.formInput::-webkit-input-placeholder {
+  color: var(--color-light--0);
+}
+/* ----- RESULTS PART ----- */
+
+.resultsBox {
+  
+}
+
+.noResults {
+  color: var(--color-light--2);
+  font-weight: 500;
+  font-size: 1.5rem;
+  text-wrap: balance;
+  text-align: center;
+}
 
 /* ----- DESKTOP MEDIA QUERIES ----- */
 

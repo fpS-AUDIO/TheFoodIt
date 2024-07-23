@@ -42,12 +42,14 @@ export function calculateIngredientOnePortionValue(
 }
 
 // Function to calculate ingredient cost
-export function calculateIngredientCost(unit, price, convertedValue) {
+export function calculateIngredientCost(unit, price, onePortionValue) {
   // For non-piece units: finalCost = (price * convertedValue) / 1000.
-  // For piece units: finalCost = price * quantity.
+  // For piece units: finalCost = price * one portion quantity.
   // Calculate final cost based on unit type
   let finalCost =
-    unit === "piece" ? price * convertedValue : (price * convertedValue) / 1000;
+    unit === "piece"
+      ? price * onePortionValue
+      : (price * onePortionValue) / 1000;
 
   // Round to maximum 3 decimal places
   finalCost = Math.round(finalCost * 1000) / 1000;
