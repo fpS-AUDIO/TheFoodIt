@@ -83,9 +83,9 @@ function NutritionFinder() {
   return (
     <>
       <FeatureIntro>
-        Quickly access detailed nutrition data for any ingredient. Enter the
-        ingredient name to get information on carbs, proteins, fats, vitamins,
-        and minerals. Make informed dietary choices with ease.
+        Access detailed nutrition data for a wide variety of dishes and prepared
+        foods. Enter the name of the dish to get comprehensive information on
+        carbs, proteins, fats, vitamins, and minerals.
       </FeatureIntro>
 
       <div className={styles.wrapperBox}>
@@ -113,7 +113,7 @@ function NutritionFinder() {
             value={localState.searchKeyword}
             name="searchKeyword"
             onChange={(e) => handleUpdateLocalState(e)}
-            placeholder="Enter ingredient for details..."
+            placeholder="Enter a keyword for details..."
             className={styles.formInput}
           />
 

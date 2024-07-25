@@ -57,6 +57,11 @@ function PrivacyPolicy() {
             Recipe Scaler: Adjust the quantities of ingredients based on the
             desired number of portions.
           </li>
+          <li>
+            Nutrition Finder: Provides detailed nutritional information for
+            various dishes, using data from the USDA Food and Nutrient Database
+            for Dietary Studies (FNDDS).
+          </li>
         </ul>
       </div>
 
@@ -76,20 +81,6 @@ function PrivacyPolicy() {
           <li>
             Your last food cost calculations are saved in local storage so you
             can return to your last dish.
-          </li>
-        </ul>
-      </div>
-
-      <div className={`${styles.block} ${styles.blockUnderlined}`}>
-        <h3 className={styles.secondaryTitle}>User Rights</h3>
-        <ul>
-          <li>
-            You can remove your data from local storage at any time through your
-            browser settings.
-          </li>
-          <li>
-            If you clear your browser&apos;s local storage, all data collected
-            by our application will be deleted.
           </li>
         </ul>
       </div>
@@ -147,12 +138,42 @@ function PrivacyPolicy() {
       </div>
 
       <div className={`${styles.block} ${styles.blockUnderlined}`}>
+        <h3 className={styles.secondaryTitle}>Data Source Acknowledgment</h3>
+        <ul>
+          <li>
+            The nutritional data provided in the Nutrition Finder feature is
+            sourced from the USDA Food and Nutrient Database for Dietary Studies
+            (FNDDS). The data includes information on various dishes and is used
+            to provide users with detailed nutritional content. The source is
+            cited as follows: &quot;U.S. Department of Agriculture, Agricultural
+            Research Service. 2022. USDA Food and Nutrient Database for Dietary
+            Studies 2019-2020. Food Surveys Research Group Home Page,
+            http://www.ars.usda.gov/nea/bhnrc/fsrg.&quot;
+          </li>
+        </ul>
+      </div>
+
+      <div className={`${styles.block} ${styles.blockUnderlined}`}>
         <h3 className={styles.secondaryTitle}>Generated Content</h3>
         <ul>
           <li>
             Some content on our site, such as feature descriptions, is generated
             using AI tools like ChatGPT. This content generation does not
             involve the collection or storage of personal data.
+          </li>
+        </ul>
+      </div>
+
+      <div className={`${styles.block} ${styles.blockUnderlined}`}>
+        <h3 className={styles.secondaryTitle}>User Rights</h3>
+        <ul>
+          <li>
+            You can remove your data from local storage at any time through your
+            browser settings.
+          </li>
+          <li>
+            If you clear your browser&apos;s local storage, all data collected
+            by our application will be deleted.
           </li>
         </ul>
       </div>
@@ -207,16 +228,8 @@ function PrivacyPolicy() {
         </ul>
       </div>
 
-      <div className={`${styles.block} ${styles.blockUnderlined}`}>
-        <h3 className={styles.secondaryTitle}>Acknowledgment</h3>
-        <p className={styles.content}>
-          By using our web application, you acknowledge that you have read and
-          understood this Privacy Policy.
-        </p>
-      </div>
-
       <div className={`${styles.block}`}>
-        <p className={styles.content}>Effective Date: July 21, 2024</p>
+        <p className={styles.content}>Effective Date: [Date]</p>
       </div>
 
       <ButtonBack />
