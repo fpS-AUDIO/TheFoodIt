@@ -1,14 +1,14 @@
-import { Link } from "react-router-dom";
-
 import styles from "./Logo.module.css";
 
-import { useMainContext } from "../../contexts/MainContext";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { closeMenu } from "../../store/slices/navigationSlice";
 
 function Logo() {
-  const { dispatch } = useMainContext();
+  const dispatch = useDispatch();
 
   function handleCloseSidebar() {
-    dispatch({ type: "MENU_CLOSED" });
+    dispatch(closeMenu());
   }
 
   return (

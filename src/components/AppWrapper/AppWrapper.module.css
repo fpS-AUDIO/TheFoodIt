@@ -13,20 +13,20 @@
   grid-template-rows: 6rem 1fr;
 }
 
+/* ===== DEPRECATED BELOW (OLD VERSION)  ===== */
+
 /* THIS MEDIA QUERY AFFECTS ALSO:
   - Navigation.module.css
   - Navigation.jsx
-  - MainContext.jsx -> initialState (isDesktop)
-*/
+  - appWrapperSlice.js
 
 @media (min-width: 1366px) {
   .wrapper {
-    /* sizes */
     width: 98vw;
     height: 96vh;
 
-    /* additional styles */
     border-radius: var(--border-radius--standard);
     box-shadow: var(--box-shadow--standrd);
   }
 }
+*/

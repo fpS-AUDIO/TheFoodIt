@@ -8,10 +8,11 @@ import {
   calculateTDEE,
   calculateMacronutrientDistribution,
 } from "./calculateHelpers";
-import { useMainContext } from "../../contexts/MainContext";
+
+import { useSelector } from "react-redux";
 
 function KcalStats() {
-  const { isUserKcalFormDataLoaded, userKcalFormData } = useMainContext();
+  const kcalCalculator = useSelector((store) => store.kcalCalculator);
 
   // calculating local state with helper function basing on global state
   const [statsResults, setStatsResults] = useState({
@@ -50,19 +51,19 @@ function KcalStats() {
       });
     }
 
-    if (isUserKcalFormDataLoaded) {
-      updateStats(userKcalFormData);
+    if (kcalCalculator.isUserKcalFormDataLoaded) {
+      updateStats(kcalCalculator.userKcalFormData);
     }
-  }, [isUserKcalFormDataLoaded, userKcalFormData]);
+  }, [kcalCalculator.isUserKcalFormDataLoaded, kcalCalculator.userKcalFormData]);
 
   // path to logo file
   const logoPath = `${import.meta.env.VITE_PUBLIC_URL}TheFoodIt-logo.png`;
   // function to generate the pdf
   function handleGeneratePDF() {
-    generatePDF(userKcalFormData, statsResults, logoPath);
+    generatePDF(kcalCalculator.userKcalFormData, statsResults, logoPath);
   }
 
-  if (!isUserKcalFormDataLoaded)
+  if (!kcalCalculator.isUserKcalFormDataLoaded)
     return (
       <div className={styles.statsContainer}>
         <p className={styles.initialMessage}>
@@ -80,36 +81,36 @@ function KcalStats() {
         <div className={styles.subContainer}>
           <div className={styles.statsRow}>
             <p className={styles.label}>Gender: </p>
-            <p>{userKcalFormData.gender}</p>
+            <p>{kcalCalculator.userKcalFormData.gender}</p>
           </div>
 
           <div className={styles.statsRow}>
             <p className={styles.label}>Age: </p>
-            <p>{userKcalFormData.age} y.o.</p>
+            <p>{kcalCalculator.userKcalFormData.age} y.o.</p>
           </div>
 
           <div className={styles.statsRow}>
             <p className={styles.label}>Height: </p>
-            <p>{userKcalFormData.height} cm</p>
+            <p>{kcalCalculator.userKcalFormData.height} cm</p>
           </div>
 
           <div className={styles.statsRow}>
             <p className={styles.label}>Weight: </p>
-            <p>{userKcalFormData.weight} kg</p>
+            <p>{kcalCalculator.userKcalFormData.weight} kg</p>
           </div>
 
           <div className={styles.statsRow}>
             <p className={styles.label}>Activity Multiplier: </p>
-            <p>{userKcalFormData.pal}</p>
+            <p>{kcalCalculator.userKcalFormData.pal}</p>
           </div>
 
           <div className={styles.statsRow}>
             <p className={styles.label}>Goal: </p>
-            <p>{userKcalFormData.goal}</p>
+            <p>{kcalCalculator.userKcalFormData.goal}</p>
           </div>
         </div>
 
-        {userKcalFormData.goal === "weight" && (
+        {kcalCalculator.userKcalFormData.goal === "weight" && (
           <div className={styles.notice}>
             <p>
               For weight loss, a caloric deficit of 500 kcal/day has been

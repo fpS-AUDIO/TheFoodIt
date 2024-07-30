@@ -1,16 +1,18 @@
 import styles from "./Navbar.module.css";
-import { useMainContext } from "../../contexts/MainContext";
+
+import { useSelector } from "react-redux";
 
 import Logo from "../Logo/Logo";
 import Navigation from "../Navigation/Navigation";
 import Overlay from "../Overlay/Overlay";
 
 function Navbar() {
-  const { isMenuOpened } = useMainContext();
+  const navigation = useSelector((store) => store.navigation);
+
   return (
     <nav className={styles.nav}>
       <Logo />
-      {isMenuOpened ? <Overlay /> : ""}
+      {navigation.isMenuOpened ? <Overlay /> : ""}
       <Navigation />
     </nav>
   );

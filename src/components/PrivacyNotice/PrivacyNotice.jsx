@@ -1,25 +1,30 @@
-import { useNavigate, useLocation, Link } from "react-router-dom";
-import { useMainContext } from "../../contexts/MainContext";
 import styles from "./PrivacyNotice.module.css";
+
+import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { userAcceptedPrivacy } from "../../store/slices/appWrapperSlice";
+
 import Button from "../Button/Button";
 
 function PrivacyNotice() {
-  const { dispatch, isUserAcceptedPrivacy } = useMainContext();
+  // redux
+  const dispatch = useDispatch();
+  const appWrapper = useSelector((store) => store.appWrapper);
+
   const navigate = useNavigate();
   const location = useLocation();
 
-  // function checks if privacy is accepted
   function handleAccept() {
-    dispatch({
-      type: "USER_ACCEPTED_PRIVACY",
-      errorHandler: dispatch,
-    });
+    dispatch(userAcceptedPrivacy());
     // redirect to the original intended location after accepting
     const redirectPath = location.state?.from?.pathname || "/";
     navigate(redirectPath);
   }
   // check if used accepted privacy or reading privacy policy
-  if (isUserAcceptedPrivacy || location.pathname === "/PrivacyPolicy")
+  if (
+    appWrapper.isUserAcceptedPrivacy ||
+    location.pathname === "/PrivacyPolicy"
+  )
     return null;
 
   return (

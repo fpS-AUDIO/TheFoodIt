@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import nutritionData from "../../../data/FNDDS_Nutrient_Values_2020.json";
 
-import { useMainContext } from "../../contexts/MainContext";
+import { useSelector } from "react-redux";
 
 import Button from "../../components/Button/Button";
 import FeatureIntro from "../../components/FeatureIntro/FeatureIntro";
@@ -15,8 +15,7 @@ import NutritionFinderResultRow from "../../components/NutritionFinderResultRow/
 import NutritionFinderResultDetailed from "../../components/NutritionFinderResultDetailed/NutritionFinderResultDetailed";
 
 function NutritionFinder() {
-  // Access to global state by using custom hook useMainContext
-  const { errorMessage } = useMainContext();
+  const appWrapper = useSelector((store) => store.appWrapper);
 
   // local state: initial object
   const initialState = {
@@ -89,7 +88,9 @@ function NutritionFinder() {
       </FeatureIntro>
 
       <div className={styles.wrapperBox}>
-        {errorMessage ? <ErrorMessage message={errorMessage} /> : null}
+        {appWrapper.errorMessage ? (
+          <ErrorMessage message={appWrapper.errorMessage} />
+        ) : null}
 
         <div className={styles.sourceDataBox}>
           <p className={styles.source}>

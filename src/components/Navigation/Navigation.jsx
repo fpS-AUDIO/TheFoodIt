@@ -1,17 +1,20 @@
-import { useEffect } from "react";
-import { NavLink } from "react-router-dom";
-
 import styles from "./Navigation.module.css";
-
-import { useMainContext } from "../../contexts/MainContext";
 import Logo from "../Logo/Logo";
 
-function Navigation() {
-  // dispatch of useReducer function from custom hook context provider
-  const { dispatch, isMenuOpened, isDesktop } = useMainContext();
+import { useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
-  // previous version:
-  // const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 900);
+// importing action creators
+import { toggleMenu, closeMenu } from "../../store/slices/navigationSlice";
+import { setIsDesktop } from "../../store/slices/appWrapperSlice";
+
+function Navigation() {
+  // redux
+  // const { appWrapper, navigation } = useSelector((reduxStore) => reduxStore);
+  const appWrapper = useSelector((state) => state.appWrapper);
+  const navigation = useSelector((state) => state.navigation);
+  const dispatch = useDispatch();
 
   // useEffect which event listener to change state if using desktop or mobile basing on media query
   useEffect(() => {
@@ -21,7 +24,7 @@ function Navigation() {
     // change desktop/mobile version (managed by useReducer)
     function handleMediaQueryChange(e) {
       // accepts boolean (event.boolean)
-      dispatch({ type: "SET_IS_DESKTOP", payload: e.matches });
+      dispatch(setIsDesktop(e.matches));
     }
 
     mediaQuery.addEventListener("change", handleMediaQueryChange);
@@ -30,22 +33,26 @@ function Navigation() {
     return () => {
       mediaQuery.removeEventListener("change", handleMediaQueryChange);
     };
-  }, [dispatch]);
+  }, []);
 
   // toggle menu opened/closed (managed by useReducer)
   function toggleCheckbox() {
-    dispatch({ type: "TOGGLE_MENU" });
+    dispatch(toggleMenu());
   }
 
   // close menu when a link is clicked
   function handleNavLinkClick() {
-    dispatch({ type: "MENU_CLOSED" });
+    dispatch(closeMenu());
   }
 
   return (
     <>
-      <div className={`${styles.navigation} ${isMenuOpened ? "opened" : ""} `}>
-        {!isDesktop ? <Logo /> : ""}
+      <div
+        className={`${styles.navigation} ${
+          navigation.isMenuOpened ? "opened" : ""
+        } `}
+      >
+        {!appWrapper.isDesktop ? <Logo /> : ""}
 
         <ul className={styles.navLinks}>
           <li className={styles.navItem}>
@@ -112,7 +119,7 @@ function Navigation() {
 
       <input
         type="checkbox"
-        checked={isMenuOpened}
+        checked={navigation.isMenuOpened}
         className={styles.menuBtn}
         id="id-menu-btn"
         onChange={toggleCheckbox}

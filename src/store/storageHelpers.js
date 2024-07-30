@@ -1,3 +1,5 @@
+import { clearErrorMessage, setErrorMessage } from "./slices/appWrapperSlice";
+
 const inMemoryStorage = {};
 
 // Returns boolean by checking if local storage is available
@@ -15,30 +17,26 @@ function isLocalStorageAvailable() {
 function setLocalStorageItem(key, value, errorHandler) {
   /*
     In this project:
-    - errorHandler should be dispatch function of useReducer which accepts object with 'type' and 'payload'
-    - "CLEAR_ERROR_MESSAGE" is the case of reducer to remove error
-    - "SET_ERROR_MESSAGE" is the case of reducer to add error 
+    - errorHandler should be dispatch function of Redux ToolKit
+    - clearErrorMessage() action function is the case of reducer to remove error
+    - setErrorMessage() action function is the case of reducer to add error 
   */
 
   try {
-    if (errorHandler) errorHandler({ type: "CLEAR_ERROR_MESSAGE" });
+    if (errorHandler) errorHandler(clearErrorMessage());
     localStorage.setItem(key, JSON.stringify(value));
   } catch (e) {
     if (e.name === "QuotaExceededError") {
       console.error("Local storage is full.");
       if (errorHandler) {
-        errorHandler({
-          type: "SET_ERROR_MESSAGE",
-          payload: "Local storage is full.",
-        });
+        errorHandler(setErrorMessage("Local storage is full."));
       }
     } else {
       console.error("Error setting local storage:", e);
       if (errorHandler) {
-        errorHandler({
-          type: "SET_ERROR_MESSAGE",
-          payload: `Error setting local storage: ${e.message}`,
-        });
+        errorHandler(
+          setErrorMessage(`Error setting local storage: ${e.message}`)
+        );
       }
     }
   }
@@ -59,10 +57,9 @@ function getLocalStorageItem(key, errorHandler) {
   } catch (e) {
     console.error("Error getting local storage item:", e);
     if (errorHandler) {
-      errorHandler({
-        type: "SET_ERROR_MESSAGE",
-        payload: `Error getting local storage item: ${e.message}`,
-      });
+      errorHandler(
+        setErrorMessage(`Error getting local storage item: ${e.message}`)
+      );
     }
     return null;
   }
@@ -83,10 +80,9 @@ function removeStorageItem(key, errorHandler) {
     } catch (e) {
       console.error("Error removing local storage item:", e);
       if (errorHandler) {
-        errorHandler({
-          type: "SET_ERROR_MESSAGE",
-          payload: `Error removing local storage item: ${e.message}`,
-        });
+        errorHandler(
+          setErrorMessage(`Error removing local storage item: ${e.message}`)
+        );
       }
     }
   } else {

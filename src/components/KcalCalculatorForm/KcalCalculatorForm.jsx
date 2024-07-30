@@ -1,14 +1,18 @@
-import { useState } from "react";
-
-import { useNavigate } from "react-router-dom";
-
 import styles from "./KcalCalculatorForm.module.css";
-import { useMainContext } from "../../contexts/MainContext";
+
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {
+  clearErrorMessage,
+  setErrorMessage,
+} from "../../store/slices/appWrapperSlice";
+import { setUserKcalData } from "../../store/slices/kcalCalculatorSlice";
+
 import Button from "../Button/Button";
 
 function KcalCalculatorForm() {
-  // useMainContext is custom hook to get access to the state (managed by useReducer)
-  const { dispatch } = useMainContext();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   // component's local state
@@ -47,7 +51,7 @@ function KcalCalculatorForm() {
     e.preventDefault();
 
     // first reset error
-    dispatch({ type: "CLEAR_ERROR_MESSAGE" });
+    dispatch(clearErrorMessage());
 
     // guard clause check the data for zeros
     if (
@@ -55,19 +59,17 @@ function KcalCalculatorForm() {
       Number(formData.height) <= 0 ||
       Number(formData.pal) <= 0
     ) {
-      dispatch({
-        type: "SET_ERROR_MESSAGE",
-        payload: "Please enter the data above zero.",
-      });
+      dispatch(setErrorMessage("Please enter the data above zero."));
       return;
     }
 
     // guard clause check the data if 18+
     if (Number(formData.age) < 18) {
-      dispatch({
-        type: "SET_ERROR_MESSAGE",
-        payload: "You need to be an adult (18+) to get a more accurate result.",
-      });
+      dispatch(
+        setErrorMessage(
+          "You need to be an adult (18+) to get a more accurate result."
+        )
+      );
       return;
     }
 
@@ -80,10 +82,12 @@ function KcalCalculatorForm() {
       Number(formData.age) < 18 ||
       Number(formData.age) > 100
     ) {
-      dispatch({
-        type: "SET_ERROR_MESSAGE",
-        payload: "Please enter realistic values for weight, height, and age.",
-      });
+      dispatch(
+        setErrorMessage(
+          "Please enter realistic values for weight, height, and age."
+        )
+      );
+
       return;
     }
 
@@ -98,11 +102,8 @@ function KcalCalculatorForm() {
     };
 
     // update the global state with form data
-    dispatch({
-      type: "SET_USER_KCAL_FORM_DATA",
-      payload: userDataForm,
-      errorHandler: dispatch,
-    });
+
+    dispatch(setUserKcalData(userDataForm));
 
     // reset the form
     resetFormData();

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "./Homepage.module.css";
 
 // contexts/state
-import { useMainContext } from "../../contexts/MainContext";
+import { useSelector } from "react-redux";
 
 // add files
 import videoSrc from "../../assets/video-soia-cooked.mp4";
@@ -17,7 +17,7 @@ import Button from "../../components/Button/Button";
 import Footer from "../../components/Footer/Footer";
 
 function Homepage() {
-  const { errorMessage } = useMainContext();
+  const appWrapper = useSelector((store) => store.appWrapper);
 
   // useNavigate just returns function to chnage route
   const navigate = useNavigate();
@@ -63,7 +63,9 @@ function Homepage() {
             Try the Food Cost Calculator Now
           </Button>
         </div>
-        {errorMessage ? <ErrorMessage message={errorMessage} /> : null}
+        {appWrapper.errorMessage ? (
+          <ErrorMessage message={appWrapper.errorMessage} />
+        ) : null}
       </div>
       <Footer />
     </>

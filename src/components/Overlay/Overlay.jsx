@@ -1,11 +1,13 @@
 import styles from "./Overlay.module.css";
-import { useMainContext } from "../../contexts/MainContext";
+
+import { useDispatch } from "react-redux";
+import { closeMenu } from "../../store/slices/navigationSlice";
 
 function Overlay() {
-  const { dispatch } = useMainContext();
+  const dispatch = useDispatch();
 
   function handleClickOnOverlay() {
-    dispatch({ type: "MENU_CLOSED" });
+    dispatch(closeMenu());
   }
 
   return (

@@ -1,5 +1,14 @@
-import { useCallback, useState, useMemo } from "react";
 import styles from "./FoodCost.module.css";
+
+import { useCallback, useState, useMemo } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+import {
+  clearErrorMessage,
+  setErrorMessage,
+} from "../../store/slices/appWrapperSlice";
+import { updateFoodCostData } from "../../store/slices/foodCostSlice";
+
 import {
   allowedUnits,
   unitPriceConversion,
@@ -9,7 +18,7 @@ import {
   calculateIngredientCost,
   calculateFoodCostPercentage,
 } from "./FoodCostHelper";
-import { useMainContext } from "../../contexts/MainContext";
+
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import FeatureIntro from "../../components/FeatureIntro/FeatureIntro";
 import FoodCostIngredientRow from "../../components/FoodCostIngredientRow/FoodCostIngredientRow";
@@ -82,7 +91,9 @@ import FoodCostResults from "../../components/FoodCostResults/FoodCostResults";
 
 function FoodCost() {
   // Global State
-  const { dispatch, errorMessage, userFoodCostData } = useMainContext();
+  const dispatch = useDispatch();
+  const appWrapper = useSelector((store) => store.appWrapper);
+  const foodCost = useSelector((store) => store.foodCost);
 
   // Local state initialization using useMemo for memoization
   const initialState = useMemo(
@@ -270,22 +281,18 @@ function FoodCost() {
     // Validate inputs
     const error = validateInputs();
     if (error) {
-      dispatch({ type: "SET_ERROR_MESSAGE", payload: error });
+      dispatch(setErrorMessage(error));
       return;
     }
 
     // Clear any existing error messages
-    dispatch({ type: "CLEAR_ERROR_MESSAGE" });
+    dispatch(clearErrorMessage());
 
     // Create the actualFoodCostData object
     const actualFoodCostData = createActualFoodCostData(localState);
 
     // Update global state with the calculated actualFoodCostData
-    dispatch({
-      type: "UPDATE_USER_FOODCOST_DATA",
-      payload: actualFoodCostData,
-      errorHandler: dispatch,
-    });
+    dispatch(updateFoodCostData(actualFoodCostData));
 
     // Reset the form
     setLocalState(initialState);
@@ -300,10 +307,12 @@ function FoodCost() {
         important calculations.
       </FeatureIntro>
 
-      {errorMessage ? <ErrorMessage message={errorMessage} /> : null}
+      {appWrapper.errorMessage ? (
+        <ErrorMessage message={appWrapper.errorMessage} />
+      ) : null}
 
       <div className={styles.wrapper}>
-        {userFoodCostData ? (
+        {foodCost.userFoodCostData ? (
           <FoodCostResults />
         ) : (
           <form className={styles.contentBox} onSubmit={handleSubmitFoodCost}>

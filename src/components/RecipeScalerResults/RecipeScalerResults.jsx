@@ -1,26 +1,34 @@
 import styles from "./RecipeScalerResults.module.css";
+
 import { generatePDF } from "./RecipeScalerResultsPdfHelper";
-import { useMainContext } from "../../contexts/MainContext";
+
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setIsUserSubmittedRecipeScaler,
+  updateRecipeScalerIngredients,
+  updateRecipeScalerTotPortions,
+} from "../../store/slices/recipeScalerSlice";
+
 import Button from "../Button/Button";
 import Footer from "../Footer/Footer";
 import Disclairmer from "../Disclairmer/Disclairmer";
 
 function RecipeScalerResults() {
-  const { dispatch, updatedRecipeScalerIngredients, recipeScalerTotPortions } =
-    useMainContext();
+  const dispatch = useDispatch();
+  const recipeScaler = useSelector((store) => store.recipeScaler);
 
   function handleRecalculate() {
-    dispatch({ type: "UPDATE_RECIPESCALER_TOT_PORTIONS", payload: 0 });
-    dispatch({ type: "UPDATE_NEW_RECIPESCALER_INGREDIENTS", payload: [] });
-    dispatch({ type: "SET_IS_USER_SUBMITTED_RECIPESCALER", payload: false });
+    dispatch(updateRecipeScalerTotPortions(0));
+    dispatch(updateRecipeScalerIngredients([]));
+    dispatch(setIsUserSubmittedRecipeScaler(false));
   }
 
   // path to logo file
   const logoPath = `${import.meta.env.VITE_PUBLIC_URL}TheFoodIt-logo.png`;
   function handleGeneratePDF() {
     generatePDF(
-      updatedRecipeScalerIngredients,
-      recipeScalerTotPortions,
+      recipeScaler.updatedRecipeScalerIngredients,
+      recipeScaler.recipeScalerTotPortions,
       logoPath
     );
   }
@@ -28,9 +36,9 @@ function RecipeScalerResults() {
   return (
     <div className={styles.resultsContainer}>
       <h2 className={styles.title}>
-        Ingredients per {recipeScalerTotPortions} portions:
+        Ingredients per {recipeScaler.recipeScalerTotPortions} portions:
       </h2>
-      {updatedRecipeScalerIngredients.map((ingredient, index) => (
+      {recipeScaler.updatedRecipeScalerIngredients.map((ingredient, index) => (
         <div key={index} className={styles.resultsRow}>
           <p className={styles.pLabel}>{ingredient.name}</p>
           <p className={styles.pQuantity}>{ingredient.quantity}</p>

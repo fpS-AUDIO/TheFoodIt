@@ -1,11 +1,25 @@
-import { useCallback, useMemo, useState } from "react";
 import styles from "./RecipeScaler.module.css";
-import { useMainContext } from "../../contexts/MainContext";
+
+import { useCallback, useMemo, useState } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+import {
+  clearErrorMessage,
+  setErrorMessage,
+} from "../../store/slices/appWrapperSlice";
+
 import {
   validatePortionsFields,
   validateIngredientsScalerSubmit,
   recalcNewIngredientsQuantities,
 } from "./recipeScalerHelpers";
+
+import {
+  setIsUserSubmittedRecipeScaler,
+  updateRecipeScalerIngredients,
+  updateRecipeScalerTotPortions,
+} from "../../store/slices/recipeScalerSlice";
+
 import FeatureIntro from "../../components/FeatureIntro/FeatureIntro";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import RecipeIngredientsRow from "../../components/RecipeIngredientsRow/RecipeIngredientsRow";
@@ -17,9 +31,9 @@ import Footer from "../../components/Footer/Footer";
 const units = ["ml", "l", "g", "kg", "piece", "tsp", "tbsp"];
 
 function RecipeScaler() {
-  // partially importing global state from custom hook
-  const { dispatch, errorMessage, isUserSubmittedRecipeScaler } =
-    useMainContext();
+  const dispatch = useDispatch();
+  const appWrapper = useSelector((store) => store.appWrapper);
+  const recipeScaler = useSelector((store) => store.recipeScaler);
 
   const initialState = useMemo(
     () => ({
@@ -107,7 +121,7 @@ function RecipeScaler() {
       e.preventDefault();
 
       // first remove error message to be sure
-      dispatch({ type: "CLEAR_ERROR_MESSAGE" });
+      dispatch(clearErrorMessage());
 
       // validations
       const isValid1 = validatePortionsFields(
@@ -115,21 +129,21 @@ function RecipeScaler() {
         Number(recipeData.desiredQuantityPortions)
       );
       if (!isValid1) {
-        dispatch({
-          type: "SET_ERROR_MESSAGE",
-          payload:
-            "Please enter valid portion numbers greater than zero for both initial and desired quantities.",
-        });
+        dispatch(
+          setErrorMessage(
+            "Please enter valid portion numbers greater than zero for both initial and desired quantities."
+          )
+        );
         return;
       }
 
       const isValid2 = validateIngredientsScalerSubmit(recipeData.ingredients);
       if (!isValid2) {
-        dispatch({
-          type: "SET_ERROR_MESSAGE",
-          payload:
-            "Oops! Please check your inputs. Ensure all ingredient names are filled, quantities are positive numbers, and units are selected correctly.",
-        });
+        dispatch(
+          setErrorMessage(
+            "Oops! Please check your inputs. Ensure all ingredient names are filled, quantities are positive numbers, and units are selected correctly."
+          )
+        );
         return;
       }
 
@@ -141,20 +155,15 @@ function RecipeScaler() {
       );
 
       // update global state
-      dispatch({
-        type: "UPDATE_RECIPESCALER_TOT_PORTIONS",
-        payload: Number(recipeData.desiredQuantityPortions),
-      });
+      dispatch(
+        updateRecipeScalerTotPortions(
+          Number(recipeData.desiredQuantityPortions)
+        )
+      );
 
-      dispatch({
-        type: "UPDATE_NEW_RECIPESCALER_INGREDIENTS",
-        payload: updatedIngredients,
-      });
+      dispatch(updateRecipeScalerIngredients(updatedIngredients));
 
-      dispatch({
-        type: "SET_IS_USER_SUBMITTED_RECIPESCALER",
-        payload: true,
-      });
+      dispatch(setIsUserSubmittedRecipeScaler(true));
 
       // reset input fields
       setRecipeData(initialState);
@@ -170,9 +179,11 @@ function RecipeScaler() {
         ingredients for you.
       </FeatureIntro>
 
-      {errorMessage ? <ErrorMessage message={errorMessage} /> : null}
+      {appWrapper.errorMessage ? (
+        <ErrorMessage message={appWrapper.errorMessage} />
+      ) : null}
 
-      {isUserSubmittedRecipeScaler ? (
+      {recipeScaler.isUserSubmittedRecipeScaler ? (
         <RecipeScalerResults />
       ) : (
         <div className={styles.formContainer}>

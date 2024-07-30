@@ -1,7 +1,7 @@
 import styles from "./KcalCalculator.module.css";
 import { Outlet } from "react-router-dom";
 
-import { useMainContext } from "../../contexts/MainContext";
+import { useSelector } from "react-redux";
 // import Advertisement01 from "../../components/Advertisement01/Advertisement01";
 
 import KcalNavigation from "../../components/KcalNavigation/KcalNavigation";
@@ -13,7 +13,7 @@ import Disclairmer from "../../components/Disclairmer/Disclairmer";
 import Footer from "../../components/Footer/Footer";
 
 function KcalCalculator() {
-  const { errorMessage } = useMainContext();
+  const appWrapper = useSelector((store) => store.appWrapper);
 
   return (
     <>
@@ -27,7 +27,11 @@ function KcalCalculator() {
           informed decisions about your nutrition.
         </FeatureIntro>
 
-        {errorMessage ? <ErrorMessage message={errorMessage} /> : ""}
+        {appWrapper.errorMessage ? (
+          <ErrorMessage message={appWrapper.errorMessage} />
+        ) : (
+          ""
+        )}
         <KcalNavigation />
         <div className={styles.content}>
           {/* Outlet will be replaced with nested Route component */}

@@ -2,21 +2,13 @@
 import { Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// CONTEXTS
-import { MainContextProvider } from "./contexts/MainContext";
+// REDUX TOOLKIT
+import { Provider } from "react-redux";
+import store from "./store/store";
 
 // CUSTOM PAGE COMPONENTS
 import ProtectedRoute from "./pages/ProtectedRoute/ProtectedRoute";
 import Homepage from "./pages/Homepage/Homepage";
-
-// import FoodCost from "./pages/FoodCost/FoodCost";
-// import KcalCalculator from "./pages/KcalCalculator/KcalCalculator";
-// import RecipeScaler from "./pages/RecipeScaler/RecipeScaler";
-// import UnitConverter from "./pages/UnitConverter/UnitConverter";
-// import NutritionFinder from "./pages/NutritionFinder/NutritionFinder";
-// import About from "./pages/About/About";
-// import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
-// import PageNotFound from "./pages/PageNotFound/PageNotFound";
 
 const FoodCost = lazy(() => import("./pages/FoodCost/FoodCost"));
 const KcalCalculator = lazy(() =>
@@ -38,13 +30,12 @@ import Navbar from "./components/Navbar/Navbar";
 import MainContent from "./components/MainContent/MainContent";
 import KcalStats from "./components/KcalStats/KcalStats";
 import KcalCalculatorForm from "./components/KcalCalculatorForm/KcalCalculatorForm";
-
-// import Spinner from "./components/Spinner/Spinner";
 import SpinnerFullPage from "./components/SpinnerFullPage/SpinnerFullPage";
 
 function App() {
   return (
-    <MainContextProvider>
+    <Provider store={store}>
+      {/* <MainContextProvider> */}
       <AppWrapper>
         <BrowserRouter>
           {/* Suspense for lazy loading elements to reduce bundle size */}
@@ -108,7 +99,8 @@ function App() {
           </Suspense>
         </BrowserRouter>
       </AppWrapper>
-    </MainContextProvider>
+      {/* </MainContextProvider> */}
+    </Provider>
   );
 }
 

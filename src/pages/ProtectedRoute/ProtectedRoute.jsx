@@ -1,13 +1,14 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { useMainContext } from "../../contexts/MainContext";
+import { useSelector } from "react-redux";
 
 function ProtectedRoute({ children }) {
-  const { isUserAcceptedPrivacy } = useMainContext();
+  const appWrapper = useSelector(store => store.appWrapper)
+
   // useLocation returns the current location object with current URL
   const location = useLocation();
 
   // Redirect to home if the user hasn't accepted the privacy notice
-  if (!isUserAcceptedPrivacy) {
+  if (!appWrapper.isUserAcceptedPrivacy) {
     return <Navigate to="/" state={{ from: location }} replace />;
   }
 
