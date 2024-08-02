@@ -7,11 +7,12 @@ import {
   setIsUserSubmittedRecipeScaler,
   updateRecipeScalerIngredients,
   updateRecipeScalerTotPortions,
-} from "../../store/slices/recipeScalerSlice";
+} from "../../../store/slices/recipeScalerSlice";
 
-import Button from "../Button/Button";
-import Footer from "../Footer/Footer";
-import Disclairmer from "../Disclairmer/Disclairmer";
+// general components
+import Button from "../../../components/Button/Button";
+import Footer from "../../../components/Footer/Footer";
+import Disclairmer from "../../../components/Disclairmer/Disclairmer";
 
 function RecipeScalerResults() {
   const dispatch = useDispatch();

@@ -1,6 +1,7 @@
 import styles from "./PrivacyPolicy.module.css";
-import Footer from "../../components/Footer/Footer";
+
 import ButtonBack from "../../components/ButtonBack/ButtonBack";
+import Footer from "../../components/Footer/Footer";
 
 function PrivacyPolicy() {
   return (

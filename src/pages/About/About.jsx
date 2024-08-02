@@ -21,7 +21,7 @@ function About() {
       <div className={`${styles.block} ${styles.blockUnderlined}`}>
         <h3 className={styles.secondaryTitle}>My Story</h3>
         <p className={styles.content}>
-          Hi, I'm Alexander Ivanov. I started my career as a chef and later
+          Hi, I&apos;m Alexander Ivanov. I started my career as a chef and later
           transitioned into web development. My journey in the kitchen taught me
           invaluable lessons in organization, creativity, and problem-solving,
           which I now bring to the tech world. TheFoodIt is a product of my
@@ -35,12 +35,12 @@ function About() {
       <div className={`${styles.block} ${styles.blockUnderlined}`}>
         <h3 className={styles.secondaryTitle}>My Vision</h3>
         <p className={styles.content}>
-          I'm dedicated to continuous learning and innovation. Looking ahead, I
-          plan to introduce new features that will help chefs and cooks manage
-          their kitchens more efficiently. My goal is to develop a comprehensive
-          platform that not only simplifies cooking processes but also fosters
-          creativity and precision. I highly value your feedback and strive to
-          tailor TheFoodIt to better serve your needs.
+          I&apos;m dedicated to continuous learning and innovation. Looking
+          ahead, I plan to introduce new features that will help chefs and cooks
+          manage their kitchens more efficiently. My goal is to develop a
+          comprehensive platform that not only simplifies cooking processes but
+          also fosters creativity and precision. I highly value your feedback
+          and strive to tailor TheFoodIt to better serve your needs.
         </p>
       </div>
 
@@ -71,8 +71,9 @@ function About() {
       <div className={styles.block}>
         <h3 className={styles.secondaryTitle}>Get in Touch</h3>
         <p className={styles.content}>
-          I'd love to hear from you! Whether you have feedback, questions, or
-          simply want to connect, don't hesitate to reach out. Follow me on{" "}
+          I&apos;d love to hear from you! Whether you have feedback, questions,
+          or simply want to connect, don&apos;t hesitate to reach out. Follow me
+          on{" "}
           <a target="_blank" href="https://www.instagram.com/mr.alex_i/">
             Instagram
           </a>

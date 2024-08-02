@@ -1,8 +1,9 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Outlet } from "react-router-dom";
 
-function ProtectedRoute({ children }) {
-  const appWrapper = useSelector(store => store.appWrapper)
+function ProtectedRoute() {
+  const appWrapper = useSelector((store) => store.appWrapper);
 
   // useLocation returns the current location object with current URL
   const location = useLocation();
@@ -12,7 +13,7 @@ function ProtectedRoute({ children }) {
     return <Navigate to="/" state={{ from: location }} replace />;
   }
 
-  return children;
+  return <Outlet />;
 }
 
 export default ProtectedRoute;

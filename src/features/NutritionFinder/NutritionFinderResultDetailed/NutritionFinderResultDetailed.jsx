@@ -1,5 +1,6 @@
 import styles from "./NutritionFinderResultDetailed.module.css";
-import { nutritionHeaders } from "../../../data/Headers_FNDDS_Nutrient_Values_2020";
+
+import { nutritionHeaders } from "../../../../data/Headers_FNDDS_Nutrient_Values_2020";
 
 function NutritionFinderResultDetailed({ dish }) {
   // console.log(dish);

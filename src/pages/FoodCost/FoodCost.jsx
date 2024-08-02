@@ -19,14 +19,17 @@ import {
   calculateFoodCostPercentage,
 } from "./FoodCostHelper";
 
+// general components
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import FeatureIntro from "../../components/FeatureIntro/FeatureIntro";
-import FoodCostIngredientRow from "../../components/FoodCostIngredientRow/FoodCostIngredientRow";
 import Footer from "../../components/Footer/Footer";
 import Disclairmer from "../../components/Disclairmer/Disclairmer";
 import Button from "../../components/Button/Button";
-import FoodCostAccordian from "../../components/FoodCostAccordian/FoodCostAccordian";
-import FoodCostResults from "../../components/FoodCostResults/FoodCostResults";
+
+// feature components
+import FoodCostIngredientRow from "../../features/FoodCost/FoodCostIngredientRow/FoodCostIngredientRow";
+import FoodCostAccordian from "../../features/FoodCost/FoodCostAccordian/FoodCostAccordian";
+import FoodCostResults from "../../features/FoodCost/FoodCostResults/FoodCostResults";
 
 /*  ----- COMPONENT WORKFLOW DESCRIPTION -----
 
@@ -306,7 +309,6 @@ function FoodCost() {
         manage your budget and pricing with confidence. Consider verifying
         important calculations.
       </FeatureIntro>
-
       {appWrapper.errorMessage ? (
         <ErrorMessage message={appWrapper.errorMessage} />
       ) : null}
@@ -369,6 +371,7 @@ function FoodCost() {
                 <p className={styles.label}>servings</p>
               </div>
             </div>
+
             <div className={styles.contentBody}>
               {localState.ingredients.map((ingredient, index) => (
                 <FoodCostIngredientRow

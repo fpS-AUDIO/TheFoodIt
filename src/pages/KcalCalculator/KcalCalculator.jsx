@@ -4,13 +4,15 @@ import { Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 // import Advertisement01 from "../../components/Advertisement01/Advertisement01";
 
-import KcalNavigation from "../../components/KcalNavigation/KcalNavigation";
+// general components
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import Footer from "../../components/Footer/Footer";
+import Disclairmer from "../../components/Disclairmer/Disclairmer";
 import FeatureIntro from "../../components/FeatureIntro/FeatureIntro";
 
-import KcalAccordian from "../../components/KcalAccordian/KcalAccordian";
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-import Disclairmer from "../../components/Disclairmer/Disclairmer";
-import Footer from "../../components/Footer/Footer";
+// feature components
+import KcalNavigation from "../../features/KcalCalculator/KcalNavigation/KcalNavigation";
+import KcalAccordian from "../../features/KcalCalculator/KcalAccordian/KcalAccordian";
 
 function KcalCalculator() {
   const appWrapper = useSelector((store) => store.appWrapper);

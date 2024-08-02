@@ -6,10 +6,11 @@ import { useDispatch } from "react-redux";
 import {
   clearErrorMessage,
   setErrorMessage,
-} from "../../store/slices/appWrapperSlice";
-import { setUserKcalData } from "../../store/slices/kcalCalculatorSlice";
+} from "../../../store/slices/appWrapperSlice";
+import { setUserKcalData } from "../../../store/slices/kcalCalculatorSlice";
 
-import Button from "../Button/Button";
+import Button from "../../../components/Button/Button";
+
 
 function KcalCalculatorForm() {
   const dispatch = useDispatch();

@@ -3,11 +3,11 @@ import convert from "convert-units";
 
 import styles from "./UnitConverter.module.css";
 
-// import Advertisement01 from "../../components/Advertisement01/Advertisement01";
-
+// general components
 import FeatureIntro from "../../components/FeatureIntro/FeatureIntro";
 import Button from "../../components/Button/Button";
 import Footer from "../../components/Footer/Footer";
+// import Advertisement01 from "../../components/Advertisement01/Advertisement01";
 
 const kitchenUnits = [
   "tsp", // Teaspoons

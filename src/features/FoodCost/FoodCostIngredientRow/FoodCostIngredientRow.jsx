@@ -1,16 +1,6 @@
 import styles from "./FoodCostIngredientRow.module.css";
-import { unitPriceConversion } from "../../pages/FoodCost/FoodCostHelper";
 
-/* IMPORTED object to convert units to corresponding price units
-const unitPriceConversion = {
-  ml: "L",
-  l: "L",
-  g: "KG",
-  kg: "KG",
-  piece: "piece",
-};  */
-
-
+import { unitPriceConversion } from "../../../pages/FoodCost/FoodCostHelper";
 
 function FoodCostIngredientRow({
   index,

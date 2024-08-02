@@ -1,11 +1,15 @@
 import styles from "./FoodCostResults.module.css";
-
-import { useSelector, useDispatch } from "react-redux";
-import { updateFoodCostData } from "../../store/slices/foodCostSlice";
-
 import { generatePDF } from "./FoodCostResultsPdfHelper";
+
+// redux
+import { useSelector, useDispatch } from "react-redux";
+import { updateFoodCostData } from "../../../store/slices/foodCostSlice";
+
+// general components
+import Button from "../../../components/Button/Button";
+
+// feature components
 import FoodCostResultsRow from "../FoodCostResultsRow/FoodCostResultsRow";
-import Button from "../Button/Button";
 
 function FoodCostResults() {
   // global state

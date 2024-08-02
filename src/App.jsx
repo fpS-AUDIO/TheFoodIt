@@ -1,8 +1,8 @@
 // EXTERNAL LIBRARIES
 import { Suspense, lazy } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-// REDUX TOOLKIT
+// REDUX (TOOLKIT)
 import { Provider } from "react-redux";
 import store from "./store/store";
 
@@ -10,6 +10,7 @@ import store from "./store/store";
 import ProtectedRoute from "./pages/ProtectedRoute/ProtectedRoute";
 import Homepage from "./pages/Homepage/Homepage";
 
+// LAZY LOADING PAGES
 const FoodCost = lazy(() => import("./pages/FoodCost/FoodCost"));
 const KcalCalculator = lazy(() =>
   import("./pages/KcalCalculator/KcalCalculator")
@@ -24,82 +25,84 @@ const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy/PrivacyPolicy"));
 const PageNotFound = lazy(() => import("./pages/PageNotFound/PageNotFound"));
 
 // CUSTOM COMPONENTS
-import PrivacyNotice from "./components/PrivacyNotice/PrivacyNotice";
 import AppWrapper from "./components/AppWrapper/AppWrapper";
-import Navbar from "./components/Navbar/Navbar";
 import MainContent from "./components/MainContent/MainContent";
-import KcalStats from "./components/KcalStats/KcalStats";
-import KcalCalculatorForm from "./components/KcalCalculatorForm/KcalCalculatorForm";
 import SpinnerFullPage from "./components/SpinnerFullPage/SpinnerFullPage";
+
+// CUSTOM FEATURE COMPONENTS
+import KcalStats from "./features/KcalCalculator/KcalStats/KcalStats";
+import KcalCalculatorForm from "./features/KcalCalculator/KcalCalculatorForm/KcalCalculatorForm";
+
+const router = createBrowserRouter([
+  {
+    element: <AppWrapper />,
+    children: [
+      {
+        element: <MainContent />,
+        children: [
+          {
+            element: <Homepage />,
+            path: "/",
+          },
+          {
+            element: <PrivacyPolicy />,
+            path: "/privacyPolicy",
+          },
+          {
+            element: <ProtectedRoute />,
+            children: [
+              {
+                element: <FoodCost />,
+                path: "/foodcost",
+              },
+              {
+                element: <KcalCalculator />,
+                path: "/kcalCalculator",
+                children: [
+                  {
+                    element: <KcalStats />,
+                    path: "/kcalCalculator/stats",
+                  },
+                  {
+                    element: <KcalCalculatorForm />,
+                    path: "/kcalCalculator/calculator",
+                  },
+                ],
+              },
+              {
+                element: <RecipeScaler />,
+                path: "/recipescaler",
+              },
+              {
+                element: <UnitConverter />,
+                path: "/unitconverter",
+              },
+              {
+                element: <NutritionFinder />,
+                path: "/nutritionfinder",
+              },
+              {
+                element: <About />,
+                path: "/about",
+              },
+              {
+                element: <PageNotFound />,
+                path: "*",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+]);
 
 function App() {
   return (
     <Provider store={store}>
-      {/* <MainContextProvider> */}
-      <AppWrapper>
-        <BrowserRouter>
-          {/* Suspense for lazy loading elements to reduce bundle size */}
-          <Suspense fallback={<SpinnerFullPage />}>
-            <PrivacyNotice />
-            <Navbar />
-            <MainContent>
-              <Routes>
-                <Route path="/" element={<Homepage />} />
-                <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
-                <Route
-                  path="/*"
-                  element={
-                    <ProtectedRoute>
-                      {/*/////--- PROTECTED ROUTES ---/////*/}
-                      <Routes>
-                        {/* suspense for lazy loading of components */}
-
-                        <Route path="/foodcost" element={<FoodCost />} />
-                        <Route
-                          path="/kcalCalculator"
-                          element={<KcalCalculator />}
-                        >
-                          {/*/////--- NESTED OF 'kcalCalculator' ---/////*/}
-
-                          {/* <Route index element={<KcalStats />} /> */}
-
-                          <Route path="stats" element={<KcalStats />} />
-
-                          <Route
-                            path="calculator"
-                            element={<KcalCalculatorForm />}
-                          />
-
-                          {/*/////--- FINISHED HERE NESTED OF 'kcalCalculator' ---/////*/}
-                        </Route>
-                        <Route
-                          path="/recipescaler"
-                          element={<RecipeScaler />}
-                        />
-                        <Route
-                          path="/unitconverter"
-                          element={<UnitConverter />}
-                        />
-
-                        <Route
-                          path="/nutritionfinder"
-                          element={<NutritionFinder />}
-                        />
-                        <Route path="/about" element={<About />} />
-
-                        <Route path="*" element={<PageNotFound />} />
-                      </Routes>
-
-                      {/*/////--- FINISHED HERE PROTECTED ROUTES ---/////*/}
-                    </ProtectedRoute>
-                  }
-                />
-              </Routes>
-            </MainContent>
-          </Suspense>
-        </BrowserRouter>
-      </AppWrapper>
-      {/* </MainContextProvider> */}
+      <Suspense fallback={<SpinnerFullPage />}>
+        <RouterProvider router={router} />
+      </Suspense>
     </Provider>
   );
 }

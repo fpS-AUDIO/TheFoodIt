@@ -20,13 +20,16 @@ import {
   updateRecipeScalerTotPortions,
 } from "../../store/slices/recipeScalerSlice";
 
+// general components
 import FeatureIntro from "../../components/FeatureIntro/FeatureIntro";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-import RecipeIngredientsRow from "../../components/RecipeIngredientsRow/RecipeIngredientsRow";
-import RecipeScalerResults from "../../components/RecipeScalerResults/RecipeScalerResults";
 import Button from "../../components/Button/Button";
 import Disclairmer from "../../components/Disclairmer/Disclairmer";
 import Footer from "../../components/Footer/Footer";
+
+// feature components
+import RecipeIngredientsRow from "../../features/RecipeScaler/RecipeIngredientsRow/RecipeIngredientsRow";
+import RecipeScalerResults from "../../features/RecipeScaler/RecipeScalerResults/RecipeScalerResults";
 
 const units = ["ml", "l", "g", "kg", "piece", "tsp", "tbsp"];
 

@@ -1,7 +1,10 @@
-import { useEffect, useState } from "react";
 import styles from "./KcalStats.module.css";
-import Button from "../Button/Button";
+
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+
 import { generatePDF } from "./KcalStatsPdfHelper";
+
 import {
   calculateBMI,
   calculateBMR,
@@ -9,7 +12,7 @@ import {
   calculateMacronutrientDistribution,
 } from "./calculateHelpers";
 
-import { useSelector } from "react-redux";
+import Button from "../../../components/Button/Button";
 
 function KcalStats() {
   const kcalCalculator = useSelector((store) => store.kcalCalculator);
@@ -54,7 +57,10 @@ function KcalStats() {
     if (kcalCalculator.isUserKcalFormDataLoaded) {
       updateStats(kcalCalculator.userKcalFormData);
     }
-  }, [kcalCalculator.isUserKcalFormDataLoaded, kcalCalculator.userKcalFormData]);
+  }, [
+    kcalCalculator.isUserKcalFormDataLoaded,
+    kcalCalculator.userKcalFormData,
+  ]);
 
   // path to logo file
   const logoPath = `${import.meta.env.VITE_PUBLIC_URL}TheFoodIt-logo.png`;

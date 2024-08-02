@@ -1,24 +1,24 @@
 // import { useEffect } from "react";
 import styles from "./AppWrapper.module.css";
-// import { useMainContext } from "../../contexts/MainContext";
+import { Outlet, useNavigation } from "react-router-dom";
 
-function AppWrapper({ children }) {
-  // custom hook to get access to the global state
-  // const { dispatch } = useMainContext();
+import PrivacyNotice from "../PrivacyNotice/PrivacyNotice";
+import Navbar from "../Navbar/Navbar";
+import Spinner from "../Spinner/Spinner";
 
-  // useEffect(
-  //   function () {
-  //     // try to get boolean value if user accepted privacy from local storage
-  //     const isUserAcceptedPrivacy =
-  //       localStorage.getItem("TheFoodItUserAcceptedPrivacy") === "true";
+function AppWrapper() {
+  const navigation = useNavigation();
+  const isLoading = navigation.state === `loading`;
 
-  //     // if user accepted update the state
-  //     if (isUserAcceptedPrivacy) dispatch({ type: "USER_ACCEPTED_PRIVACY" });
-  //   },
-  //   [dispatch]
-  // );
+  return (
+    <div className={styles.wrapper}>
+      <Navbar />
+      {isLoading && <Spinner />}
+      <PrivacyNotice />
 
-  return <div className={styles.wrapper}>{children}</div>;
+      <Outlet />
+    </div>
+  );
 }
 
 export default AppWrapper;
