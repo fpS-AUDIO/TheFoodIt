@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { setStorageItem, getStorageItem } from "../storageHelpers";
-import { setErrorMessage } from "./appWrapperSlice"; // Import the error handling action from appWrapperSlice
+import { setErrorMessage } from "./appLayoutSlice"; // Import the error handling action from appWrapperSlice
 
 // Helper function to determine if a value is non-null and defined
 function getBooleanValue(value) {

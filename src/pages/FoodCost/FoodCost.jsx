@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   clearErrorMessage,
   setErrorMessage,
-} from "../../store/slices/appWrapperSlice";
+} from "../../store/slices/appLayoutSlice";
 import { updateFoodCostData } from "../../store/slices/foodCostSlice";
 
 import {
@@ -95,7 +95,7 @@ import FoodCostResults from "../../features/FoodCost/FoodCostResults/FoodCostRes
 function FoodCost() {
   // Global State
   const dispatch = useDispatch();
-  const appWrapper = useSelector((store) => store.appWrapper);
+  const appLayout = useSelector((store) => store.appLayout);
   const foodCost = useSelector((store) => store.foodCost);
 
   // Local state initialization using useMemo for memoization
@@ -309,8 +309,8 @@ function FoodCost() {
         manage your budget and pricing with confidence. Consider verifying
         important calculations.
       </FeatureIntro>
-      {appWrapper.errorMessage ? (
-        <ErrorMessage message={appWrapper.errorMessage} />
+      {appLayout.errorMessage ? (
+        <ErrorMessage message={appLayout.errorMessage} />
       ) : null}
 
       <div className={styles.wrapper}>

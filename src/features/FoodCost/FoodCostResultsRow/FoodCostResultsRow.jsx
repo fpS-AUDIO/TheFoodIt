@@ -31,7 +31,9 @@ function FoodCostResultsRow({ ingredient }) {
       </p>
       <p
         className={`${styles.ingredientStats} ${styles.secondChild}`}
-      >{`${onePortionValue} ${bestUnit} at ${ingredient.price} € / ${ingredient.priceUnit}`}</p>
+      >{`${onePortionValue.toFixed(2)} ${bestUnit} at ${ingredient.price} € / ${
+        ingredient.priceUnit
+      }`}</p>
       <p
         className={`${styles.ingredientStatsCost} ${styles.thirdChild}`}
       >{`${ingredient.finalCostPerPortion.toFixed(2)} €`}</p>

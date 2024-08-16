@@ -2,14 +2,14 @@ import styles from "./PrivacyNotice.module.css";
 
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { userAcceptedPrivacy } from "../../store/slices/appWrapperSlice";
+import { userAcceptedPrivacy } from "../../store/slices/appLayoutSlice";
 
 import Button from "../Button/Button";
 
 function PrivacyNotice() {
   // redux
   const dispatch = useDispatch();
-  const appWrapper = useSelector((store) => store.appWrapper);
+  const appLayout = useSelector((store) => store.appLayout);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -22,7 +22,7 @@ function PrivacyNotice() {
   }
   // check if used accepted privacy or reading privacy policy
   if (
-    appWrapper.isUserAcceptedPrivacy ||
+    appLayout.isUserAcceptedPrivacy ||
     location.pathname === "/PrivacyPolicy"
   )
     return null;

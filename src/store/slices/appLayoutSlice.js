@@ -3,7 +3,7 @@ import { setStorageItem, getStorageItem } from "../storageHelpers";
 
 // Define an async thunk for handling user acceptance of privacy policy
 export const userAcceptedPrivacy = createAsyncThunk(
-  "appWrapper/userAcceptedPrivacy",
+  "appLayout/userAcceptedPrivacy",
   async (_, { rejectWithValue, dispatch }) => {
     try {
       // Attempt to set a local storage item indicating user has accepted the privacy policy
@@ -28,8 +28,8 @@ const initialState = {
   errorMessage: "",
 };
 
-const appWrapperSlice = createSlice({
-  name: "appWrapper",
+const appLayoutSlice = createSlice({
+  name: "appLayout",
   initialState,
   reducers: {
     // Reducer to set the state indicating whether the app is on a desktop
@@ -60,7 +60,7 @@ const appWrapperSlice = createSlice({
 
 // named exports actions
 export const { setIsDesktop, setErrorMessage, clearErrorMessage } =
-  appWrapperSlice.actions;
+  appLayoutSlice.actions;
 
 // default export for the reducer
-export default appWrapperSlice.reducer;
+export default appLayoutSlice.reducer;

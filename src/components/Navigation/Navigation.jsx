@@ -1,18 +1,33 @@
 import styles from "./Navigation.module.css";
-import Logo from "../Logo/Logo";
 
+// React Environment
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-// importing action creators
+// REDUX: importing action creators
 import { toggleMenu, closeMenu } from "../../store/slices/navigationSlice";
-import { setIsDesktop } from "../../store/slices/appWrapperSlice";
+import { setIsDesktop } from "../../store/slices/appLayoutSlice";
+
+// components
+import Logo from "../Logo/Logo";
+
+// React icons
+// ICONS USED: https://react-icons.github.io/react-icons/icons/hi/
+import {
+  HiOutlineHome,
+  HiOutlineChartPie,
+  HiOutlineCalculator,
+  HiOutlineScale,
+  HiOutlineSwitchHorizontal,
+  HiOutlineSearch,
+  HiOutlineInformationCircle,
+} from "react-icons/hi";
 
 function Navigation() {
   // redux
   // const { appWrapper, navigation } = useSelector((reduxStore) => reduxStore);
-  const appWrapper = useSelector((state) => state.appWrapper);
+  const appLayout = useSelector((state) => state.appLayout);
   const navigation = useSelector((state) => state.navigation);
   const dispatch = useDispatch();
 
@@ -52,16 +67,28 @@ function Navigation() {
           navigation.isMenuOpened ? "opened" : ""
         } `}
       >
-        {!appWrapper.isDesktop ? <Logo /> : ""}
+        <Logo />
 
         <ul className={styles.navLinks}>
           <li className={styles.navItem}>
             <NavLink
               onClick={handleNavLinkClick}
               className={styles.navLink}
+              to="/"
+            >
+              <HiOutlineHome />
+              <span>Homepage</span>
+            </NavLink>
+          </li>
+
+          <li className={styles.navItem}>
+            <NavLink
+              onClick={handleNavLinkClick}
+              className={styles.navLink}
               to="/foodcost"
             >
-              Food Cost
+              <HiOutlineChartPie />
+              <span>Food Cost</span>
             </NavLink>
           </li>
 
@@ -71,7 +98,8 @@ function Navigation() {
               className={styles.navLink}
               to="/kcalCalculator"
             >
-              kCalculator
+              <HiOutlineCalculator />
+              <span>kCalculator</span>
             </NavLink>
           </li>
 
@@ -81,7 +109,8 @@ function Navigation() {
               className={styles.navLink}
               to="/recipescaler"
             >
-              Recipe Scaler
+              <HiOutlineScale />
+              <span>Recipe Scaler</span>
             </NavLink>
           </li>
 
@@ -91,7 +120,8 @@ function Navigation() {
               className={styles.navLink}
               to="/unitconverter"
             >
-              UNIT CONVERTER
+              <HiOutlineSwitchHorizontal />
+              <span>UNIT CONVERTER</span>
             </NavLink>
           </li>
 
@@ -101,7 +131,8 @@ function Navigation() {
               className={styles.navLink}
               to="/nutritionfinder"
             >
-              Nutrition Finder
+              <HiOutlineSearch />
+              <span>Nutrition Finder</span>
             </NavLink>
           </li>
 
@@ -111,7 +142,8 @@ function Navigation() {
               className={styles.navLink}
               to="/about"
             >
-              about
+              <HiOutlineInformationCircle />
+              <span>about</span>
             </NavLink>
           </li>
         </ul>

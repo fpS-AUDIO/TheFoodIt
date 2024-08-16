@@ -1,4 +1,4 @@
-import { clearErrorMessage, setErrorMessage } from "./slices/appWrapperSlice";
+import { clearErrorMessage, setErrorMessage } from "./slices/appLayoutSlice";
 
 const inMemoryStorage = {};
 

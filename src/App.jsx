@@ -25,7 +25,7 @@ const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy/PrivacyPolicy"));
 const PageNotFound = lazy(() => import("./pages/PageNotFound/PageNotFound"));
 
 // CUSTOM COMPONENTS
-import AppWrapper from "./components/AppWrapper/AppWrapper";
+import AppLayout from "./components/AppLayout/AppLayout";
 import MainContent from "./components/MainContent/MainContent";
 import SpinnerFullPage from "./components/SpinnerFullPage/SpinnerFullPage";
 
@@ -35,7 +35,7 @@ import KcalCalculatorForm from "./features/KcalCalculator/KcalCalculatorForm/Kca
 
 const router = createBrowserRouter([
   {
-    element: <AppWrapper />,
+    element: <AppLayout />,
     children: [
       {
         element: <MainContent />,

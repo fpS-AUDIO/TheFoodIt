@@ -15,7 +15,7 @@ import KcalNavigation from "../../features/KcalCalculator/KcalNavigation/KcalNav
 import KcalAccordian from "../../features/KcalCalculator/KcalAccordian/KcalAccordian";
 
 function KcalCalculator() {
-  const appWrapper = useSelector((store) => store.appWrapper);
+  const appLayout = useSelector((store) => store.appLayout);
 
   return (
     <>
@@ -29,8 +29,8 @@ function KcalCalculator() {
           informed decisions about your nutrition.
         </FeatureIntro>
 
-        {appWrapper.errorMessage ? (
-          <ErrorMessage message={appWrapper.errorMessage} />
+        {appLayout.errorMessage ? (
+          <ErrorMessage message={appLayout.errorMessage} />
         ) : (
           ""
         )}

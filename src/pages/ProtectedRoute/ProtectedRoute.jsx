@@ -3,13 +3,13 @@ import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 
 function ProtectedRoute() {
-  const appWrapper = useSelector((store) => store.appWrapper);
+  const appLayout = useSelector((store) => store.appLayout);
 
   // useLocation returns the current location object with current URL
   const location = useLocation();
 
   // Redirect to home if the user hasn't accepted the privacy notice
-  if (!appWrapper.isUserAcceptedPrivacy) {
+  if (!appLayout.isUserAcceptedPrivacy) {
     return <Navigate to="/" state={{ from: location }} replace />;
   }
 

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   clearErrorMessage,
   setErrorMessage,
-} from "../../store/slices/appWrapperSlice";
+} from "../../store/slices/appLayoutSlice";
 
 import {
   validatePortionsFields,
@@ -35,7 +35,7 @@ const units = ["ml", "l", "g", "kg", "piece", "tsp", "tbsp"];
 
 function RecipeScaler() {
   const dispatch = useDispatch();
-  const appWrapper = useSelector((store) => store.appWrapper);
+  const appLayout = useSelector((store) => store.appLayout);
   const recipeScaler = useSelector((store) => store.recipeScaler);
 
   const initialState = useMemo(
@@ -182,8 +182,8 @@ function RecipeScaler() {
         ingredients for you.
       </FeatureIntro>
 
-      {appWrapper.errorMessage ? (
-        <ErrorMessage message={appWrapper.errorMessage} />
+      {appLayout.errorMessage ? (
+        <ErrorMessage message={appLayout.errorMessage} />
       ) : null}
 
       {recipeScaler.isUserSubmittedRecipeScaler ? (

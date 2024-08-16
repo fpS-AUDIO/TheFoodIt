@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 // default imports of reducers
-import appWrapperReducer from "./slices/appWrapperSlice";
+import appLayoutReducer from "./slices/appLayoutSlice";
 import navigationReducer from "./slices/navigationSlice";
 import foodCostReducer from "./slices/foodCostSlice";
 import kcalCalculatorReducer from "./slices/kcalCalculatorSlice";
@@ -18,7 +18,7 @@ import recipeScalerReducer from "./slices/recipeScalerSlice";
 // 'reducer' should be object which tells RTK about the reducers
 const store = configureStore({
   reducer: {
-    appWrapper: appWrapperReducer,
+    appLayout: appLayoutReducer,
     navigation: navigationReducer,
     foodCost: foodCostReducer,
     kcalCalculator: kcalCalculatorReducer,

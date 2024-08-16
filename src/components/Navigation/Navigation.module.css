@@ -111,6 +111,9 @@
   flex: 1;
   flex-direction: column;
   list-style-type: none;
+  padding: var(--padding--medium);
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .navigation .navItem:not(:last-child) {
@@ -119,41 +122,51 @@
 }
 
 .navigation .navLink {
-  display: block;
+  /* display: block; */
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
   padding: 1rem;
   font-size: 1.5rem;
   color: var(--color-light--2);
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.navigation .navLink:global(.active) {
+  opacity: 1;
+}
+
+.navigation .navLink svg {
+  font-size: 2rem;
 }
 
 /* ----- DESKTOP STYLES ----- */
+/* ------- DEPRECATED ------- */
 
-/* @media should be the same as the global layout media query changes  */
+/* @media should be the same as the global layout media query changes */
+
+/* 
 @media (min-width: 1366px) {
   .navigation {
-    /* postion - resetting to normal flow */
     position: relative;
     margin-left: auto;
     top: auto;
     left: auto;
     z-index: auto;
 
-    /* flexbox */
     display: flex;
     flex-direction: row;
     align-items: center;
 
-    /* sizes */
     height: 100%;
     width: auto;
 
-    /* border */
     border: none;
     border-radius: 0;
 
-    /* Reset transform property */
     transform: none;
   }
 
@@ -169,12 +182,10 @@
     background: none;
     box-shadow: none;
 
-    /* border */
     border: none;
   }
 
   .navigation .navItem:not(:last-child) {
-    /* styles here */
     border-bottom: none;
   }
 
@@ -186,7 +197,7 @@
     opacity: 0.7;
   }
 
-  .navigation :global(.active) {
+  .navigation .navLink:global(.active) {
     opacity: 1;
   }
-}
+} */

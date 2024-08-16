@@ -18,7 +18,7 @@
 /* THIS MEDIA QUERY AFFECTS ALSO:
   - Navigation.module.css
   - Navigation.jsx
-  - appWrapperSlice.js
+  - appLayoutSlice.js
 
 @media (min-width: 1366px) {
   .wrapper {

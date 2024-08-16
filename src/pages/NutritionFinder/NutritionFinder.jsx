@@ -18,7 +18,7 @@ import NutritionFinderResultRow from "../../features/NutritionFinder/NutritionFi
 import NutritionFinderResultDetailed from "../../features/NutritionFinder/NutritionFinderResultDetailed/NutritionFinderResultDetailed";
 
 function NutritionFinder() {
-  const appWrapper = useSelector((store) => store.appWrapper);
+  const appLayout = useSelector((store) => store.appLayout);
 
   // local state: initial object
   const initialState = {
@@ -91,8 +91,8 @@ function NutritionFinder() {
       </FeatureIntro>
 
       <div className={styles.wrapperBox}>
-        {appWrapper.errorMessage ? (
-          <ErrorMessage message={appWrapper.errorMessage} />
+        {appLayout.errorMessage ? (
+          <ErrorMessage message={appLayout.errorMessage} />
         ) : null}
 
         <div className={styles.sourceDataBox}>

@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { setStorageItem, getStorageItem } from "../storageHelpers";
-import { setErrorMessage } from "./appWrapperSlice"; // Import the error handling action from appWrapperSlice
+import { setErrorMessage } from "./appLayoutSlice"; // Import the error handling action from appWrapperSlice
 
 // Define an async thunk for updating food cost data
 export const updateFoodCostData = createAsyncThunk(

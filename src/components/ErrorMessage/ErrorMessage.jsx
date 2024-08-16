@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 import { useDispatch } from "react-redux";
-import { clearErrorMessage } from "../../store/slices/appWrapperSlice";
+import { clearErrorMessage } from "../../store/slices/appLayoutSlice";
 import styles from "./ErrorMessage.module.css";
 
 const SECS_AUTOREMOVE_ERROR = 5;

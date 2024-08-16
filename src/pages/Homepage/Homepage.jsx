@@ -17,7 +17,7 @@ import Button from "../../components/Button/Button";
 import Footer from "../../components/Footer/Footer";
 
 function Homepage() {
-  const appWrapper = useSelector((store) => store.appWrapper);
+  const appLayout = useSelector((store) => store.appLayout);
 
   // useNavigate just returns function to chnage route
   const navigate = useNavigate();
@@ -63,8 +63,8 @@ function Homepage() {
             Try the Food Cost Calculator Now
           </Button>
         </div>
-        {appWrapper.errorMessage ? (
-          <ErrorMessage message={appWrapper.errorMessage} />
+        {appLayout.errorMessage ? (
+          <ErrorMessage message={appLayout.errorMessage} />
         ) : null}
       </div>
       <Footer />

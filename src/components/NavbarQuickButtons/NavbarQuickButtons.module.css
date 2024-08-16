@@ -1,0 +1,88 @@
+.navLinks {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  margin: 0 auto;
+}
+
+.navItem {
+  border-radius: var(--border-radius--standard);
+  margin: 0 0.3rem;
+  transition: all 0.3s ease;
+}
+
+.verticalLine {
+  width: 0.1rem;
+  border: none;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0),
+    var(--color-dark--0),
+    rgba(0, 0, 0, 0)
+  );
+}
+
+.navLink {
+  position: relative;
+  border-radius: var(--border-radius--standard);
+  display: flex;
+  align-items: center;
+  padding: 1.2rem;
+  font-size: 2rem;
+  color: var(--color-light--0);
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.navLink:active {
+  transform: scale(0.9);
+  background-color: var(--color-dark--0);
+}
+
+.navLink svg {
+  font-size: 2rem;
+}
+
+.navLink:global(.active) {
+  color: var(--color-light--2);
+  border: 0.1rem solid var(--color-dark--0);
+  box-shadow: var(--box-shadow--btn);
+}
+
+/* TOOLTIP */
+.tooltip {
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  padding: 0.6rem 1.2rem;
+  background-color: var(--color-dark--1);
+  border: 0.1rem solid var(--color-dark--2);
+  border-radius: var(--border-radius--standard);
+  box-shadow: var(--box-shadow--btn);
+  font-size: 1rem;
+  color: var(--color-light--1);
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease-in;
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0.5rem;
+  border-style: solid;
+  border-color: transparent transparent var(--color-dark--2) transparent;
+}
+
+.navLink:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
