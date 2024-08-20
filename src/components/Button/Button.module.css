@@ -24,9 +24,17 @@
 
 /* ----- ALL VARIATIONS (PROP 'type') ----- */
 
-
-.button.back{
+.button.back {
   width: 10rem;
+  border: none;
+  box-shadow: none;
+}
+.button.back:hover {
+  transform: none;
+  background-color: var(--color-dark--0);
+}
+.button.back:active {
+  transform: none;
 }
 
 .button.cta {

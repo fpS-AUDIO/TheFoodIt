@@ -1,0 +1,28 @@
+.settingsBox {
+  min-height: 90vh;
+  width: 100%;
+  max-width: 30rem;
+  display: flex;
+  flex-direction: column;
+
+  margin: 1.2rem auto;
+  padding: var(--padding--medium);
+}
+
+.mainSettings {
+  margin-top: 3.6rem;
+}
+
+/* ----- DESKTOP MEDIA QUERIES ----- */
+
+@media (min-width: 600px) {
+  .settingsBox {
+    max-width: 40rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .settingsBox {
+    max-width: 50rem;
+  }
+}

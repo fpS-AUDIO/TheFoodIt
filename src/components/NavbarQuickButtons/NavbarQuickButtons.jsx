@@ -12,6 +12,7 @@ import {
   HiOutlineScale,
   HiOutlineSwitchHorizontal,
   HiOutlineSearch,
+  HiOutlineCog,
   HiOutlineInformationCircle,
 } from "react-icons/hi";
 
@@ -73,6 +74,16 @@ function NavbarQuickButtons() {
         <NavLink className={styles.navLink} to="/nutritionfinder">
           <abbr title="Nutrition Finder">
             <HiOutlineSearch />
+          </abbr>
+        </NavLink>
+      </li>
+
+      <hr className={styles.verticalLine} />
+
+      <li className={styles.navItem}>
+        <NavLink className={styles.navLink} to="/settings">
+          <abbr title="Settings">
+            <HiOutlineCog />
           </abbr>
         </NavLink>
       </li>

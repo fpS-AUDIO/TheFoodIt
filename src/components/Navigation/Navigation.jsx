@@ -21,6 +21,7 @@ import {
   HiOutlineScale,
   HiOutlineSwitchHorizontal,
   HiOutlineSearch,
+  HiOutlineCog,
   HiOutlineInformationCircle,
 } from "react-icons/hi";
 import Footer from "../Footer/Footer";
@@ -134,6 +135,17 @@ function Navigation() {
             >
               <HiOutlineSearch />
               <span>Nutrition Finder</span>
+            </NavLink>
+          </li>
+
+          <li className={styles.navItem}>
+            <NavLink
+              onClick={handleNavLinkClick}
+              className={styles.navLink}
+              to="/settings"
+            >
+              <HiOutlineCog />
+              <span>Settings</span>
             </NavLink>
           </li>
 

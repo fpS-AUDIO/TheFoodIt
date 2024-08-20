@@ -42,6 +42,10 @@
     rgba(0, 0, 0, 0.05) 0rem 0.4rem 0.6rem -0.2rem;
 }
 
+[data-theme="light"] {
+  --color-light--0: #686d71;
+}
+
 /* ----- GLOBAL STYLING RESET ----- */
 
 * {

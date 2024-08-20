@@ -33,6 +33,7 @@ import SpinnerFullPage from "./components/SpinnerFullPage/SpinnerFullPage";
 // CUSTOM FEATURE COMPONENTS
 import KcalStats from "./features/KcalCalculator/KcalStats/KcalStats";
 import KcalCalculatorForm from "./features/KcalCalculator/KcalCalculatorForm/KcalCalculatorForm";
+import Settings from "./pages/Settings/Settings";
 
 const router = createBrowserRouter([
   {
@@ -81,6 +82,10 @@ const router = createBrowserRouter([
               {
                 element: <NutritionFinder />,
                 path: "/nutritionfinder",
+              },
+              {
+                element: <Settings />,
+                path: "/settings",
               },
               {
                 element: <About />,

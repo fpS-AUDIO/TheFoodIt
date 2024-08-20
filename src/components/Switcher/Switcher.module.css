@@ -1,0 +1,53 @@
+.switch {
+  font-size: 1.6rem;
+  position: relative;
+  display: inline-block;
+  width: 5.6rem;
+  height: 3.2rem;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-light--3);
+  border: 0.1rem solid var(--color-light--1);
+  transition: 0.3s ease;
+  border-radius: 3rem;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 2.2rem;
+  width: 2.2rem;
+  border-radius: 50%;
+  left: 0.39rem;
+  bottom: 0.4rem;
+  background-color: var(--color-light--1);
+  transition: 0.3s ease;
+}
+
+input:checked + .slider {
+  background-color: var(--color-brand-darker);
+  border: 0.1rem solid var(--color-brand-darker);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 0.1rem var(--color-brand-darker);
+}
+
+input:checked + .slider:before {
+  transform: translateX(2.5rem);
+  background-color: var(--color-light--3);
+}
