@@ -24,10 +24,12 @@
 
 .navLink {
   position: relative;
+  object-position: center;
   border-radius: var(--border-radius--standard);
   display: flex;
   align-items: center;
-  padding: 1.2rem;
+  justify-content: center;
+  padding: 1.2rem ;
   font-size: 2rem;
   color: var(--color-light--0);
   text-decoration: none;
@@ -42,7 +44,9 @@
 }
 
 .navLink svg {
-  font-size: 2rem;
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 
 .navLink:global(.active) {
@@ -52,7 +56,10 @@
 }
 
 /* TOOLTIP */
-.tooltip {
+
+/* EXAMPLE: <span className={styles.tooltip}>Home</span> */
+
+/* .tooltip {
   position: absolute;
   top: 110%;
   left: 50%;
@@ -85,4 +92,4 @@
 .navLink:hover .tooltip {
   visibility: visible;
   opacity: 1;
-}
+} */

@@ -1,6 +1,7 @@
 // EXTERNAL LIBRARIES
 import { Suspense, lazy } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 // REDUX (TOOLKIT)
 import { Provider } from "react-redux";
@@ -99,9 +100,22 @@ const router = createBrowserRouter([
 
 function App() {
   return (
+    // Redux
     <Provider store={store}>
       <Suspense fallback={<SpinnerFullPage />}>
+        {/* React Router */}
         <RouterProvider router={router} />
+        {/* Toaster = react-hot-toast */}
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+          gutter={12}
+          containerClassName="toasterContainer"
+          toastOptions={{
+            className: "toast",
+            duration: 5000,
+          }}
+        />
       </Suspense>
     </Provider>
   );

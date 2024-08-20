@@ -20,8 +20,10 @@ function NavbarQuickButtons() {
     <ul className={styles.navLinks}>
       <li className={styles.navItem}>
         <NavLink className={styles.navLink} to="/">
-          <HiOutlineHome />
-          <span className={styles.tooltip}>Home</span>
+          <abbr title="Home">
+            <HiOutlineHome />
+          </abbr>
+          {/* <span className={styles.tooltip}>Home</span> */}
         </NavLink>
       </li>
 
@@ -29,8 +31,9 @@ function NavbarQuickButtons() {
 
       <li className={styles.navItem}>
         <NavLink className={styles.navLink} to="/foodcost">
-          <HiOutlineChartPie />
-          <span className={styles.tooltip}>Food Cost</span>
+          <abbr title="Food Cost">
+            <HiOutlineChartPie />
+          </abbr>
         </NavLink>
       </li>
 
@@ -38,8 +41,9 @@ function NavbarQuickButtons() {
 
       <li className={styles.navItem}>
         <NavLink className={styles.navLink} to="/kcalCalculator">
-          <HiOutlineCalculator />
-          <span className={styles.tooltip}>Kcal Calculator</span>
+          <abbr title="Kcal Calculator">
+            <HiOutlineCalculator />
+          </abbr>
         </NavLink>
       </li>
 
@@ -47,8 +51,9 @@ function NavbarQuickButtons() {
 
       <li className={styles.navItem}>
         <NavLink className={styles.navLink} to="/recipescaler">
-          <HiOutlineScale />
-          <span className={styles.tooltip}>Recipe Scaler</span>
+          <abbr title="Recipe Scaler">
+            <HiOutlineScale />
+          </abbr>
         </NavLink>
       </li>
 
@@ -56,8 +61,9 @@ function NavbarQuickButtons() {
 
       <li className={styles.navItem}>
         <NavLink className={styles.navLink} to="/unitconverter">
-          <HiOutlineSwitchHorizontal />
-          <span className={styles.tooltip}>Unit Converter</span>
+          <abbr title="Unit Converter">
+            <HiOutlineSwitchHorizontal />
+          </abbr>
         </NavLink>
       </li>
 
@@ -65,8 +71,9 @@ function NavbarQuickButtons() {
 
       <li className={styles.navItem}>
         <NavLink className={styles.navLink} to="/nutritionfinder">
-          <HiOutlineSearch />
-          <span className={styles.tooltip}>Nutrition Finder</span>
+          <abbr title="Nutrition Finder">
+            <HiOutlineSearch />
+          </abbr>
         </NavLink>
       </li>
 
@@ -74,8 +81,9 @@ function NavbarQuickButtons() {
 
       <li className={styles.navItem}>
         <NavLink className={styles.navLink} to="/about">
-          <HiOutlineInformationCircle />
-          <span className={styles.tooltip}>About</span>
+          <abbr title="About">
+            <HiOutlineInformationCircle />
+          </abbr>
         </NavLink>
       </li>
     </ul>

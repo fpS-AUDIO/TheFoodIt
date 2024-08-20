@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import toast from "react-hot-toast";
 
 const initialState = {
   isMenuOpened: false,
@@ -10,6 +11,8 @@ const navigationSlice = createSlice({
   reducers: {
     toggleMenu(state) {
       state.isMenuOpened = !state.isMenuOpened;
+      // if menu opens immediatlu remove all toasts
+      if (state.isMenuOpened) toast.remove();
     },
 
     closeMenu(state) {

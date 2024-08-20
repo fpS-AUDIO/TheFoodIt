@@ -3,14 +3,10 @@ import { useState } from "react";
 
 import nutritionData from "../../../data/FNDDS_Nutrient_Values_2020.json";
 
-import { useSelector } from "react-redux";
-
 // general components
 import Button from "../../components/Button/Button";
 import FeatureIntro from "../../components/FeatureIntro/FeatureIntro";
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Disclairmer from "../../components/Disclairmer/Disclairmer";
-import Footer from "../../components/Footer/Footer";
 import Spinner from "../../components/Spinner/Spinner";
 
 // feature components
@@ -18,8 +14,6 @@ import NutritionFinderResultRow from "../../features/NutritionFinder/NutritionFi
 import NutritionFinderResultDetailed from "../../features/NutritionFinder/NutritionFinderResultDetailed/NutritionFinderResultDetailed";
 
 function NutritionFinder() {
-  const appLayout = useSelector((store) => store.appLayout);
-
   // local state: initial object
   const initialState = {
     isLoadingLocal: false,
@@ -91,10 +85,6 @@ function NutritionFinder() {
       </FeatureIntro>
 
       <div className={styles.wrapperBox}>
-        {appLayout.errorMessage ? (
-          <ErrorMessage message={appLayout.errorMessage} />
-        ) : null}
-
         <div className={styles.sourceDataBox}>
           <p className={styles.source}>
             The source of data is: U.S. Department of Agriculture, Agricultural
@@ -146,13 +136,12 @@ function NutritionFinder() {
             )
           )}
         </div>
-        <Footer>
-          <Disclairmer
-            message={
-              "TheFoodIt's Nutrition Insights uses external data sources and may contain inaccuracies. Always verify nutrition data for critical dietary decisions."
-            }
-          />
-        </Footer>
+
+        <Disclairmer
+          message={
+            "TheFoodIt's Nutrition Insights uses external data sources and may contain inaccuracies. Always verify nutrition data for critical dietary decisions."
+          }
+        />
       </div>
     </>
   );

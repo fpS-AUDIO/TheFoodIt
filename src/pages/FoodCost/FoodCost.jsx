@@ -20,7 +20,6 @@ import {
 } from "./FoodCostHelper";
 
 // general components
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import FeatureIntro from "../../components/FeatureIntro/FeatureIntro";
 import Footer from "../../components/Footer/Footer";
 import Disclairmer from "../../components/Disclairmer/Disclairmer";
@@ -95,7 +94,6 @@ import FoodCostResults from "../../features/FoodCost/FoodCostResults/FoodCostRes
 function FoodCost() {
   // Global State
   const dispatch = useDispatch();
-  const appLayout = useSelector((store) => store.appLayout);
   const foodCost = useSelector((store) => store.foodCost);
 
   // Local state initialization using useMemo for memoization
@@ -309,9 +307,6 @@ function FoodCost() {
         manage your budget and pricing with confidence. Consider verifying
         important calculations.
       </FeatureIntro>
-      {appLayout.errorMessage ? (
-        <ErrorMessage message={appLayout.errorMessage} />
-      ) : null}
 
       <div className={styles.wrapper}>
         {foodCost.userFoodCostData ? (
@@ -400,13 +395,11 @@ function FoodCost() {
         )}
 
         <FoodCostAccordian />
-        <Footer>
-          <Disclairmer
-            message={
-              "TheFoodIt's Food Cost Calculator can make mistakes. Consider verifying important calculations."
-            }
-          />
-        </Footer>
+        <Disclairmer
+          message={
+            "TheFoodIt's Food Cost Calculator can make mistakes. Consider verifying important calculations."
+          }
+        />
       </div>
     </>
   );

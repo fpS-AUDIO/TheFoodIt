@@ -23,6 +23,7 @@ import {
   HiOutlineSearch,
   HiOutlineInformationCircle,
 } from "react-icons/hi";
+import Footer from "../Footer/Footer";
 
 function Navigation() {
   // redux
@@ -147,6 +148,9 @@ function Navigation() {
             </NavLink>
           </li>
         </ul>
+        <div className={styles.footerBox}>
+          <Footer />
+        </div>
       </div>
 
       <input

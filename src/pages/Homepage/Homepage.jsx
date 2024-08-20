@@ -5,20 +5,13 @@ import { useNavigate } from "react-router-dom";
 // styles
 import styles from "./Homepage.module.css";
 
-// contexts/state
-import { useSelector } from "react-redux";
-
 // add files
 import videoSrc from "../../assets/video-soia-cooked.mp4";
 
 // components
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Button from "../../components/Button/Button";
-import Footer from "../../components/Footer/Footer";
 
 function Homepage() {
-  const appLayout = useSelector((store) => store.appLayout);
-
   // useNavigate just returns function to chnage route
   const navigate = useNavigate();
 
@@ -63,11 +56,7 @@ function Homepage() {
             Try the Food Cost Calculator Now
           </Button>
         </div>
-        {appLayout.errorMessage ? (
-          <ErrorMessage message={appLayout.errorMessage} />
-        ) : null}
       </div>
-      <Footer />
     </>
   );
 }

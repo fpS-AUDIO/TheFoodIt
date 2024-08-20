@@ -22,10 +22,8 @@ import {
 
 // general components
 import FeatureIntro from "../../components/FeatureIntro/FeatureIntro";
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Button from "../../components/Button/Button";
 import Disclairmer from "../../components/Disclairmer/Disclairmer";
-import Footer from "../../components/Footer/Footer";
 
 // feature components
 import RecipeIngredientsRow from "../../features/RecipeScaler/RecipeIngredientsRow/RecipeIngredientsRow";
@@ -35,7 +33,6 @@ const units = ["ml", "l", "g", "kg", "piece", "tsp", "tbsp"];
 
 function RecipeScaler() {
   const dispatch = useDispatch();
-  const appLayout = useSelector((store) => store.appLayout);
   const recipeScaler = useSelector((store) => store.recipeScaler);
 
   const initialState = useMemo(
@@ -182,10 +179,6 @@ function RecipeScaler() {
         ingredients for you.
       </FeatureIntro>
 
-      {appLayout.errorMessage ? (
-        <ErrorMessage message={appLayout.errorMessage} />
-      ) : null}
-
       {recipeScaler.isUserSubmittedRecipeScaler ? (
         <RecipeScalerResults />
       ) : (
@@ -250,13 +243,11 @@ function RecipeScaler() {
             </div>
           </form>
 
-          <Footer>
-            <Disclairmer
-              message={
-                "TheFoodIt's Recipe Scaler can make mistakes. Consider verifying important recipes adjustments."
-              }
-            />
-          </Footer>
+          <Disclairmer
+            message={
+              "TheFoodIt's Recipe Scaler can make mistakes. Consider verifying important recipes adjustments."
+            }
+          />
         </div>
       )}
     </>

@@ -26,6 +26,7 @@ const initialState = {
   isUserAcceptedPrivacy:
     getStorageItem("TheFoodItUserAcceptedPrivacy") === "true",
   errorMessage: "",
+  secondsAutoRemoveError: 5,
 };
 
 const appLayoutSlice = createSlice({

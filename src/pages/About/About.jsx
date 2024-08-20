@@ -1,6 +1,6 @@
 import styles from "./About.module.css";
 import { Link } from "react-router-dom";
-import Footer from "../../components/Footer/Footer";
+
 
 function About() {
   return (
@@ -95,8 +95,6 @@ function About() {
           <Link to="/PrivacyPolicy">Privacy Policy</Link>.
         </p>
       </div>
-
-      <Footer />
     </div>
   );
 }

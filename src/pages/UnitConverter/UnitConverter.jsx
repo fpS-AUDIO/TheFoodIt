@@ -1,12 +1,18 @@
+import styles from "./UnitConverter.module.css";
+
 import { useEffect, useState } from "react";
 import convert from "convert-units";
 
-import styles from "./UnitConverter.module.css";
+// React Redux and Store
+import { useDispatch } from "react-redux";
+import {
+  setErrorMessage,
+  clearErrorMessage,
+} from "../../store/slices/appLayoutSlice";
 
 // general components
 import FeatureIntro from "../../components/FeatureIntro/FeatureIntro";
 import Button from "../../components/Button/Button";
-import Footer from "../../components/Footer/Footer";
 // import Advertisement01 from "../../components/Advertisement01/Advertisement01";
 
 const kitchenUnits = [
@@ -28,12 +34,15 @@ const kitchenUnits = [
 ];
 
 function UnitConverter() {
+  // local state
   const [value, setValue] = useState("");
   const [fromUnit, setFromUnit] = useState("");
   const [toUnit, setToUnit] = useState("");
   const [result, setResult] = useState(null);
   const [possibleUnits, setPossibleUnits] = useState([]);
-  const [localErrorMessage, setLocalErrorMessage] = useState("");
+
+  // global state
+  const dispatch = useDispatch();
 
   // effect checks all possible units the actual 'fromUnit' can be converted to
   useEffect(() => {
@@ -42,17 +51,16 @@ function UnitConverter() {
 
     async function checkPossibleConversions() {
       try {
-        // first remove error
-        setLocalErrorMessage("");
-
         // check the possible conversions for current 'fromUnit'
         const arrayOfPossibleUnits = convert().from(fromUnit).possibilities();
 
         // update local state with all possible values
         setPossibleUnits(arrayOfPossibleUnits);
       } catch (err) {
-        setLocalErrorMessage(
-          "Oops! It looks like the initial unit you entered isn't valid. Please try again with a correct unit."
+        dispatch(
+          setErrorMessage(
+            "Oops! It looks like the initial unit you entered isn't valid. Please try again with a correct unit."
+          )
         );
       }
     }
@@ -62,16 +70,22 @@ function UnitConverter() {
   }, [fromUnit]);
 
   function handleConversion() {
-    if (!value || !fromUnit) return;
+    // if not all fields are completed
+    if (!value || !fromUnit || !toUnit) {
+      dispatch(setErrorMessage("Please fill the required fields"));
+      return;
+    }
+
     try {
-      if (localErrorMessage) return;
       if (Number(value) <= 0) throw new Error("Please insert a positive value");
       const convertedValue = convert(Number(value)).from(fromUnit).to(toUnit);
       setResult(convertedValue);
     } catch (err) {
-      setLocalErrorMessage(
-        err.message ||
-          "Sorry, the conversion between the selected units is not possible. Please select valid units and try again."
+      dispatch(
+        setErrorMessage(
+          err.message ||
+            "Sorry, the conversion between the selected units is not possible. Please select valid units and try again."
+        )
       );
     }
   }
@@ -79,20 +93,17 @@ function UnitConverter() {
   function handleChangeSetValue(value) {
     setValue(() => value);
     setResult(() => null);
-    setLocalErrorMessage("");
   }
 
   function handleChangeSetFromUnit(value) {
     setFromUnit(() => value);
     setResult(() => null);
     setToUnit(() => "");
-    setLocalErrorMessage("");
   }
 
   function handleChangeSetToUnit(value) {
     setToUnit(() => value);
     setResult(() => null);
-    setLocalErrorMessage("");
   }
 
   return (
@@ -168,14 +179,6 @@ function UnitConverter() {
             <p>{`${value} ${fromUnit} = ${result.toFixed(2)} ${toUnit}`}</p>
           </div>
         )}
-
-        {localErrorMessage && (
-          <div className={styles.error}>
-            <p>{localErrorMessage}</p>
-          </div>
-        )}
-
-        <Footer />
       </div>
     </>
   );

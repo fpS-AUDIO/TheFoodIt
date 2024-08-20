@@ -6,12 +6,10 @@
   justify-content: center;
   gap: 1.2rem;
   padding: var(--padding--standard);
-  padding-bottom: 5vh;
-  margin-top: 4.8rem;
 }
 
 .copyright {
-  font-size: 1.3rem;
+  font-size: 1rem;
   color: var(--color-light--0);
 }
 

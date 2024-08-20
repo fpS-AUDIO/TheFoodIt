@@ -121,6 +121,11 @@
   border-bottom: 0.1rem solid var(--color-dark--0);
 }
 
+.navigation .footerBox {
+  margin-top: auto;
+  padding: 1.2rem 0;
+}
+
 .navigation .navLink {
   /* display: block; */
   display: flex;
@@ -142,62 +147,3 @@
 .navigation .navLink svg {
   font-size: 2rem;
 }
-
-/* ----- DESKTOP STYLES ----- */
-/* ------- DEPRECATED ------- */
-
-/* @media should be the same as the global layout media query changes */
-
-/* 
-@media (min-width: 1366px) {
-  .navigation {
-    position: relative;
-    margin-left: auto;
-    top: auto;
-    left: auto;
-    z-index: auto;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    height: 100%;
-    width: auto;
-
-    border: none;
-    border-radius: 0;
-
-    transform: none;
-  }
-
-  .menuBtn,
-  .menuIcon {
-    display: none;
-  }
-
-  .navigation .navLinks {
-    display: flex;
-    flex-direction: row;
-    position: static;
-    background: none;
-    box-shadow: none;
-
-    border: none;
-  }
-
-  .navigation .navItem:not(:last-child) {
-    border-bottom: none;
-  }
-
-  .navigation .navLink {
-    padding: 1rem 2rem;
-    font-size: 1.5rem;
-    font-weight: 600;
-    text-wrap: nowrap;
-    opacity: 0.7;
-  }
-
-  .navigation .navLink:global(.active) {
-    opacity: 1;
-  }
-} */
