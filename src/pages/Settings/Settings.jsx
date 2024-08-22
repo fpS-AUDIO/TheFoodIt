@@ -1,15 +1,39 @@
 import styles from "./Settings.module.css";
 
+// Redux and Store
+import { useDispatch, useSelector } from "react-redux";
+import {
+  saveUserPreferenceTheme,
+  setDarkMode,
+} from "../../store/slices/appLayoutSlice";
+
 // components
+import Switcher from "../../components/Switcher/Switcher";
 import ButtonBack from "../../components/ButtonBack/ButtonBack";
-import SettingRow from "../../features/Settings/SettingRow/SettingRow";
 
 function Settings() {
+  const dispatch = useDispatch();
+  const appLayout = useSelector((store) => store.appLayout);
+
+  function handleThemeChange() {
+    const newIsDark = !appLayout.darkMode;
+
+    // update state
+    dispatch(setDarkMode(newIsDark));
+
+    // set to local storage
+    dispatch(saveUserPreferenceTheme(newIsDark));
+  }
+
   return (
     <div className={styles.settingsBox}>
       <ButtonBack />
       <div className={styles.mainSettings}>
-        <SettingRow settingName="Light Mode:" />
+        {/* DARK MODE */}
+        <div className={styles.settingsRow}>
+          <p className={styles.settingTitle}>Dark Mode</p>
+          <Switcher isOn={appLayout.darkMode} onChange={handleThemeChange} />
+        </div>
       </div>
     </div>
   );

@@ -13,6 +13,18 @@
   margin-top: 3.6rem;
 }
 
+.settingsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+}
+
+.settingTitle {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
 /* ----- DESKTOP MEDIA QUERIES ----- */
 
 @media (min-width: 600px) {

@@ -38,12 +38,11 @@
 }
 
 .button.cta {
-  /* background-color: var(--color-brand-darkest); */
-  background-color: rgba(24, 114, 44, 0.6);
+  background-color: var(--color-brand-darkest);
   border: 0.2rem solid transparent;
 }
 .button.cta:hover {
-  background-color: rgba(50, 142, 70, 0.6);
+  background-color: var(--color-brand-darker);
 }
 
 .button.add {

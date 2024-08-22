@@ -5,6 +5,9 @@
   * 90  overlay
   * 100 navigation  */
 
+/* SPACING SYSTEM (px):
+ 2, 4, 8, 12, 16, 24, 32, 48, 64, 80, 96, 128, 160, 192, 224  */
+
 /* These CSS variables are global, so available in all CSS modules */
 :root {
   --color-brand-lightest: #b5e1bf;
@@ -26,7 +29,8 @@
   --color-light--2: #e2eae2;
   --color-light--3: #fafafa;
 
-  /* SPACING SYSTEM (px): 2, 4, 8, 12, 16, 24, 32, 48, 64, 80, 96, 128, 160, 192, 224  */
+  --color-homepage-overlay--1: rgba(35, 37, 47, 1);
+  --color-homepage-overlay--2: rgba(35, 37, 47, 0.7);
 
   --padding--standard: 1.2rem;
   --padding--medium: 2.4rem;
@@ -40,10 +44,43 @@
     rgba(0, 0, 0, 0.2) 0.6rem 0rem 0.6rem;
   --box-shadow--btn: rgba(0, 0, 0, 0.1) 0rem 1rem 1.5rem -0.3rem,
     rgba(0, 0, 0, 0.05) 0rem 0.4rem 0.6rem -0.2rem;
+
+  /* color which not change in light/dark theme: */
+  --standard-light: #fafafa;
+  --standard-lightgrey: #dadada;
+  --standard-grey: #686d71;
 }
 
 [data-theme="light"] {
-  --color-light--0: #686d71;
+  --color-brand-lightest: #6dbe7f;
+  --color-brand-lighter: #4aaa5f;
+  --color-brand: #56ac68;
+  --color-brand-darker: #45c761;
+  --color-brand-darkest: #42bd5d;
+
+  --color-delete--1: #f0282b;
+  --color-delete--2: #d62528;
+
+  --color-dark--0: #e7e7e7;
+  --color-dark--1: #ffffff;
+  --color-dark--2: #fafafa;
+  --color-dark--3: #999999;
+
+  --color-light--0: #353a3a;
+  --color-light--1: #2c3035;
+  --color-light--2: #222530;
+  --color-light--3: #02080c;
+
+  --color-homepage-overlay--1: rgba(255, 255, 255, 1);
+  --color-homepage-overlay--2: rgba(255, 255, 255, 0.7);
+
+  --box-shadow--standrd: rgba(0, 0, 0, 0.03) 0rem 1rem 2rem,
+    rgba(190, 190, 190, 0.1) 0rem 0.6rem 0.6rem;
+
+  --box-shadow--right: rgba(0, 0, 0, 0.05) 1rem 0rem 2rem,
+    rgba(190, 190, 190, 0.1) 0.6rem 0rem 0.6rem;
+  --box-shadow--btn: rgba(0, 0, 0, 0.03) 0rem 1rem 1.5rem -0.3rem,
+    rgba(190, 190, 190, 0.02) 0rem 0.4rem 0.6rem -0.2rem;
 }
 
 /* ----- GLOBAL STYLING RESET ----- */

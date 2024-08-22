@@ -20,7 +20,8 @@
 
   cursor: pointer;
 
-  background-color: rgba(44, 48, 53, 0.7);
+  /* background-color: rgba(44, 48, 53, 0.7); */
+  background-color: transparent;
   border-radius: 0.5rem;
 }
 

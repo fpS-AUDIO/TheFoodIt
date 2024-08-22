@@ -20,8 +20,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--color-light--3);
-  border: 0.1rem solid var(--color-light--1);
+  background-color: var(--standard-lightgrey);
+  border: 0.1rem solid var(--standard-lightgrey);
   transition: 0.3s ease;
   border-radius: 3rem;
 }
@@ -34,7 +34,7 @@
   border-radius: 50%;
   left: 0.39rem;
   bottom: 0.4rem;
-  background-color: var(--color-light--1);
+  background-color: var(--standard-grey);
   transition: 0.3s ease;
 }
 
@@ -49,5 +49,5 @@ input:focus + .slider {
 
 input:checked + .slider:before {
   transform: translateX(2.5rem);
-  background-color: var(--color-light--3);
+  background-color: var(--standard-light);
 }

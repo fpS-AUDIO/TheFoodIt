@@ -1,16 +1,9 @@
-import { useState } from "react";
 import styles from "./Switcher.module.css";
 
-function Switcher() {
-  const [checked, setChecked] = useState(true);
-
+function Switcher({ isOn, onChange }) {
   return (
     <label className={styles.switch}>
-      <input
-        type="checkbox"
-        checked={checked}
-        onChange={() => setChecked((isChecked) => !isChecked)}
-      />
+      <input type="checkbox" checked={isOn} onChange={onChange} />
       <span className={styles.slider}></span>
     </label>
   );

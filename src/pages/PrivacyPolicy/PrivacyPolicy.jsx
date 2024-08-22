@@ -11,19 +11,10 @@ function PrivacyPolicy() {
       <h2 className={styles.mainTitle}>Privacy Policy</h2>
 
       <div className={`${styles.block} ${styles.blockUnderlined}`}>
-        <h3 className={styles.secondaryTitle}>Introduction</h3>
-        <p className={styles.content}>
-          Welcome to TheFoodIt. Your privacy is important to me. This Privacy
-          Policy explains how I collect, use, store, and protect your personal
-          information when you use my web application. By using this
-          application, you agree to the terms outlined in this policy.
-        </p>
-      </div>
-
-      <div className={`${styles.block} ${styles.blockUnderlined}`}>
         <h3 className={styles.secondaryTitle}>Data Collection</h3>
         <p className={styles.content}>
-          I collect the following personal information to provide my services:
+          I collect the following personal and non-personal information to
+          provide my services with your explicit consent:
         </p>
         <ul>
           <li>Gender</li>
@@ -32,11 +23,22 @@ function PrivacyPolicy() {
           <li>Age</li>
           <li>Physical Activity Level</li>
           <li>Health and Fitness Goal</li>
+          <li>
+            Dish Information: Ingredients, ingredient costs, weight, selling
+            price, etc., for calculating food cost.
+          </li>
+          <li>
+            Theme Preference: Your preferred display theme (dark or light mode).
+          </li>
+          <li>
+            Privacy Consent: Whether you have accepted the privacy policy to
+            avoid showing the disclaimer banner repeatedly.
+          </li>
         </ul>
         <p className={styles.content}>
-          This data is collected through a form that users fill out to receive
-          personalized nutrition and fitness calculations, such as BMI, BMR,
-          TDEE, TDEE with TEF, and macronutrient distribution.
+          This data is collected through forms that you voluntarily fill out to
+          receive personalized services, such as nutrition and fitness
+          calculations, food cost analysis, and user interface preferences.
         </p>
       </div>
 
@@ -54,39 +56,51 @@ function PrivacyPolicy() {
             for your recipes.
           </li>
           <li>
-            Recipe Scaler: Adjust the quantities of ingredients based on the
-            desired number of portions.
+            Recipe Scaler: Adjust ingredient quantities based on the desired
+            number of portions.
           </li>
           <li>
-            Nutrition Finder: Provides detailed nutritional information for
-            various dishes, using data from the USDA Food and Nutrient Database
-            for Dietary Studies (FNDDS).
+            Nutrition Finder: Provides detailed nutritional information using
+            data from the USDA Food and Nutrient Database for Dietary Studies
+            (FNDDS).
+          </li>
+          <li>
+            Theme Preference: Stores your preferred display theme (dark or light
+            mode).
+          </li>
+          <li>
+            Privacy Consent: Stores your consent to the privacy policy to
+            prevent the disclaimer banner from showing repeatedly.
           </li>
         </ul>
+        <p className={styles.content}>
+          Your data is only used for these purposes and is not shared with third
+          parties.
+        </p>
       </div>
 
       <div className={`${styles.block} ${styles.blockUnderlined}`}>
         <h3 className={styles.secondaryTitle}>Data Storage and Security</h3>
         <ul>
           <li>
-            The data you provide is stored locally in your browser's local
-            storage. If local storage is not available, a JavaScript object is
-            used to store the data within the web application session.
+            Your data is stored locally in your browser's local storage. If
+            local storage is unavailable, data is stored within the session.
           </li>
-          <li>I do not store your personal data on any external servers.</li>
+          <li>I do not store your personal data on external servers.</li>
           <li>
             Your data is only accessible within your browser and is not shared
             with third parties.
           </li>
           <li>
-            Your last food cost calculations are saved in local storage for your
-            convenience.
+            Your last food cost calculations, theme preference, and privacy
+            consent are saved in local storage for convenience.
           </li>
         </ul>
         <p className={styles.content}>
-          While I strive to protect your data, please be aware that no method of
-          electronic storage or transmission is completely secure. Therefore, I
-          cannot guarantee absolute security.
+          Although I strive to protect your data, no method of electronic
+          storage is completely secure. Therefore, I cannot guarantee absolute
+          security. I recommend using the latest browser versions to maximize
+          protection.
         </p>
       </div>
 
@@ -94,16 +108,16 @@ function PrivacyPolicy() {
         <h3 className={styles.secondaryTitle}>Third-Party Services</h3>
         <ul>
           <li>
-            The application uses third-party libraries, such as{" "}
+            The application uses third-party libraries like{" "}
             <a
               target="_blank"
               href="https://www.npmjs.com/package/convert-units"
               rel="noopener noreferrer"
             >
               convert-units
-            </a>
-            , to provide specific functionalities. These libraries do not
-            collect or store your personal data.
+            </a>{" "}
+            to provide specific functionalities. These libraries do not collect
+            or store your personal data.
           </li>
           <li>
             I use the{" "}
@@ -186,8 +200,10 @@ function PrivacyPolicy() {
       <div className={`${styles.block} ${styles.blockUnderlined}`}>
         <h3 className={styles.secondaryTitle}>Children's Privacy</h3>
         <p className={styles.content}>
-          This application is not intended for children under the age of 13. I
-          do not knowingly collect personal data from children.
+          This application is not intended for use by children under the age of
+          13. I do not knowingly collect personal data from children. By using
+          this application and agreeing to this Privacy Policy, you confirm that
+          you are at least 13 years old.
         </p>
       </div>
 
@@ -223,6 +239,10 @@ function PrivacyPolicy() {
             . I do not publicly display my email to minimize spam and protect
             privacy.
           </li>
+          <li>
+            For users in the European Union, you have the right to lodge a
+            complaint with your local data protection authority.
+          </li>
         </ul>
       </div>
 
@@ -232,17 +252,15 @@ function PrivacyPolicy() {
         </h3>
         <ul>
           <li>
-            I may update this Privacy Policy from time to time. I will notify
-            you of any changes by posting the new Privacy Policy on this page.
-            You are advised to review this Privacy Policy periodically for any
-            changes. Changes to this Privacy Policy are effective when they are
-            posted on this page.
+            I may update this Privacy Policy from time to time. You are advised
+            to review this Privacy Policy periodically for any changes. Changes
+            to this Privacy Policy are effective when posted on this page.
           </li>
         </ul>
       </div>
 
       <div className={`${styles.block}`}>
-        <p className={styles.content}>Effective Date: July 30 2024</p>
+        <p className={styles.content}>Effective Date: August 22, 2024</p>
       </div>
 
       <ButtonBack />

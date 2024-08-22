@@ -7,7 +7,7 @@ export const userAcceptedPrivacy = createAsyncThunk(
   async (_, { rejectWithValue, dispatch }) => {
     try {
       // Attempt to set a local storage item indicating user has accepted the privacy policy
-      setStorageItem("TheFoodItUserAcceptedPrivacy", "true", null);
+      setStorageItem("TheFoodItUserAcceptedPrivacy", true, null);
       // Return a success value to indicate the operation completed successfully
       return true;
     } catch (error) {
@@ -21,12 +21,29 @@ export const userAcceptedPrivacy = createAsyncThunk(
   }
 );
 
+// async thunk for handling to set in user's preference of theme (dark/light mode) in local storage / js object storage
+export const saveUserPreferenceTheme = createAsyncThunk(
+  "appLayout/saveUserPreferenceTheme",
+  async (preferenceTheme, { rejectWithValue, dispatch }) => {
+    try {
+      setStorageItem("TheFoodItUserIsDarkMode", preferenceTheme, dispatch);
+      return preferenceTheme;
+    } catch (error) {
+      dispatch(
+        setErrorMessage(`Error saving theme preference: ${error.message}`)
+      );
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 const initialState = {
   isDesktop: window.innerWidth >= 1366,
   isUserAcceptedPrivacy:
-    getStorageItem("TheFoodItUserAcceptedPrivacy") === "true",
+    getStorageItem("TheFoodItUserAcceptedPrivacy") === true,
   errorMessage: "",
   secondsAutoRemoveError: 5,
+  darkMode: getStorageItem("TheFoodItUserIsDarkMode") ?? true,
 };
 
 const appLayoutSlice = createSlice({
@@ -45,6 +62,13 @@ const appLayoutSlice = createSlice({
     clearErrorMessage(state) {
       state.errorMessage = "";
     },
+
+    setDarkMode(state, action) {
+      state.darkMode = action.payload;
+
+      const theme = state.darkMode ? "dark" : "light";
+      document.body.setAttribute("data-theme", theme);
+    },
   },
   // Define extra reducers for handling actions outside the slice's basic reducers
   extraReducers: (builder) => {
@@ -56,11 +80,18 @@ const appLayoutSlice = createSlice({
     builder.addCase(userAcceptedPrivacy.rejected, (state, action) => {
       state.errorMessage = action.payload; // Set the error message if the thunk fails
     });
+
+    builder.addCase(saveUserPreferenceTheme.fulfilled, (state, action) => {
+      state.darkMode = action.payload; // Ensure the state is updated with the saved preference
+    });
+    builder.addCase(saveUserPreferenceTheme.rejected, (state, action) => {
+      state.errorMessage = action.payload; // Handle any errors from the thunk
+    });
   },
 });
 
 // named exports actions
-export const { setIsDesktop, setErrorMessage, clearErrorMessage } =
+export const { setIsDesktop, setErrorMessage, clearErrorMessage, setDarkMode } =
   appLayoutSlice.actions;
 
 // default export for the reducer

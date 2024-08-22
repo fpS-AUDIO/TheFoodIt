@@ -9,9 +9,8 @@
   padding: var(--padding--medium);
 }
 
-.mainTitle {
-  font-size: 1.8rem;
-  margin-bottom: 3.2rem;
+.wrapper > :last-child {
+  padding-bottom: 3.6rem;
 }
 
 .block {

@@ -35,6 +35,14 @@ import KcalStats from "./features/KcalCalculator/KcalStats/KcalStats";
 import KcalCalculatorForm from "./features/KcalCalculator/KcalCalculatorForm/KcalCalculatorForm";
 import Settings from "./pages/Settings/Settings";
 
+// Determine the initial theme from localStorage
+// Defaults to true (dark mode) unless explicitly set to "false"
+const initialDarkMode =
+  localStorage.getItem("TheFoodItUserIsDarkMode") !== "false";
+
+// Apply the theme before rendering
+document.body.setAttribute("data-theme", initialDarkMode ? "dark" : "light");
+
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
