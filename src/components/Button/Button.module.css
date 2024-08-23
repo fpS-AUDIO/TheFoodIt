@@ -52,10 +52,16 @@
   border: 0.2rem solid var(--color-light--0);
 }
 
-.delete {
+.button.delete {
   width: 4rem;
   padding: 0.6rem 1.2rem;
-  color: var(--color-delete--1);
+  color: var(--color-delete--2);
+  border: 0.2rem solid var(--color-delete--2);
+}
+
+.button.deleteLarge {
+  padding: 0.6rem 1.2rem;
+  color: var(--color-delete--2);
   border: 0.2rem solid var(--color-delete--2);
 }
 

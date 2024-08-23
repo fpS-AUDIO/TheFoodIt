@@ -3,6 +3,7 @@ import styles from "./Settings.module.css";
 // Redux and Store
 import { useDispatch, useSelector } from "react-redux";
 import {
+  deleteAllLocalData,
   saveUserPreferenceTheme,
   setDarkMode,
 } from "../../store/slices/appLayoutSlice";
@@ -10,6 +11,7 @@ import {
 // components
 import Switcher from "../../components/Switcher/Switcher";
 import ButtonBack from "../../components/ButtonBack/ButtonBack";
+import Button from "../../components/Button/Button";
 
 function Settings() {
   const dispatch = useDispatch();
@@ -25,6 +27,10 @@ function Settings() {
     dispatch(saveUserPreferenceTheme(newIsDark));
   }
 
+  function handleDeleteLocalData() {
+    dispatch(deleteAllLocalData());
+  }
+
   return (
     <div className={styles.settingsBox}>
       <ButtonBack />
@@ -33,6 +39,14 @@ function Settings() {
         <div className={styles.settingsRow}>
           <p className={styles.settingTitle}>Dark Mode</p>
           <Switcher isOn={appLayout.darkMode} onChange={handleThemeChange} />
+        </div>
+        <div className={styles.settingsRow}>
+          <p className={styles.settingTitle}>
+            Warning: Clear all locally stored data
+          </p>
+          <Button type="deleteLarge" onClick={handleDeleteLocalData}>
+            Delete
+          </Button>
         </div>
       </div>
     </div>

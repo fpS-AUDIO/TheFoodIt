@@ -69,7 +69,27 @@ const appLayoutSlice = createSlice({
       const theme = state.darkMode ? "dark" : "light";
       document.body.setAttribute("data-theme", theme);
     },
+
+    deleteAllLocalData() {
+      try {
+        // Clear the local storage
+        localStorage.clear();
+
+        // Return to initial state if successful
+        return { ...initialState };
+      } catch (err) {
+        // Return to initial state with an error message if localStorage.clear() fails
+        return {
+          ...initialState,
+          errorMessage: `Failed to clear local storage: ${err.message}`,
+        };
+      } finally {
+        // Redirect to the homepage
+        window.location.href = "/";
+      }
+    },
   },
+
   // Define extra reducers for handling actions outside the slice's basic reducers
   extraReducers: (builder) => {
     // Handle the fulfilled state of the userAcceptedPrivacy thunk
@@ -91,8 +111,13 @@ const appLayoutSlice = createSlice({
 });
 
 // named exports actions
-export const { setIsDesktop, setErrorMessage, clearErrorMessage, setDarkMode } =
-  appLayoutSlice.actions;
+export const {
+  setIsDesktop,
+  setErrorMessage,
+  clearErrorMessage,
+  setDarkMode,
+  deleteAllLocalData,
+} = appLayoutSlice.actions;
 
 // default export for the reducer
 export default appLayoutSlice.reducer;
